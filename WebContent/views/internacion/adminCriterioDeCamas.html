@@ -1,0 +1,98 @@
+
+<div class="ui azulHE block header attached message">
+	<h4>Criterio de asignacion de camas</h4>
+	<div class="ui two column grid">
+		<div class="column">
+			<div class="sub header">Listado de criterios actuales</div>
+		</div>
+		<div class="column">
+			<div class="sub header">Nuevo Criterio</div>
+		</div>
+	</div>
+</div>
+
+<form
+	class="sixteen wide column ui attached fluid form segment cajaSombreadaSinTop"
+	novalidate name="form" style="padding-left: 5%; padding-right: 5%">
+
+	<div class="ui two column grid">
+		<div class="column">
+			<!-- Tabla de criterios -->
+			<table class="ui small compact sortable basic table "
+				ng-show="elementos.length > 0">
+				<thead>
+					<tr>
+						<th class="manitas one wide"
+							ng-click="paginador.ordenarPor('id')"
+							ng-class="paginador.claseOrdenacion('id')">id</th>
+						<th class="manitas four wide"
+							ng-click="paginador.ordenarPor('descripcion')"
+							ng-class="paginador.claseOrdenacion('descripcion')">Descripcion</th>
+						<th class="manitas two wide"
+							ng-click="paginador.ordenarPor('codigo')"
+							ng-class="paginador.claseOrdenacion('codigo')">Codigo</th>
+						<th class="manitas two wide">Acciones</th>
+					</tr>
+				</thead>
+
+				<tbody>
+
+					<tr ng-repeat="e in elementos ">
+						<td>{{ e.id }}</td>
+						<td>{{ e.descripcion }}</td>
+						<td>{{ e.codigo }}</td>
+						<td>
+							<div ng-click="modificarCriterio(e)"
+								class="circular ui mini compact icon button">
+								<i class="write icon" title="Editar"></i>
+							</div>
+							<div ng-click="eliminarCriterio(e)"
+								class="circular ui mini compact icon button">
+								<i class="remove icon" title="Eliminar"></i>
+							</div>
+							
+
+						</td>
+
+					</tr>
+				</tbody>
+
+			</table>
+		</div>
+		<div class="column">
+			<div class=" field">
+				<label>Codigo</label>
+				<div class="ui input">
+					<input ng-model="criterio.codigo" name="codigo" type="text"
+						id="codigo" placeholder="Ingrese el codigo" />
+
+
+				</div>
+			</div>
+			<div class=" field">
+				<label>Descripcion</label>
+				<div class="ui input">
+					<input ng-model="criterio.descripcion" name="descripcion"
+						type="text" id="descripcion" placeholder="Ingrese una descripcion" />
+
+
+				</div>
+			</div>
+
+			<div class="ui small buttons">
+				<div class="ui blue button" title="Guardar"
+					ng-click="guardarCriterio()">
+					<i class="save icon"></i>{{tarea}}
+				</div>
+				<div class="or"></div>
+				<div class="ui red button" title="Volver" ng-click="cancelar()">
+					<i class="remove icon"></i>Cancelar
+				</div>
+			</div>
+			<div class="ui message"
+				ng-class="{'red':mensajes.error, 'green':!mensajes.error}"
+				ng-show="hayMensajes">{{mensajes.mensaje}}</div>
+		</div>
+
+	</div>
+</form>

@@ -1,0 +1,77 @@
+<div class="ui form " novalidate name="form">
+	
+	<div class="ui message" ng-class="{'red':mensajes.error, 'green':!mensajes.error}" ng-show="hayMensajes">{{mensajes.mensaje}}</div>
+	
+	<div class="three fields">
+	
+		<!-- 	Nombre -->
+		<div class="required field"  ng-class="{'error': form.nombre.$invalid && form.nombre.$dirty}">
+		  	
+		  	<label>Nombre</label>
+			<div class="ui left  small input">
+			
+			  <input ng-model="elemento.nombre" type="text" placeholder="Ingrese un nombre para el elemento..."/>
+			  
+			  <div ng-show="form.nombre.$invalid && form.nombre.$dirty" 
+			  			class="ui red pointing above ui label">Ingrese un nombre válido</div>
+			
+			</div>
+				
+		</div>
+		
+		<!-- 	Orden -->
+		<div class="required field">
+			
+			<label>Órden dentro del template:</label>
+			<div class="ui left  small input">
+			
+			  <input ng-model="elemento.orden" type="text" placeholder="Ingrese un número de órden..."/>
+			  
+			  <div ng-show="form.orden.$invalid && form.orden.$dirty" 
+			  			class="ui red pointing above ui label">Ingrese un órden válido</div>
+			
+			</div>
+		</div>
+		
+		<!-- 	Ancho -->
+		<div class="field">
+			
+			<label>¿Esta propiedad ocupará todo el ancho de la página?</label>
+			
+			<div class="ui toggle checkbox">
+				<input id="choice-{{elemento.ancho}}" type="checkbox"
+					ng-checked="elemento.ancho == 100"
+					ng-click="toggleAncho()"> 
+					<label for="choice-{{elemento.ancho}}">
+						<span ng-if="elemento.ancho == 100">Sí</span>
+						<span ng-if="elemento.ancho != 100">No</span>
+					</label>
+			</div>
+			
+		</div>
+		<!-- 	Margen -->
+		<div ng-if="elemento.ancho != 100" class="field">
+			
+			<label>¿Ocupará la columna izquierda?</label>
+			
+			<div class="ui toggle checkbox">
+				<input id="choice-{{elemento.margen}}" type="checkbox"
+					ng-checked="elemento.margen == 0"
+					ng-click="toggleMargen()"> 
+					<label for="choice-{{elemento.ancho}}">
+						<span ng-if="elemento.margen == 0">Sí</span><span ng-if="elemento.margen != 0">No</span>
+					</label>
+			</div>
+			
+		</div>
+		
+  	</div>
+  	
+  	<div class="ui small buttons" >
+  		<div class="ui blue button" ng-class="{'loading': haciendo}" ng-click="guardar()"><i class="save icon"></i>Guardar</div>
+  		<div class="or"></div>
+ 		<div class="ui red button" ng-click="cancelar()" ng-show="modificando"><i class="reply icon"></i>Volver</div>
+ 		<div class="ui orange button" ng-click="cancelar()" ng-show="!modificando"><i class="list icon"></i>Listar</div>
+	</div>
+  
+</div>

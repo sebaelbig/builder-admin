@@ -1,0 +1,168 @@
+<!-- Navegacion -->
+<div class="ui form">
+	
+	<div class="five fields">
+		<!-- <div class="field">
+			<label>Fecha de Egreso</label>
+			<div class="ui left icon manitas input">
+				<input type="text" id="fechaEgreso"
+					ng-datepicker="obtenerCarpetasPorFecha" ng-model="fechaEgreso"
+					placeholder="Haga click aqu&iacute; para seleccionar el d&iacute;a"
+					size="28" /> <i class="calendar icon"></i>
+			</div>
+			<div class="inline">
+				<label>Buscar por fecha:</label>
+				<input type="checkbox" name="fechaok" id="fechaok" ng-model="fechaok" ng-change="changeFechaOk()"/> 
+			</div>
+		</div> -->
+		<div class=" field">
+			<label>N&#250mero de Historia Clinica</label>
+			<div class="ui input">
+				<input ng-model="carpeta" onKeyPress="return onlyNumber(event);"
+					name="carpeta" id="carpeta" type="text"
+					placeholder="Ingrese nro de carpeta" />
+
+			</div>
+		</div>
+		<div class=" field">
+			<label>DNI</label>
+			<div class="ui input">
+				<input ng-model="dni" onKeyPress="return onlyNumber(event);"
+					name="dni" type="text" id="dni"
+					placeholder="Ingrese DNI del Paciente" />
+
+
+			</div>
+		</div>
+		<div class=" field">
+			<label>Paciente</label>
+			<div class="ui input">
+				<input ng-model="nombre" name="nombre" id="nombre" type="text"
+					placeholder="Ingrese nombre del Paciente" />
+			</div>
+		</div>
+		
+		<div class="field">
+			<label>Buscar</label>
+			<div class="ui right labeled icon button"
+				ng-click="buscarPorFiltrosDeVista(this)">
+				<i class="search icon"></i> Buscar
+			</div>
+
+		</div>
+	</div>
+
+</div>
+
+<h6 class="ui dividing header divisor"></h6>
+
+<div class="ui form">
+
+	<div class="five fields">
+
+		<!-- Buscador -->
+		<div class="field">
+			<label>Filtro:</label>
+			<div class="ui icon small input">
+				<input type="text" placeholder="Buscar..." ng-model="nombreBusqueda"
+					ng-change="filtrar(this)"> <i class="filter icon"></i>
+			</div>
+		</div>
+
+		<div class="field"></div>
+
+		<!-- Paginador style="text-align: left"  -->
+		<div class="field" style="text-align: center;">
+			<label>Seleccione la página</label>
+			<div ng-include="'views/paginador.html'"></div>
+		</div>
+
+		<div class="field"></div>
+
+		<!-- Refrescar -->
+		<div class="field">
+			<label></label>
+			<h5 class="manitas" ng-click="buscarPorFiltros()" type="text">
+				<i class="refresh icon"></i>Refrescar listado
+			</h5>
+		</div>
+
+	</div>
+
+</div>
+
+<!-- Lista de Perfiles -->
+<h4 class="ui header" ng-show="elementos.length == 0"
+	style="color: #004070; text-align: center;">No hay carpetas según
+	los criterios de búsqueda ingresados.</h4>
+
+
+<table class="ui small compact sortable basic table "
+	ng-show="elementos.length > 0">
+	<!--  	Columnas: ID pedido, Paciente, Estudio, Medico efector, Servicio efector y Acciones -->
+	<thead>
+		<tr>
+			<th class="manitas one wide"
+				ng-click="paginador.ordenarPor('carpeta')"
+				ng-class="paginador.claseOrdenacion('carepta')">Carpeta</th>
+			<th class="manitas four wide"
+				ng-click="paginador.ordenarPor('paciente')"
+				ng-class="paginador.claseOrdenacion('paciente')">Paciente</th>
+			<th class="manitas four wide"
+				ng-click="paginador.ordenarPor('dniPaciente')"
+				ng-class="paginador.claseOrdenacion('dniPaciente')">DNI
+				Paciente</th>
+			  <th class="manitas two wide" 
+      		ng-click="paginador.ordenarPor('fechaIngreso')" 
+      		ng-class="paginador.claseOrdenacion('fechaIngreso')">Fecha Ingreso</th>
+			<!--<th class="manitas two wide"
+				ng-click="paginador.ordenarPorFecha('fechaEgreso')"
+				ng-class="paginador.claseOrdenacion('fechaEgreso')">Fecha
+				Egreso</th>-->
+			<!--    <th class="manitas four wide" 
+      		ng-click="paginador.ordenarPor('medicoResponsable')" 
+      		ng-class="paginador.claseOrdenacion('medicoResponsable')">Médico Responsable</th> 
+      <th class="manitas four wide" 
+      		ng-click="paginador.ordenarPor('diagnostico')" 
+      		ng-class="paginador.claseOrdenacion('diagnostico')">Diagnostico de Ingreso</th> -->
+			<th class="two wide">Acciones</th>
+		</tr>
+	</thead>
+
+	<tbody>
+
+		<tr ng-repeat="e in elementos "
+			ng-class="{'negative':e.urgente, 'warning': e.bloqueado }"
+			id="{{e.id}}">
+			<td>{{ e.carpeta}}</td>
+			<td>{{ e.paciente }}</td>
+			<td>{{ e.dniPaciente }}</td>
+			<td>{{ e.fechaIngreso }}</td>
+
+			<td>
+
+				<div ng-click="escribir(e.carpeta)"
+					class="circular ui mini compact icon button"
+					ng-show="e.epicrisisGuardada==false">
+					<i class="file text  icon" title="Escribir/Editar informe"></i>
+				</div>
+				
+				<div ng-click="imprimir(e.carpeta)"
+					class="circular ui mini compact icon button"
+					ng-show="e.epicrisisGuardada==true">
+					<i class="print icon" title="Imprimir"></i>
+				</div>
+			</td>
+		</tr>
+	</tbody>
+
+</table>
+
+<!-- Dimmer cargando info -->
+<div class="ui inverted dimmer" ng-class="{'active':haciendo}"
+	id="haciendo">
+	<div class="ui text loader">Procesando información...</div>
+</div>
+
+
+<section ng-include="'views/modalConfirmarAccion.html'"></section>

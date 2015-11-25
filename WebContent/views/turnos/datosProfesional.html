@@ -1,0 +1,50 @@
+<!-- RESULTADO de la busqueda -->
+<div class="ui grid">
+
+
+
+		<h4 class="ui header" style="padding: 5px;">
+		
+	  		<i class="huge user icon"></i>
+	  		
+		  	<div class="content">
+		   		Profesional: <br>{{profesional.apellido}}
+		    	<div class="sub header">Especialista en:</br>
+		    	 <span ng-repeat="espe in profesional.especialidades"><span class="ui blue label espec">{{espe.nombre}}</span></span></div>
+	<!-- 	    	Categoría: <span class="ui label">{{profesional.categoria}}</span>,  -->
+	 		</div>
+	 		
+		</h4>
+	
+	<!-- 
+	<!-- Bloques turnos 
+	<div class="twelve wide column">
+	
+		<div ng-include="'views/turnos/coleccionDeBloqueTurnos.html'" ></div>
+	
+	
+		<!-- Aviso que no tiene turnos 
+		<div ng-show="show_textoInformativo">
+		
+			<img src="/he_fe/images/advertencia.png" id="icono_advertencia" width="48px" height="48px"/>
+			
+			<span id="txt_sinBTs" class="texto_error">{{mensaje}}</span>
+			
+			<div class="oculto imageButton" ng-show="show_agregarListaDeEspera">
+				<input type="button" value="Agregarme a lista de espera"  id="btn_agregarListaDeEspera"/>
+				<img src="/he_fe/images/btn/login.png" 
+					ng-click="document.getElementById('btn_agregarListaDeEspera').click();" />
+			</div>
+			
+		</div>	
+	
+		<!-- BT Seleccionado 
+		<div  class="item lista bloqueTurno seleccionado">
+			<div ng-show="show_bloquesDeTurnos" >
+				{{bloqueTurnoSeleccionado.label}}
+			</div>
+		</div>
+		
+	</div>-->
+	
+</div>		

@@ -1,0 +1,24 @@
+<div class="ui page dimmer" id="modalEliminar" >
+	
+	<div class="ui page dimmer ng-scope visible active" id="modalEliminar" style="">
+	
+		<div class="ui compact   icon warning modal message" style="width: 74%;">
+	  		<i class="delete icon"></i>
+	  		<div class="header">
+	    		¿Está seguro que desea eliminar <b class="ng-binding">{{borrando._cartel}}</b>?
+	  		</div>
+		    
+	    	<div class="actions">
+			      <div class="two fluid ui buttons">
+				        <div class="ui negative labeled icon button" ng-click="cancelarEliminar(e)">
+				          	<i class="remove icon"></i>No
+				        </div>
+				        <div class="ui positive right labeled icon button" ng-click="eliminar(e)" ng-class="{'loading': borrando.btnLoading}">
+			          		Si<i class="checkmark icon"></i>
+				        </div>
+			      </div>
+		    </div>
+		</div>
+	</div>
+	
+</div>

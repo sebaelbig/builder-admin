@@ -1,0 +1,276 @@
+<h4 class="ui azulHE block header">
+	Pedidos del paciente:
+	<div class="sub header">{{paciente}}</div>
+</h4>
+
+<!-- Navegacion -->
+<div class="ui form">
+
+	<div class="five fields">
+
+		<!-- Modalidades disponibles -->
+		<div class=" field">
+
+			<label>Modalidad:</label>
+
+			<div class="ui dropdown selection" id="listaModalidades">
+
+				<div class="text">
+					<span ng-show="!loadingModalidades">Todas</span>
+					<div class="ui active inline loader" ng-show="loadingModalidades"></div>
+				</div>
+
+				<i class="dropdown icon"></i>
+				<div class="menu">
+					<div class="item"
+						ng-class="{'active': 'Todas' == modalidadseleccionada.descripcion}"
+						ng-click="seleccionoModalidad({descripcion:'Todas',codigo:null})">Todas</div>
+
+					<div class="item"
+						ng-class="{'active': modalidad.descripcion == modalidadseleccionada.descripcion	}"
+						ng-repeat="modalidad in modalidades track by $index | orderBy: descripcion"
+						ng-click="seleccionoModalidad(modalidad)">
+						{{modalidad.codigo}} - {{modalidad.descripcion}}</div>
+				</div>
+
+			</div>
+		</div>
+
+		<!-- 	Estados del estudio disponibles -->
+		<div class="field">
+
+			<label>Estados:</label>
+
+			<div class="ui dropdown selection" id="listaEstados">
+
+				<div class="text">
+					<span ng-show="!loadingEstados">Todos</span>
+					<div class="ui active inline loader" ng-show="loadingEstados"></div>
+				</div>
+
+				<i class="dropdown icon"></i>
+				<div class="menu">
+					<div class="item"
+						ng-class="{'active': 'Todos' == estadoSeleccionado}"
+						ng-click="seleccionoEstado({nombre:'Todos'})">Todos</div>
+
+					<div class="item "
+						ng-class="{'active': estado.nombre == estadoSeleccionado}"
+						ng-repeat="estado in estados track by $index | orderBy: nombre"
+						ng-click="seleccionoEstado(estado)">{{estado.nombre}}</div>
+				</div>
+
+			</div>
+		</div>
+
+		<div class=" field">
+			<label>Fecha desde:</label>
+			<div class="ui left icon manitas input">
+				<input type="text" id="fechaDesde"
+					ng-datepicker="obtenerPedidosPorFecha" ng-model="fechaDesde"
+					placeholder="Haga click aqu&iacute; para seleccionar el d&iacute;a"
+					size="28" /> <i class="calendar icon"></i>
+			</div>
+		</div>
+
+		<div class=" field">
+			<label>Fecha hasta:</label>
+
+			<div class="ui left icon manitas input">
+				<input type="text" id="fechaHasta"
+					ng-datepicker="obtenerPedidosPorFecha" ng-model="fechaHasta"
+					placeholder="Haga click aqu&iacute; para seleccionar el d&iacute;a"
+					size="28" /> <i class="calendar icon"></i>
+			</div>
+
+		</div>
+
+		<div class="field">
+		
+			<label>Buscar utilizando los campos:</label>
+			<div class="ui right labeled icon button"
+				ng-click="buscarPorFiltrosDeVista()">
+				<i class="search icon"></i> Buscar
+			</div>
+			
+		</div>
+	</div>
+	<div class="five fields">
+		<!-- 	Servicios disponibles -->
+		<div class=" field">
+
+			<label>Servicios:</label>
+
+			<div class="ui dropdown selection" id="listaServicios">
+
+				<div class="text">
+					<span ng-show="!loadingServicios">Todos</span>
+					<div class="ui active inline loader" ng-show="loadingServicios"></div>
+				</div>
+
+				<i class="dropdown icon"></i>
+				<div class="menu">
+					<div class="item"
+						ng-class="{'active': 'Todos' == servicioseleccionado}"
+						ng-click="seleccionoServicio({nombre:'Todos'})">Todos</div>
+
+					<div class="item"
+						ng-class="{'active': servicio.nombre == servicioseleccionado}"
+						ng-repeat="servicio in servicios track by $index | orderBy: nombre "
+						ng-click="seleccionoServicio(servicio)">{{servicio.nombre}}</div>
+				</div>
+
+			</div>
+		</div>
+		<div class="field"></div>
+		<div class="field"></div>
+		<div class="field"></div>
+		<div class="field">
+			<label> </label>
+			<div class="ui small buttons">
+				<div class="ui red button" ng-click="volver()">
+					<i class="reply icon"></i>Volver
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<h6 class="ui dividing header divisor"></h6>
+<!-- <div class="ui horizontal divider">&nbsp;</div> -->
+
+<div class="ui form">
+
+	<div class="five fields">
+
+		<!-- Buscador -->
+		<div class="field">
+			<label>Filtro del resultado:</label>
+			<div class="ui icon small input">
+				<input type="text" placeholder="Buscar..." ng-model="nombreBusqueda"
+					id="input_nombreBusqueda" ng-change="filtrar(this,paginador)">
+				<i class="filter icon"></i>
+			</div>
+		</div>
+
+		<div class="field"></div>
+
+		<!-- Paginador style="text-align: left"  -->
+		<div class="field" style="text-align: center;">
+			<label>Seleccione la página</label>
+			<div ng-include="'views/paginador.html'"></div>
+		</div>
+
+		<div class="field"></div>
+
+		<!-- Refrescar -->
+		<div class="field">
+			<label></label>
+			<h5 class="manitas" ng-click="refrescarLaPagina()" type="text">
+				<i class="refresh icon"></i>Refrescar listado
+			</h5>
+		</div>
+
+
+	</div>
+
+</div>
+
+<!-- Lista de Perfiles -->
+<h4 class="ui header" ng-show="elementos.length == 0"
+	style="color: #004070; text-align: center;">No hay pedidos según
+	los criterios de búsqueda ingresados.</h4>
+
+
+<table class="ui small compact sortable basic table "
+	ng-show="elementos.length > 0">
+	<!--  	Columnas: ID pedido, Paciente, Estudio, Medico efector, Servicio efector y Acciones -->
+	<thead>
+		<tr>
+			<th class="manitas one wide"
+				ng-click="paginador.ordenarPor('numero')"
+				ng-class="paginador.claseOrdenacion('numero')">ID pedido</th>
+			<th class="manitas two wide">Fecha</th>
+			<th class="manitas four wide"
+				ng-click="paginador.ordenarPor('estudios')"
+				ng-class="paginador.claseOrdenacion('estudios')">Estudio</th>
+			<th class="manitas four wide"
+				ng-click="paginador.ordenarPor('actuante')"
+				ng-class="paginador.claseOrdenacion('actuante')">Médico
+				efector</th>
+			<th class="manitas two wide"
+				ng-click="paginador.ordenarPor('servicio')"
+				ng-class="paginador.claseOrdenacion('nombreServicio')">Servicio
+				efector</th>
+			<!--  estado pedido -->
+			<th class="manitas" ng-click="paginador.ordenarPor('estado')"
+				ng-class="paginador.claseOrdenacion('estado')">Estado</th>
+			<th class="two wide">Acciones</th>
+		</tr>
+	</thead>
+
+	<tbody>
+
+		<tr ng-repeat="e in elementos "
+			ng-class="{'negative':e.urgente, 'warning': e.bloqueado }"
+			id="{{e.id}}">
+			<td>{{e.numero}}</td>
+			<td>{{e.fecha}}</td>
+			<td style="text-align: left;">{{e.estudios}}</td>
+			<td>{{e.actuante}}</td>
+			<td>{{e.nombreServicio}}</td>
+			<td>{{e.estado}}</td>
+
+			<!-- 		Se bloquea ante concurrencia -->
+			<td ng-show="e.bloqueado"><i class="lock icon"
+				title="Pedido bloqueado por {{e.usuarioAccion}}, desde: {{e.timestampAccion}}, haciendo: {{e.detalleAccion}}"
+				style="cursor: help;"> </i>({{e.usuarioAccion}})
+
+				<div ng-click="desbloquear(e)"
+					class="circular ui mini compact icon button"
+					ng-show="usarioLogueado == e.usuarioAccion">
+					<i class="unlock alternate icon" title="Desbloquear"></i>
+				</div></td>
+
+			<!-- 		Se bloquea ante concurrencia -->
+			<td ng-show="!e.bloqueado">
+				<!--         <div ng-click="informar(e)" class="circular ui mini compact icon button" ng-show="e.estadoEstudio!='Cancelado' && e.estadoEstudio!='Informado' && e.estado != 'Informado'"> -->
+				<!--         	<i class="file text  icon" title="Escribir/Editar informe"></i></div> -->
+
+				<!--         <div ng-click="confirmar(e)" class="circular ui mini compact icon button" ng-show="e.estadoEstudio!='Informado' && e.estado != 'Informado' && e.estadoEstudio!='Cancelado' && e.estado != 'Cancelado'"> -->
+				<!--         	<i class="checkmark icon" title="Confirmar pedido"></i></div> -->
+
+				<!--         <div ng-click="Atender(e)" class="circular ui tiny icon button" > -->
+				<!--         	<i class="checkmark icon" title="Atender pedido"></i></div> -->
+
+				<div ng-click="imprimir(e)"
+					class="circular ui mini compact icon button">
+					<i class="print icon" title="Imprimir pedido"></i>
+				</div>
+
+				<div ng-click="ver(e)" class="circular ui mini compact icon button">
+					<i class="unhide icon" title="Ver pedido"></i>
+				</div> <!--         <div ng-click="reabrir(e)" class="circular ui mini compact icon button" ng-show="e.estado=='Informado' ">   -->
+				<!--         	<i class="undo icon" title="Reabrir pedido"></i></div> -->
+
+				<div ng-click="verMensajes(e)"
+					class="circular ui mini compact icon button">
+					<i class="comment outline icon" title="Ver mensajes"></i>
+				</div> <!--         <div ng-click="cancelar(e)" class="circular ui mini compact icon button" ng-show="e.estadoEstudio!='Cancelado' && e.estado != 'Informado' && e.estadoEstudio != 'Atendido'"> -->
+				<!--         	<i class="remove icon" title="Cancelar pedido"></i></div> -->
+
+			</td>
+		</tr>
+
+		</div>
+	</tbody>
+
+</table>
+
+<!-- Dimmer cargando info -->
+<div class="ui inverted dimmer" ng-class="{'active':haciendo}"
+	id="haciendo">
+	<div class="ui text loader">Procesando información...</div>
+</div>
+<section ng-include="'views/modalConfirmarAccion.html'"></section>

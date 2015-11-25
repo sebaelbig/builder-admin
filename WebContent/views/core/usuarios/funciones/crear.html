@@ -1,0 +1,16 @@
+<div class="ui tiny list">
+
+  
+	<div class="item" 
+	 	ng-repeat="fx in funciones"
+	 	ng-click="toggleFuncion(fx)"
+	 	ng-class="{'active': fx.seleccionada}">
+  		
+    	<i class="map icon"></i>
+    	<div class="content">
+      		<a class="header">{{fx.nombreMenu}}</a>
+      		<div class="description">{{fx.descripcion}}</div>
+    	</div>
+  	</div>
+
+</div>

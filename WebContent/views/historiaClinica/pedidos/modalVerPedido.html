@@ -1,0 +1,96 @@
+<div class="ui page dimmer" id="modalVerPedido" >
+	
+	<div class="ui page dimmer ng-scope visible active" id="modalVerPedido" >
+	
+		<div class="ui compact icon warning modal message" style="width: 74%; top: 0px !important; text-align:left;">
+	  		
+  			<div class="ui small buttons" >
+				<div class="ui orange button" ng-click="cancelarVer()" ><i class="remove icon"></i>Cerrar</div>
+			</div>
+					
+			<div class="actions" style="text-align:left;">
+				
+				<div class="ui form segment" novalidate name="form">
+	
+					<div class="four fields ui segment">
+					
+						<div class="field">
+							<label>Número:</label>
+						    <h5  >{{elemento.numero}}</h5>
+						</div>
+						
+						<div class="field">
+							<label>Carpeta / Boleta:</label>
+						    <h5  >{{elemento.nroCarpeta}}</h5>
+						</div>
+						
+					  	<div class="field"  >
+						    <label>Fecha Pedida</label>
+							 <h5  >{{elemento.fechaPedida}}</h5>
+					  	</div>
+
+					  	<div class="field"  >
+						    <label>Fecha Efectuada</label>
+							 <h5  >{{elemento.fecha}}</h5>
+					  	</div>
+					  	
+					</div>
+					
+					<div class="four fields ui segment">  	
+					
+						<div class="field">
+							<label>Servicio:</label>
+						    <h5  >{{elemento.nombreServicio}}</h5>
+						</div>
+					
+					  	<div class="field"  ">
+						    <label>Apellido y Nombres:</label>
+							 <h5  >{{elemento.paciente}} ({{elemento.nroDniPaciente}})</h5>
+					  	</div>
+						  	
+					  	<div class="field"  >
+						    <label>Indicado por:</label>
+						     <h5  >{{elemento.solicitante}}</h5>
+					  	</div>
+					  	
+					  	<div class="field"  >
+						    <label>Efector:</label>
+						     <h5  >{{elemento.actuante}}</h5>
+					  	</div>
+					  	
+				  	</div>
+			  	
+					<div class="field ui segment" >
+					    <label>Estudios <span ng-if="elemento.unEstudioPorPedido">(Un informe por estudio)</span>:</label>
+					      
+				      	<div class="ui horizontal list">
+						  
+						  <div class="item" 
+						  		ng-repeat="estudio in elemento.estudiosPaciente">
+						    <div class="content top aligned">
+						      ({{estudio.codigoEstudio}}) {{estudio.nombreEstudio}} [{{estudio.estado}}]
+						    </div>
+						    
+						  </div>
+						  
+						</div>
+					      			
+				  	</div> 	
+			 		
+					<div class="field ui segment" >
+					    <label>Informe:</label>
+					    <div ng-bind-html="elemento.texto | rawHtml"  ></div>
+				    </div>
+					    
+					<div class="field ui segment" style="text-align:right;">
+						<label>Firma del ejecutante:</label>
+					    <div ng-bind-html="elemento.firmaEfector | rawHtml"  ></div>
+					</div>
+				  
+				</div>
+				
+			</div>
+		</div>
+	</div>
+</div>
+	

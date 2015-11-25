@@ -1,0 +1,10 @@
+<h4 class="ui azulHE block header attached message">
+  Administración de sucursales
+  <div class="sub header">Formulario de creación/modificación</div>
+</h4>
+
+<div class="ui message" ng-class="{'red':mensajes.error, 'green':!mensajes.error}" ng-show="hayMensajes">{{mensajes.mensaje}}</div>
+
+<section ng-include="'views/core/areas/sucursales/crear.html'" class="sixteen wide column ui attached fluid segment"></section>
+
+<section ng-include="'views/core/areas/sucursales/listar.html'" class="sixteen wide column" ng-show="!modificando"></section>

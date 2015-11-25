@@ -1,0 +1,36 @@
+<main class="ui three column grid">
+  <section class="column"></section>
+  <section class="column">
+    <h1 class="ui teal header">Registrese ahora</h1>
+
+    <div class="ui form segment">   
+
+      <div class="ui message" ng-class="{'red':mensajes.error, 'green':!mensajes.error}" ng-show="hayMensajes" style="font-size:1rem;">{{mensajes.mensaje}}</div>
+      
+      <!-- E-Mail-->
+      <div class="field">
+        <label  for="email">Correo electrónico</label>
+        <input name="email" type="email" placeholder="Correo electrónico" ng-model="usuario.email" />
+      </div>
+
+      <!-- Nombre de usuario-->
+      <div class="field">
+        <label for="username">Nombre de usuario</label>
+        <input id="username" placeholder="username" type="text" ng-model="usuario.username">
+      </div>
+
+      <!-- Nombre de usuario-->
+      <div class="field">
+        <label for="Password">Password</label>
+        <input id="Password" type="password" ng-model="usuario.password">
+      </div>
+
+      <!-- Button -->
+      <div class="field">
+          <button name="enviar" class="ui green button" ng-click="registrar()">Guardar</button>
+          <button name="enviar" class="ui teal button" ng-click="login()">Ingresar</button>
+      </div>
+    </div>    
+  </section>
+  <section class="column"></section>
+</main>

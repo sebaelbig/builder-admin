@@ -1,0 +1,76 @@
+<div class="ui form " novalidate name="form">
+	
+	<div class="four fields">
+	
+		<!-- 	Codigo -->
+		<div class="required field "  ng-class="{'error': form.codigo.$invalid && form.codigo.$dirty}">
+		  	
+		  	<label>Código</label>
+			<div class="ui left action small input">
+			
+			  <input ng-model="elemento.codigo" type="text" placeholder="Ingrese un código para el elemento..." />
+			  
+			  <div ng-show="form.codigo.$invalid && form.codigo.$dirty" 
+			  			class="ui red pointing above ui label">Ingrese un Código válido</div>
+			
+			</div>
+			
+		</div>
+		
+		<!-- 	Nombre -->
+		<div class="required field"  ng-class="{'error': form.nombre.$invalid && form.nombre.$dirty}">
+		  	
+		  	<label>Nombre</label>
+			<div class="ui left  small input">
+			
+			  <input ng-model="elemento.nombre" type="text" placeholder="Ingrese un nombre para el elemento..."/>
+			  
+			  <div ng-show="form.nombre.$invalid && form.nombre.$dirty" 
+			  			class="ui red pointing above ui label">Ingrese un nombre válido</div>
+			
+			</div>
+			
+		</div>
+		
+		<!-- 	Direccion -->
+		<div class="field "  ng-class="{'error': form.direccion.$invalid && form.direccion.$dirty}">
+		  	
+		  	<label>Dirección</label>
+			<div class="ui small input">
+			
+			  <input ng-model="elemento.direccion" type="text" placeholder="Ingrese una dirección para el elemento..." />
+			  
+			  <div ng-show="form.direccion.$invalid && form.direccion.$dirty" 
+			  			class="ui red pointing above ui label">Ingrese una dirección válido</div>
+			
+			</div>
+			
+		</div>	
+		
+		<!-- 	Telefono -->
+		<div class="required field "  ng-class="{'error': form.telefono.$invalid && form.telefono.$dirty}">
+		  	
+		  	<label>Teléfono</label>
+			<div class="ui small input">
+			
+			  <input ng-model="elemento.telefono" type="text" placeholder="Ingrese un teléfono para el elemento..." />
+			  
+			  <div ng-show="form.telefono.$invalid && form.telefono.$dirty" 
+			  			class="ui red pointing above ui label">Ingrese una teléfono válido</div>
+			
+			</div>
+			
+		</div>	
+		
+		
+		
+  	</div>
+  	
+  	<div class="ui small buttons" >
+  		<div class="ui blue button" ng-class="{'loading': haciendo, 'disabled': !(elemento.codigo && elemento.nombre && elemento.telefono)}" ng-click="guardar()"><i class="save icon"></i>Guardar</div>
+  		<div class="or"></div>
+ 		<div class="ui red button" ng-click="cancelar()" ng-show="modificando"><i class="reply icon"></i>Volver</div>
+ 		<div class="ui orange button" ng-click="cancelar()" ng-show="!modificando"><i class="list icon"></i>Listar</div>
+	</div>
+  
+</div>

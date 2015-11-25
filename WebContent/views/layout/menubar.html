@@ -1,0 +1,30 @@
+<!-- <div class="menu" ng-controller="MenuCtrl"  > -->
+<div class="menu" >
+     
+     <div class="pimera_linea">
+     
+<!--      		ng-mouseover="verMenu(menu.label); menu.hover=true" -->
+     	<span class="item manitas" 
+     		ng-class="{'negrita':menuActual==menu.label || menu.hover}"
+     		ng-repeat="menu in menues"
+     		ng-mouseover="menu.hover=true"
+     		ng-mouseleave="menu.hover=false"
+     		ng-click="verMenu(menu.label);"
+     		ng-if="showMenu"
+     		id="{{menu.id}}">{{menu.label}}</span>
+     		
+     	<span style="float: right" ng-show="loggedUser.usuario"><i class="user icon"></i>{{loggedUser.usuario}}</span>	
+     </div>
+     	
+     <div class="segunda_linea" >
+     	<span class="item manitas" 
+     	ng-class="{'negrita':subMenuActual==smenu.label || smenu.hover}" 
+     	ng-repeat="smenu in subMenu"
+     	ng-click="verSubMenu(smenu)"
+     	ng-mouseover="smenu.hover=true"
+     	ng-mouseleave="smenu.hover=false"
+     	ng-if="showMenu"
+     	id="{{smenu.id}}">{{smenu.label}}</span>
+   	</div>
+   	
+</div>

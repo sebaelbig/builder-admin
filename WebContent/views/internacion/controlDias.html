@@ -1,0 +1,157 @@
+<!-- Listado -->
+<div class="ui form">
+	<div class="five fields">
+		<div class="field">
+			<h3 class="ui azulHE header">Camas {{estadoActual.estado}}
+				({{cant}})</h3>
+		</div>
+		<div class="field"></div>
+		<div class="field">
+
+			<!-- Filtro Internados/libre -->
+			<label>Ver:</label> <select ng-model="item"
+				ng-class="{'active': e.estado == estadoActual.estado}"
+				ng-options="e as e.estado for e in estadoCamas"
+				ng-change="seleccionoEstado(item)">
+				<option>{{item}}</option>
+			</select>
+			<!-- FIltro -->
+		</div>
+		<div class="field"></div>
+		<div class="field">
+			<div class="ui blue button" ng-click="exportToExcel('#tablaExcel')">
+				Descargar <i class="file excel outline icon"></i>
+			</div>
+		</div>
+	</div>
+
+</div>
+<div class="ui form">
+
+	<div class="five fields">
+
+		<!-- Buscador -->
+		<div class="field">
+			<label>Filtro:</label>
+			<div class="ui icon small input">
+				<input type="text" placeholder="Buscar..." ng-model="nombreBusqueda"
+					ng-change="filtrar(this)"> <i class="filter icon"></i>
+			</div>
+		</div>
+
+		<div class="field"></div>
+
+		<!-- Paginador style="text-align: left"  -->
+		<div class="field" style="text-align: center;">
+			<label>Seleccione la p√°gina</label>
+			<div ng-include="'views/paginador.html'"></div>
+		</div>
+
+		<div class="field"></div>
+
+		<!-- Refrescar -->
+		<div class="field">
+			<label></label>
+			<h5 class="manitas" ng-click="consultar()" type="text">
+				<i class="refresh icon"></i>Refrescar listado
+			</h5>
+		</div>
+
+	</div>
+
+</div>
+<!-- Lista de Perfiles 
+<h4 class="ui header" ng-show="elementos.length == 0" style="color:#004070; text-align:center;">No hay internados a la fecha</h4>
+<!-- ng-show="elementos.length > 0" -->
+<table class="ui small compact sortable basic table ">
+	<!--  	Columnas: -->
+	<thead>
+		<tr>
+			<!-- <th class="manitas two wide"
+				ng-click="paginador.ordenarPorFecha('fechaIngreso','dt_fechaIngreso')" 
+      			ng-class="paginador.claseOrdenacion('fechaIngreso')">F. Ingreso</th> -->
+			<th class="manitas two wide" ng-click="paginador.ordenarPor('pieza')"
+				ng-class="paginador.claseOrdenacion('pieza')">Cama</th>
+			<th class="manitas four wide"
+				ng-click="paginador.ordenarPor('paciente')"
+				ng-class="paginador.claseOrdenacion('paciente')">Paciente</th>
+			<th class="manitas four wide"
+				ng-click="paginador.ordenarPor('diagnostico')"
+				ng-class="paginador.claseOrdenacion('diagnostico')">Diagnostico
+				de Ingreso</th>
+			<th class="manitas three wide"
+				ng-click="paginador.ordenarPor('profCabecera')"
+				ng-class="paginador.claseOrdenacion('profCabecera')">Medico De
+				Cabecera</th>
+			<th class="manitas two wide"
+				ng-click="paginador.ordenarPor('cantDias')"
+				ng-class="paginador.claseOrdenacion('cantDias')">Cant.
+				D&iacute;as Internacion</th>
+
+			<th class="manitas one wide">Mas</th>
+
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="e in elementos"
+			ng-class="{ 'success': e.estado == '2' , 'positive': e.estado === '1',
+              'negative': e.estado === '3' }">
+			<!-- <td>{{e.fechaIngreso}}</td> -->
+			<td ng-if="e.codigoCriterio">{{e.pieza}}-{{e.cama}}
+				({{e.codigoCriterio}})</td>
+			<td ng-if="!e.codigoCriterio">{{e.pieza}}-{{e.cama}}</td>
+			<td>{{e.paciente}}</td>
+			<td>{{e.diagnostico}}</td>
+			<td>{{e.profCabecera}}</td>
+			<td>{{e.cantDias}}</td>
+			<td>
+				<div ng-show="e.estado == 2" ng-click="ver(e)"
+					class="circular ui mini compact icon button">
+					<i class="unhide icon" title="Ver Carpeta"></i>
+				</div>
+				<div ng-show="e.estado == 2" ng-click="verHistorialDelPaciente(e)"
+					class="circular ui mini compact icon button">
+					<i class="treatment icon" title=""></i>
+				</div>
+			</td>
+		</tr>
+
+	</tbody>
+
+</table>
+
+<table id="tablaExcel" style="display: none;">
+	<thead>
+		<tr>
+			<th>Hab.</th>
+			<th>Cama</th>
+			<th>Paciente</th>
+			<th>Diagnostico de Ingreso</th>
+			<th>Medico De Cabecera</th>
+			<th>Cant. DÌas Internacion</th>
+			<th>Fecha Ingreso</th>
+			<th>Edad</th>
+			<th>Medico Interna</th>
+			<th>Mutual</th>
+
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="d in datos ">
+			<td>{{d.pieza}}</td>
+			<td>{{d.cama}}</td>
+			<td>{{d.paciente}}</td>
+			<td>{{d.diagnostico}}</td>
+			<td>{{d.profCabecera}}</td>
+			<td>{{d.cantDias}}</td>
+			<td>{{d.fechaIngreso}}</td>
+			<td>{{d.edad}}</td>
+			<td>{{d.profResponsable}}</td>
+			<td>{{d.mutuales}}</td>
+
+		</tr>
+	</tbody>
+
+</table>
+
+

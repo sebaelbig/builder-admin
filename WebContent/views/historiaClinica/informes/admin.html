@@ -1,0 +1,10 @@
+<!-- <h4 class="ui azulHE block header"> -->
+<!--   Administración de informes -->
+<!--   <div class="sub header">Lista los informes</div> -->
+<!-- </h4> -->
+
+<div class="ui message" ng-class="{'red':mensajes.error, 'green':!mensajes.error}" ng-show="hayMensajes">{{mensajes.mensaje}}</div>
+
+<!-- <section ng-include="'views/historiaClinica/informes/buscar.html'"></section> -->
+
+<section ng-include="'views/historiaClinica/informes/listar.html'" ng-show="!modificando"></section>

@@ -1,0 +1,31 @@
+<button name="listar" class="ui teal button" ng-click="listar()" >Listar</button>
+<button name="crear" class="ui green button" ng-click="crear()" >Crear</button>
+
+<table class="ui sortable basic table ">
+  
+  <thead>
+    <tr>
+      <th>DNI</th>
+      <th>Apellido</th>
+      <th>Nombres</th>
+      <th>E-Mail</th>
+      <th>Cursos</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr ng-repeat="u in usuarios">
+      <td>{{u.dni}}</td>
+      <td>{{u.apellido}}</td>
+      <td>{{u.nombres}}</td>
+      <td>{{u.email}}</td>
+      <td>{{u.cursos}}</td>
+      <td>
+        <a ng-click="editar(u)">Editar</a>
+        <a ng-click="ver(u)">Ver</a>
+      </td>
+    </tr>
+  </tbody>
+
+</table> 

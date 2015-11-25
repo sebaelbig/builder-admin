@@ -1,0 +1,71 @@
+<div class="ui form segment" novalidate name="form">
+	
+	<div class="ui message" ng-class="{'red':mensajes.error, 'green':!mensajes.error}" ng-show="hayMensajes">{{mensajes.mensaje}}</div>
+	
+	<div class="three fields">
+	
+		<!-- 	DNI Paciente -->
+		<div class="field"  ng-class="{'error': form.nroDniPaciente.$invalid && form.nroDniPaciente.$dirty}">
+		  	
+		  	<label>DNI paciente</label>
+			<div class="ui left labeled icon small input">
+			
+			  <input ng-model="elemento.nroDniPaciente" type="text" placeholder="Ingrese un dni..."/>
+			  <div class="ui corner label">
+			    <i class="icon asterisk"></i>
+			  </div>
+			  
+			  <div ng-show="form.nroDniPaciente.$invalid && form.nroDniPaciente.$dirty" 
+			  			class="ui red pointing above ui label">Ingrese un DNI</div>
+			
+			</div>
+			
+		</div>
+		
+		<!-- 	Matricula Solicitante -->
+		<div class="field"  ng-class="{'error': form.matriculaProfesionalSolicitante.$invalid && form.matriculaProfesionalSolicitante.$dirty}">
+		  	
+		  	<label>Matrícula solicitante</label>
+			<div class="ui left labeled icon small input">
+			
+			  <input ng-model="elemento.matriculaProfesionalSolicitante" type="text" placeholder="Ingrese un matriculaProfesionalSolicitante para el elemento..."/>
+			  <div class="ui corner label">
+			    <i class="icon asterisk"></i>
+			  </div>
+			  
+			  <div ng-show="form.matriculaProfesionalSolicitante.$invalid && form.matriculaProfesionalSolicitante.$dirty" 
+			  			class="ui red pointing above ui label">Ingrese una matrícula válido</div>
+			
+			</div>
+			
+		</div>
+		
+		
+		<!-- 	Fecha -->
+		<div class="field "  ng-class="{'error': form.fechaPedida.$invalid && form.fechaPedida.$dirty}">
+		  	
+		  	<label>Fecha solicitado (Formato: dd/MM/yyyy)</label>
+			<div class="ui left labeled icon action small input">
+			
+			  <input ng-model="elemento.fechaPedida" type="text" placeholder="Ingrese una fecha Pedida para el elemento..." title="Ingrese una fechaPedida para filtrar.."/>
+			  <div class="ui corner label">
+			    <i class="icon asterisk"></i>
+			  </div>
+			  
+			  <div ng-show="form.fechaPedida.$invalid && form.fechaPedida.$dirty" 
+			  			class="ui red pointing above ui label">Ingrese una fecha solicitado válido</div>
+			
+			</div>
+			
+		</div>	
+		
+  	</div>
+  	
+  	<div class="ui small buttons" >
+  		<div class="ui blue button" ng-class="{'loading': haciendo, 'disabled': !elemento.matriculaProfesionalSolicitante || !elemento.fechaPedida || !elemento.nroDniPaciente}" ng-click="buscar()" ><i class="search icon"></i>Buscar</div>
+  		<div class="or"></div>
+ 		<div class="ui red button" ng-click="cancelar()" ng-show="modificando"><i class="reply icon"></i>Volver</div>
+ 		<div class="ui red button" ng-click="cancelar()" ng-show="!modificando"><i class="list icon"></i>Listar Todo</div>
+	</div>
+  
+</div>

@@ -1,0 +1,42 @@
+<h4 class="ui azulHE block header">
+  <span >Usuario: {{usuario.nombreCompleto}}</span>
+  <div class="sub header" >Configuracion de la firma del usuario (Solo médicos del Hospital)</div>
+</h4>
+
+
+<div class="ui form segment" novalidate name="form">
+	
+	<div class="field"  ng-class="{'error': form.fechaPedida.$invalid && form.fechaPedida.$dirty}">
+	    <label>Nro de matrícula del usuario <b class="ng-binding">{{firmando.usuario}}</b></label>
+	    <div class="ui left labeled icon input">
+	      <input ng-model="firmando.nroMatricula" type="text" placeholder="Ingrese la matrícula del profesional..."/>
+
+	      <div class="ui corner label">
+	        <i class="icon asterisk"></i>
+	      </div>
+	      
+	      <div ng-show="form.fechaPedida.$invalid && form.fechaPedida.$dirty" 
+	      			class="ui red pointing above ui label">Ingrese una matricula válida</div>
+	      			
+	    </div>
+  	</div>
+	
+	<div class="field" >
+	    <label>Texto de la firma</label>
+		<div text-angular 
+				ta-toolbar="[['h1','h2','h3','h4'],['bold','italics','underline'],['ul','ol'],['undo','redo'],['justifyLeft','justifyCenter','justifyRight'], ['indent','outdent']]"
+				ta-toolbar-class="ui buttons" 
+				ta-toolbar-group-class="ui buttons" 
+				ta-toolbar-button-class="ui button" 
+				ta-toolbar-button-active-class="active" 
+				ng-model="elemento.texto"></div>
+	  </div>v>
+	</div>
+					    
+    <div class="ui small buttons" >
+ 		<div class="ui blue button" ng-click="guardarFirma()" ng-class="{'loading': guardandoFirma}"><i class="save icon"></i>Guardar Firma</div>
+ 		<div class="or"></div>
+		<div class="ui red button" ng-click="cancelarFirmar()" ><i class="reply icon"></i>Volver</div>
+	</div>
+	
+</div>

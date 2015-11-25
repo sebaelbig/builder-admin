@@ -1,0 +1,70 @@
+<h4 class="ui azulHE block header attached message">
+  Crear plantilla privada
+  <div class="sub header">Ingrese un texto y utilice la barra de herramientas para darle estilo</div>
+</h4>
+
+<div class="sixteen wide column ui attached fluid form  segment cajaSombreadaSinTop" novalidate name="form">
+	
+	<div class="ui message" ng-class="{'red':mensajes.error, 'green':!mensajes.error}" ng-show="hayMensajes">{{mensajes.mensaje}}</div>
+	
+		<div class="two fields">
+		
+		  	<div class="required field"  ng-class="{'error': form.titulo.$invalid && form.titulo.$dirty}">
+			    <label>Título</label>
+			    <div class="ui input">
+			      <input ng-model="elemento.titulo" type="text" placeholder="Ingrese un título a la plantilla..."/>
+		
+			      <div ng-show="form.titulo.$invalid && form.titulo.$dirty" 
+			      			class="ui red pointing above ui label">Ingrese un título válido</div>
+			      			
+			    </div>
+		  	</div>
+	  	
+		  	<!-- 	Lista de Medicos -->
+			<div class="field">
+				
+				<label>Médico:</label>
+			
+				<div class="ui dropdown selection" id="listaMedicos">
+				
+					<div class="text">
+						<span ng-show="!loadingMedicos">Elija médico</span>
+						<div class="ui active inline loader" ng-show="loadingMedicos"></div>
+					</div>
+					
+					<i class="dropdown icon"></i>
+					
+					<div class="menu">
+						<div class="item" ng-class="{'active': med.checked}" 
+							ng-repeat="medico in profesionales track by $index | orderBy: nombreCompleto "
+							ng-click="seleccionoMedico(medico)">
+							{{medico.usuario.nombreCompleto}} ({{medico.servicio.nombre}}  )</div>
+					</div>
+	
+				</div>
+			</div>
+ 		</div>
+ 		
+	  <div class="field" >
+	    <label>Texto de la plantilla / template</label>
+<!-- 		<div text-angular  -->
+<!-- 				ta-toolbar="[['h1','h2','h3','h4'],['bold','italics','underline'],['ul','ol'],['undo','redo'],['justifyLeft','justifyCenter','justifyRight'], ['indent','outdent']]" -->
+<!-- 				ta-toolbar-class="ui buttons"  -->
+<!-- 				ta-toolbar-group-class="ui buttons"  -->
+<!-- 				ta-toolbar-button-class="ui button"  -->
+<!-- 				ta-toolbar-button-active-class="active"  -->
+<!-- 				ng-model="elemento.texto" -->
+<!-- 				style="background-color: white;"></div> -->
+		<textarea horus-editor-model="texto" texto="elemento.texto" name="editor1" id="editor1" rows="40" cols="80" ></textarea>
+	  </div>
+  
+  	<div class="ui small buttons" >
+ 		<div class="ui blue button" ng-class="{'loading': haciendo, 'disabled': !(elemento.titulo) }" 
+ 			ng-click="guardar()"><i class="save icon"></i>Guardar</div>
+ 		<div class="or"></div>
+		<div class="ui red button" ng-click="cancelar()" ><i class="reply icon"></i>Volver</div>
+	</div>
+  
+</div>
+
+<section ng-include="'views/modalConfirmarAccion.html'"></section>

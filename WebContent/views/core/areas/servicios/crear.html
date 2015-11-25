@@ -1,0 +1,92 @@
+<div class="ui form" novalidate name="form">
+	
+	<div class="four fields">
+	
+		<!-- 	Codigo -->
+		<div class="required field "  ng-class="{'error': form.codigo.$invalid && form.codigo.$dirty}">
+		  	
+		  	<label>Código</label>
+			<div class="ui left action small input">
+			
+			  <input ng-model="elemento.codigo" type="text" placeholder="Ingrese un Código para el elemento..." />
+			  
+			  <div ng-show="form.codigo.$invalid && form.codigo.$dirty" 
+			  			class="ui red pointing above ui label">Ingrese un Código válido</div>
+			
+			</div>
+			
+		</div>
+		
+		<!-- 	Nombre -->
+		<div class="required field">
+			
+			<label>Servicio (Lista del Hospital Español):</label>
+		
+			<div class="ui dropdown selection" id="listaServiciosHE">
+				
+				<div class="text">
+					<span ng-show="!loadingServicios">Elija un servicio</span>
+					<div class="ui active inline loader" ng-show="loadingServicios"></div>
+				</div>
+					
+				<i class="dropdown icon"></i>
+
+				<div class="menu">
+					<div class="item"  
+						ng-repeat="srv in servicios "
+						ng-selected="elemento.nombre==srv.nombre"
+						ng-click="seleccionoServicioHE(srv)">
+						{{srv.nombre}}</div>
+				</div>
+
+			</div>
+		</div>
+		
+		<!-- 	Area por defecto -->
+		<div class="field">
+			
+			<label>Área del servicio:</label>
+		
+			<div class="ui dropdown selection" id="listaArea">
+				
+				<div class="text">
+					<span ng-show="!loadingAreas">Elija un área</span>
+					<div class="ui active inline loader" ng-show="loadingAreas"></div>
+				</div>
+				<i class="dropdown icon"></i>
+				
+				<div class="menu">
+					<div class="item" ng-class="{'active': area.checked}" 
+						ng-repeat="area in areas "
+						ng-selected="elemento.area.codigo==area.codigo"
+						ng-click="seleccionoArea(area)">
+						{{area.nombre}}</div>
+				</div>
+
+			</div>
+		</div>
+		
+		<!-- 	Multiplicidad -->
+		<div class="field">
+		
+			<label>¿Un informe por estudio?</label>
+			
+			<div class="ui toggle checkbox">
+				<input id="choice-{{elemento.id}}" type="checkbox"
+					ng-checked="elemento.unEstudioPorPedido"
+					ng-click="toggleMultiplicidad(elemento)"> <label
+					for="choice-{{elemento.id}}">{{(elemento.unEstudioPorPedido)?'Sí':'No'}}</label>
+			</div>
+			
+		</div>
+		
+  	</div>
+  	
+  	<div class="ui small buttons" >
+  		<div class="ui blue button" ng-class="{'loading': haciendo, 'disabled': !(elemento.codigo && elemento.nombre && elemento.area.codigo)}" ng-click="guardar()"><i class="save icon"></i>Guardar</div>
+  		<div class="or"></div>
+ 		<div class="ui red button" ng-click="cancelar()" ng-show="modificando"><i class="reply icon"></i>Volver</div>
+ 		<div class="ui orange button" ng-click="cancelar()" ng-show="!modificando"><i class="list icon"></i>Listar</div>
+	</div>
+  
+</div>

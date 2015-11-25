@@ -1,0 +1,154 @@
+<!-- <div class="ui page dimmer" id="contenedor_informacionDeLaReserva"> -->
+<!--   <div class="content"> -->
+<!--     <div class="center"> -->
+
+<div class="ui small modal" id="informacionDeLaReserva" >
+	
+  	<div class="content">
+  	
+      <h4 class="modal-title" id="myModalLabel">Detalle de la cirugía seleccionada</h4>
+  
+	  <table width="600" border="1" cellspacing="0" cellpadding="1" style="border-collapse: collapse; font-weight: bold; margin-top:22px;" bordercolor="#CCC">
+		
+		<tr>
+	    	<td colspan="6" bgcolor="#EBCE9D" class="texto_sub">Reserva de Sala</td>
+     	 </tr>
+      
+      	<tr>
+	        <!-- Numero de cirugia -->
+	        <td width="112" align="center" valign="middle" bgcolor="#F4EAE0" style="text-align: right">
+	          <span class="texto_reserva">Nro: &nbsp;</span>
+	        </td>
+	        
+	        <td width="169" align="center" valign="middle" id="numero">&nbsp;</td>
+	
+	        <!-- Separador -->
+	        <td width="1" rowspan="8" align="center" valign="middle" ></td>
+	
+	        <td width="300" colspan="3" rowspan="8" align="center" valign="top">
+	
+	            <!-- Equipo medico -->
+	            <table width="300" height="174" border="1" align="center" cellpadding="1" cellspacing="0" bordercolor="#CCC" style="border-collapse: collapse; font-weight: bold;" >
+	              
+	              <tr>
+	                <td colspan="3" bgcolor="#C6E6F1" class="texto_submed"> Equipo Médico</td>
+	              </tr>
+	              
+	              <!-- Profesional -->
+	              <tr>
+	
+	                <td width="54" bgcolor="#C6E6F1" style="text-align: right">
+	                  <span class="texto_reserva">Profesional&nbsp;</span>
+	                </td>
+	                <td width="255" id="profesional" style="text-transform: capitalize;">{{cirugiaSeleccionada.profesional}}</td>
+	              </tr>
+	
+	              <!-- Instrumentista -->
+	              <tr>
+	                <td bgcolor="#C6E6F1" style="text-align: right"><span class="texto_reserva">Instrumentista&nbsp;</span></td>
+	                <td id="instrumentista" style="text-transform: capitalize;">{{cirugiaSeleccionada.instrumentista}}</td>
+	              </tr>
+	
+	              
+	              <!-- Pat&oacute;logo -->
+	              <tr>
+	                <td bgcolor="#C6E6F1" style="text-align: right"><span class="texto_reserva">Pat&oacute;logo&nbsp;</span></td>
+	                <td id="patologo" style="text-transform: capitalize;">{{cirugiaSeleccionada.patologo}}</td>
+	              </tr>
+	
+	              
+	              <!-- Anestesista -->
+	              <tr>
+	                <td bgcolor="#C6E6F1" style="text-align: right"><span class="texto_reserva">Anestesista&nbsp;</span></td>
+	                <td id="anestesista" style="text-transform: capitalize;">{{cirugiaSeleccionada.anestesista}}</td>
+	              </tr>
+	             
+	
+	              <!-- Pediatra -->
+	              <tr>
+	                <td bgcolor="#C6E6F1" style="text-align: right"><span class="texto_reserva">Pediatra&nbsp;</span></td>
+	                <td id="pediatra" style="text-transform: capitalize;">{{cirugiaSeleccionada.pediatra}}</td>
+	              </tr>
+	
+	
+	              <!-- Boton de cerrar -->
+	      	      <tr>
+	      	        <td height="40" colspan="2" class="texto_info manitas" style="text-align: right;"  ng-click="ocultarCirugia()"> 
+	                <img src="/he_fe/images/cerrar.png" width="12" height="12" align="absmiddle"> Cerrar</td>
+	              </tr>
+	            </table>
+	
+	        </td>
+	
+	      </tr>
+	
+	      <!-- Sala -->
+	      <tr>
+	        <td align="center" valign="middle" bgcolor="#F4EAE0" style="text-align: right">
+	          <span class="texto_reserva">Sala&nbsp;</span>
+	        </td>
+	        <td align="center" valign="middle" id="sala">{{cirugiaSeleccionada.sala}}</td>
+	      </tr>
+	
+	      <!-- habitacion -->
+	      <tr>
+	        <td align="center" valign="middle" bgcolor="#F4EAE0" style="text-align: right">
+	          <span class="texto_reserva">Habitaci&oacute;n&nbsp;</span>
+	        </td>
+	        <td align="center" valign="middle" id="habitacion">{{cirugiaSeleccionada.habitacion}}</td>
+	      </tr>
+	
+	      
+	      <!-- Paciente -->
+	      <tr>
+	        <td align="center" valign="middle" bgcolor="#F4EAE0" style="text-align: right">
+	          <span class="texto_reserva">Paciente&nbsp;</span>
+	        </td>
+	        <td align="center" valign="middle" id="paciente" style="text-transform: capitalize;">{{cirugiaSeleccionada.paciente}}</td>
+	      </tr> 
+	
+	
+	      <!-- Fecha Reserva -->
+	      <tr>
+	        <td align="center" valign="middle" bgcolor="#F4EAE0" style="text-align: right">
+	          <span class="texto_reserva">Fecha Reserva&nbsp;</span>
+	        </td>
+	        <td align="center" valign="middle" id="fechaReservaSala">{{cirugiaSeleccionada.fechaReservaSala}}</td>
+	      </tr>
+	
+	      
+	      <!-- Cirug&iacute;a Programada -->
+	      <tr>
+	        <td align="center" valign="middle" bgcolor="#F4EAE0" style="text-align: right">
+	          <span class="texto_reserva">Cirug&iacute;a Programada&nbsp;</span>
+	        </td>
+	        <td align="center" valign="middle" id="cirugiaProgramada" style="text-transform: capitalize;">{{cirugiaSeleccionada.cirugiaProgramada}}</td>
+	      </tr>
+	
+	      
+	      <!-- Horario desde -->
+	      <tr>
+	        <td align="center" valign="middle" bgcolor="#F4EAE0" style="text-align: right">
+	          <span class="texto_reserva">Horario desde&nbsp;</span>
+	        </td>
+	        <td align="center" valign="middle" id="horaInicio">{{cirugiaSeleccionada.horaInicio}}</td>
+	      </tr>
+	
+	
+	      <!-- Horario hasta -->
+	  	  <tr>
+	  	    <td align="center" valign="middle" bgcolor="#F4EAE0" style="text-align: right">
+	          <span class="texto_reserva">Horario hasta&nbsp;</span> 
+	        </td>
+	  	    <td align="center" valign="middle" id="horaFin">{{cirugiaSeleccionada.horaFin}}</td>
+	      </tr>
+	
+	  </table>
+
+	</div>
+
+</div>
+
+<!-- </div> -->
+<!-- </div> -->
+<!-- </div> -->

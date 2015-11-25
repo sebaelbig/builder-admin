@@ -1,0 +1,17 @@
+<h4 class="ui azulHE block header attached message">
+  <span ng-if="!modificando">Administrador de roles y perfiles al usuario {{usuarioAAsignar.nombreCompleto}}</span>
+  <div class="sub header" >Seleccione que roles, tipos de ID, perfiles y funciones desea otorgarle al usuario.</div>
+</h4>
+
+<section class="ui two column page relaxed grid">
+
+	<!-- Side Bar - Usuario + Roles y perfiles asignados-->
+	<article class="six wide column" ng-include="'views/core/usuarios/administrarRolesDeUsuario_sidebar.html'" ></article>
+
+	<!-- Contenido central - Agregar/Editar los roles, tipo de id, perfiles, servicios y funciones-->
+	<article class="ten wide column" ng-include="'views/core/usuarios/administrarRolesDeUsuario_contenido.html'" ></article>
+
+</section>
+
+<!--   	Funciones  -->
+<article ng-show="perfil.tipoPerfil.id" ng-include="'views/core/usuarios/funciones/admin.html'"></article>

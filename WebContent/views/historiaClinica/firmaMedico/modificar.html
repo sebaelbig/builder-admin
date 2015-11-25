@@ -1,0 +1,109 @@
+<h4 class="ui azulHE block header attached message">
+  Configuraci&oacute;n
+  <div class="sub header">Datos de los m&eacute;dicos efectores</div>
+</h4>
+
+<form class="sixteen wide column ui attached fluid form segment cajaSombreadaSinTop" novalidate name="form" style="padding-left:5%;padding-right:5%">
+	
+	<div class="ui message" ng-class="{'red':mensajes.error, 'green':!mensajes.error}" ng-show="hayMensajes">{{mensajes.mensaje}}</div>
+	
+	<div class="fields">
+	  	<!-- 	Lista de Medicos -->
+		<div class="ten wide field">
+				
+			<label>Médico:</label>
+					
+			<h5 ng-hide="encontrarPerfil('EMP','SEC')!=null">{{elemento.firma.nombreApellido + " (" + servicioActual.nombre+ ")"}}</h5>
+			
+			<div class="ui dropdown selection" id="listaMedicos" ng-show="encontrarPerfil('EMP','SEC')!=null">
+				
+				<div class="text">
+					<span ng-show="!loadingMedicos">Elija médico</span>
+					<div class="ui active inline loader" ng-show="loadingMedicos"></div>
+				</div>
+				
+				<i class="dropdown icon"></i>
+				
+				<div class="menu">
+					<div class="item" ng-class="{'active': med.checked}" 
+						ng-repeat="medico in profesionales track by $index | orderBy: nombreCompleto "
+						ng-click="seleccionoMedico(medico)">
+						{{medico.usuario.nombreCompleto}} ({{medico.servicio.nombre}}  )</div>
+				</div>
+
+			</div>
+		</div>
+		
+	  	<!-- 	Lista de Tipos de Matricula -->
+		<div class="six wide field">
+			
+			<label>Tipo de Matricula:</label>
+		
+			<div class="ui dropdown selection" id="listaTipoMatricula">
+			
+				<div class="text">
+					<span ng-show="!loadingMedicos">Elija el tipo de matricula</span>
+					<div class="ui active inline loader" ng-show="loadingMedicos"></div>
+				</div>
+				
+				<i class="dropdown icon"></i>
+				
+				<div class="menu">
+					<div class="item" 
+						ng-repeat="tipoMatricula in tiposDeMatriculas"
+						ng-click="seleccionoTipoMatricula(tipoMatricula)" >
+						{{tipoMatricula.nombre}}</div>
+				</div>
+			</div>
+		</div>
+	</div>
+ 		
+	<div class="fields">
+ 		<div class="eight wide field">
+			<div class="required field"  ng-class="{'error': form.especialidad.$invalid && form.especialidad.$dirty}">
+			    <label>Descripción de la Especialidad (Max. 40 Caracteres)</label>
+			    <label>Primer Renglón</label>
+		    	<div class="ui input">
+			    	<input ng-model="elemento.firma.especialidad" type="text" maxlength="40" 
+			    		placeholder="Ingrese la descripción de la especialidad" required/>
+		
+					<div ng-show="form.especialidad.$invalid && form.especialidad.$dirty" 
+			      			class="ui red pointing above ui label">Ingrese una especialidad válida</div>
+		    	</div>
+		    
+	  		</div>
+	  			<label>Segundo Renglón</label>
+		    	<div class="ui input">
+			    	<input ng-model="elemento.firma.especialidad_renglon" type="text" maxlength="50" 
+			    		placeholder="Ingrese la descripción de la especialidad" />
+		
+					<div ng-show="form.especialidad.$invalid && form.especialidad_renglon.$dirty" 
+			      			class="ui red pointing above ui label">Ingrese una especialidad válida</div>
+		    	</div>
+	  		
+ 		</div>
+ 		<div class="eight wide field">
+ 			<div class="required field"  ng-class="{'error': form.email.$invalid && form.email.$dirty}">
+			    <label>Email</label>
+			    <div class="ui input">
+			      <input name="email" ng-model="elemento.firma.email" type="text" 
+			         placeholder="Ingrese el email" ng-pattern="/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/"/>
+		
+			      <div ng-show="form.email.$invalid && form.email.$dirty" 
+			      			class="ui red pointing above ui label">Ingrese un email válido</div>
+			    </div>
+		  	</div>
+ 		</div>
+ 		
+ 	</div>
+ 		
+  	<div class="ui small buttons" >
+ 		<div class="ui blue button" ng-class="{'loading': haciendo, 'disabled': form.$invalid }" 
+ 			ng-click="modificar()"><i class="save icon"></i>Guardar</div>
+ 		<div class="or"></div>
+		<div class="ui red button" ng-click="cancelar()" ><i class="reply icon"></i>Volver</div>
+	</div>
+  
+</form>
+
+<section ng-include="'views/modalConfirmarAccion.html'"></section>

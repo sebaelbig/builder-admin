@@ -1,0 +1,223 @@
+
+<h4 class="ui azulHE block header attached message">SERVICIO DE
+	CLINICA MEDICA</h4>
+
+<div
+	class="sixteen wide column ui attached fluid form  segment cajaSombreadaSinTop"
+	novalidate name="form">
+
+	<div class="ui list">
+
+		<div class="item">
+			<div class="ui grid">
+				<div class="seven wide column ">
+					<label><strong>Nombre y Apellido:</strong> {{
+						carpeta.paciente }}</label>
+				</div>
+				<div class="seven wide column ">
+					<label><strong>Nro Historia Clinica:</strong> {{
+						carpeta.carpeta }}</label>
+				</div>
+			</div>
+		</div>
+		<div class="item">
+			<div class="ui grid">
+				<div class="five wide column ">
+					<label><strong>DNI:</strong> {{ carpeta.dniPaciente }}</label>
+				</div>
+				<div class="five wide column ">
+					<label><strong>Edad:</strong> {{ carpeta.edad }}</label>
+				</div>
+				<div class="five wide column ">
+					<label><strong>Sexo:</strong> {{ carpeta.sexo }}</label>
+				</div>
+			</div>
+		</div>
+		<div class="item">
+			<div class="ui grid">
+				<div class="seven wide column ">
+					<label><strong>Obra Social:</strong></label> {{ carpeta.mutuales }}
+				</div>
+				
+			</div>
+		</div>
+		<div class="item">
+			<div class="ui grid">
+				<div class="ten wide column ">
+					<label><strong>Fecha Ingreso:</strong> {{
+						carpeta.fechaIngreso }}</label>
+				</div>
+			</div>
+		</div>
+		<!-- <div class="item">
+		
+				<div class="five wide column ">
+					<label><strong>Motivo Internacion:</strong> {{
+						carpeta.diagnostico }}</label>
+				</div>
+
+		</div> -->
+
+	</div>
+
+</div>
+
+<div class="sixteen wide column ui attached fluid form  segment cajaSombreadaSinTop"
+	novalidate name="form">
+
+	<div class="ui form">
+		<div class="five fields">
+			<div class="field">
+				<label>Fecha Alta Medica</label>
+				<div class="ui left icon manitas input">
+					<input type="text" id="fechaAltaMedica"
+						ng-datepicker="seleccionarFecha" ng-model="carpeta.fechaAltaMedica"
+						placeholder="Haga click aqu&iacute; para seleccionar el d&iacute;a"
+						size="28" /> <i class="calendar icon"></i>
+				</div>
+			</div>
+			 
+			 <div class="field">
+				
+				<label>Medico De Cabecera</label>
+			
+				<div class="ui serach dropdown" id="listaProfesionales">
+				
+					 <div class="ui icon search input">
+				      <input ng-model="carpeta.profCabecera" type="text" placeholder="Ingrese nombre o matricula"
+						ng-keypress="buscarProfesional(carpeta.profCabecera)">
+						<i class="dropdown icon"></i>
+				    </div>
+					
+					<div class="menu">
+						<div class="item" 
+							ng-repeat="prof in profesionales track by $index | orderBy : apellido"
+							ng-click="selectProfesional(prof)">
+							{{ prof.apellido }}</div>
+					</div>
+				</div>
+			</div>
+			 
+			<div class="field">
+				
+				<label>Condicion de alta:</label>
+			
+				<div class="ui dropdown selection" id="listaConddicionesAlta">
+				
+					<div class="text">
+						<span ng-show="">Elija la Condicion de alta</span>
+					</div>
+					
+					<i class="dropdown icon"></i>
+					<div class="menu">
+						<div class="item" 
+							ng-repeat="cond in condicionesAlta"
+							ng-click="seleccionoCondicionAlta(cond)" >
+							{{ cond.nombre }}</div>
+					</div>
+				</div>
+			</div>
+			<div class="field">
+					<label>Motivo de Internacion</label> <input
+						ng-model="carpeta.diagnostico" type="text" placeholder="" />
+			</div>
+			<div class="field">
+					<label>Diagnostico al Alta</label> <input
+						ng-model="carpeta.diagnosticoEgreso" type="text" placeholder="" />
+			</div>
+			
+			
+		</div>
+		<div class="five fields">
+			
+			<div class="field">
+				<label>Telefono de Contacto</label> <input
+					ng-model="epicrisis.telefonoContacto" type="text" placeholder="" />
+			</div>
+			
+		</div>
+		
+	</div>
+
+	<div class="ui form">
+		<div class="ui field">
+			<label>Enfermedad Actual y Antecedentes</label>
+			<!-- <textarea ng-model="epicrisis.enfermedadActual" placeholder="" /></textarea> -->
+			<textarea horus-editor-model="enfermedadActual" id="enfermedadActual" name="enfermedadActual" ng-model="epicrisis.enfermedadActual"  ></textarea>
+			
+		</div>
+	</div>
+	<div class="ui form">
+		<div class="ui field">
+			<label>Evolucion y Comentarios</label>
+			<!-- <textarea ng-model="epicrisis.evolucion" placeholder="" /></textarea> --> 
+			<textarea horus-editor-model="evolucion" id="evolucion" name="evolucion" ng-model="epicrisis.evolucion" ></textarea>
+		</div>
+	</div>
+	<div class="ui form">
+		<div class="ui field">
+			<label>Estudios Complementarios</label>
+			<!-- <textarea ng-model="epicrisis.estudiosComplementarios" /></textarea> -->
+			<textarea horus-editor-model="estudiosComplementarios" id="estudiosComplementarios" name="estudiosComplementarios" ng-model="epicrisis.estudiosComplementarios" ></textarea>
+		</div>
+	</div>
+	<div class="ui form">
+		<div class="ui field">
+			<label>Tratamiento</label>
+			<!-- <textarea ng-model="epicrisis.tratamiento" /></textarea>-->
+			<textarea horus-editor-model="tratamiento" id="tratamiento" name="tratamiento" ng-model="epicrisis.tratamiento" ></textarea>
+			
+		</div>
+	</div>
+
+	<div class="ui form">
+		<div class="ui field">
+			<label>Indicaciones al Alta</label>
+			<!-- <textarea ng-model="epicrisis.indicacionesAlta" /></textarea>-->
+			 <textarea horus-editor-model="indicacionesAlta" id="indicacionesAlta" name="indicacionesAlta" ng-model="epicrisis.indicacionesAlta" ></textarea>
+		</div>
+	</div>
+
+
+	<div class="ui form">
+		<div class="ui field">
+			<label>Consultas o estudios pendientes</label> <input
+				ng-model="epicrisis.estudiosPendientes" type="text" placeholder="" />
+		</div>
+	</div>
+
+	<div class="ui form">
+		<div class="ui field">
+			<label>Proximo Control</label> <input
+				ng-model="epicrisis.proximoControl" type="text" placeholder="" />
+		</div>
+	</div>
+	
+	<div class="ui message"
+	ng-class="{'red':mensajes.error, 'green':!mensajes.error}"
+	ng-show="hayMensajes">{{mensajes.mensaje}}</div>
+	
+<br>
+
+	<div class="ui small buttons">
+		<div class="ui blue button" title="Guardar" ng-click="guardar()">
+			<i class="save icon"></i>Guardar
+		</div>
+		<div class="or"></div>
+		<div class="ui orange button" title="Imprimir " ng-click="imprimir()">
+			<i class="print icon"></i>Imprimir
+		</div>
+			<div class="or" ></div>
+		<div class="ui teal button" title="Cerrar Epicrisis"
+			ng-click="cerrarEpicrisis()" ><i class="checkmark icon"></i>Cerrar</div>
+		<div class="or"></div>
+		<div class="ui red button" title="Volver" ng-click="cancelar()">
+			<i class="reply icon"></i>Volver
+		</div>
+	</div>
+
+
+</div>
+
+<!-- Modal Confirmar Acción -->
+<section ng-include="'views/modalConfirmarAccion.html'"></section>

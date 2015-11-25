@@ -1,0 +1,66 @@
+<section  class="sixteen wide column cajaSombreada" >
+	<div class="sixteen wide column" >
+		<div class="ui form " novalidate name="form">
+			
+	    	<h6 class="ui dividing header divisor">Datos del envío</h6>
+	    
+			<div class="three fields ui segment cajaSombreada" >
+			
+				<div class="field">
+					<label>Número:</label>
+				    <h5  >{{elemento.numeroPedido}}</h5>
+				</div>
+				
+				<div class="field">
+					<label>Fecha envío:</label>
+				    <h5  >{{elemento.str_fecha}}</h5>
+				</div>
+				
+			  	<div class="field"  >
+				    <label>Accesion Number (Nro de identificación única)</label>
+					 <h5  >{{elemento.accesionNumber}}</h5>
+			  	</div>
+			  	
+			</div>
+			
+		  	<div class="ui segment cajaSombreada field"  >
+			    <label>URL utilizada</label>
+				 <p style="word-wrap: break-word;" >{{elemento.urlWorklist}}</p>
+		  	</div>
+	
+			<h6 class="ui dividing header divisor">Datos de la respuesta</h6>
+			
+			<div class="four fields ui segment cajaSombreada">  	
+				
+				<div class="field">
+					<label>Fecha de respuesta:</label>
+				    <h5  >{{elemento.str_fechaRespuesta}}</h5>
+				</div>
+			
+			  	<div class="field"  >
+				    <label>Código de respuesta:</label>
+				     <h5  >{{elemento.codigo}}</h5>
+			  	</div>
+	
+			  	<div class="field"  >
+				    <label>Detalle de la respuesta:</label>
+				     <h5  >{{elemento.detalle}}</h5>
+			  	</div>
+	
+			  	<div class="field"  >
+				    <label>Respuesta completa:</label>
+				     <h5  >{{elemento.respuestaWorklist}}</h5>
+			  	</div>
+			  	
+		  	</div>
+		 	
+		  	<div class="ui small buttons"  >
+				<div class="ui red button" ng-click="listar()" ng-class="{'loading':haciendo}"><i class="reply icon"></i>Volver</div>
+			</div>
+		</div>
+	</div>	
+		
+	<!-- Dimmer cargando info -->
+	<div class="ui inverted dimmer" ng-class="{'active':haciendo}" id="haciendo"><div class="ui text loader">Procesando información...</div></div>
+
+</section>	

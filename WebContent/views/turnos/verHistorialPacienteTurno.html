@@ -1,0 +1,211 @@
+<div
+	class="sixteen wide column ui attached fluid form  segment cajaSombreadaSinTop"
+	novalidate name="form">
+
+	<div class="five fields">
+
+		<div class="ui list">
+			<div class="item">
+				<h3 class="ui azulHE header">Historial Clinico</h3>
+			</div>
+
+			<div class="item">
+				<div class="ui grid">
+					<div class="seven wide column ">
+						<label><strong>Paciente: {{ paciente.apellido
+								}},{{ paciente.nombre }}</strong> </label>
+					</div>
+					<div class="five wide column ">
+						<label><strong>Fecha de Nacimiento:</strong> {{
+							paciente.fechaNacimiento }}</label>
+					</div>
+
+				</div>
+			</div>
+			<div class="item">
+				<div class="ui grid">
+					<div class="seven wide column ">
+						<label><strong>Sexo:</strong> {{ paciente.sexo }}</label>
+					</div>
+					<div class="five wide column ">
+						<label><strong>Edad:</strong> {{ paciente.edad }}</label>
+					</div>
+				</div>
+			</div>
+			<div class="item">
+				<div class="ui grid">
+					<div class="seven wide column">
+						<label><strong>Obra Social:</strong></label> {{ paciente.mutual }}
+					</div>
+
+					<div class="seven wide column">
+						<div class="ui orange button" ng-click="cancelar()">
+							<i class="reply icon"></i>Cerrar
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<h6 class="ui dividing header divisor"></h6>
+
+	<div class="ui form">
+
+		<div class="five fields">
+
+			<!-- Buscador -->
+			<div class="field">
+				<label>Filtro:</label>
+				<div class="ui icon small input">
+					<input type="text" placeholder="Buscar..."
+						ng-model="nombreBusqueda" ng-change="filtrar(this)"> <i
+						class="filter icon"></i>
+				</div>
+			</div>
+
+			<div class="field"></div>
+
+			<!-- Paginador style="text-align: left"  -->
+			<div class="field" style="text-align: center;">
+				<label>Seleccione la página</label>
+				<div ng-include="'views/paginador.html'"></div>
+			</div>
+
+			<div class="field"></div>
+
+			<!-- Refrescar -->
+			<div class="field">
+				<label></label>
+				<h5 class="manitas" ng-click="refresh()" type="text">
+					<i class="refresh icon"></i>Refrescar listado
+				</h5>
+			</div>
+
+		</div>
+
+	</div>
+
+	<!-- Dimmer cargando info -->
+	<div class="ui segment" ng-class="{'active':cargando}"
+		ng-show="cargando">
+		<div class="ui active inverted dimmer">
+			<div class="ui text loader">Cargando Episodios</div>
+		</div>
+		<p></p>
+	</div>
+
+	<!-- Lista de Perfiles -->
+	<h4 class="ui header" ng-show="elementos.length == 0"
+		style="color: #004070; text-align: center;">No hay Episodios de
+		este paciente.</h4>
+
+
+	<table class="ui small compact sortable basic table "
+		ng-show="elementos.length > 0">
+		<thead>
+			<tr>
+				<th class="manitas two wide"
+					ng-click="paginador.ordenarPorFecha('fechast')"
+					ng-class="paginador.claseOrdenacion('fechast')">Fecha</th>
+				<th class="manitas one wide"
+					ng-click="paginador.ordenarPor('tipoEpisodio')"
+					ng-class="paginador.claseOrdenacion('tipoEpisodio')">Episodio</th>
+				<th class="manitas two wide"
+					ng-click="paginador.ordenarPor('especialidadAtencion')"
+					ng-class="paginador.claseOrdenacion('especialidadAtencion')">Especialidad</th>
+				<th class="manitas four wide"
+					ng-click="paginador.ordenarPor('observacion')"
+					ng-class="paginador.claseOrdenacion('observacion')">Observacion</th>
+				<th class="manitas four wide"
+					ng-click="paginador.ordenarPor('nombreProfesional')"
+					ng-class="paginador.claseOrdenacion('nombreProfesional')">Profesional</th>
+
+				<th class="two wide">Acciones</th>
+			</tr>
+		</thead>
+
+		<tbody>
+
+			<tr ng-repeat="e in elementos" id="{{e.id}}">
+				<td>{{ e.fechast }}</td>
+				<td>{{ e.tipoEpisodio }}</td>
+				<td>{{ e.especialidadAtencion }}</td>
+				<td>{{ e.observacion }}</td>
+				<td>{{ e.nombreProfesional }}</td>
+
+				<td>
+
+					<div ng-show="e.tipoEpisodio == 'Internacion'"
+						ng-click="verEpicrisis(e)"
+						class="circular ui mini compact icon button">
+						<i class="emergency icon" title="Ver Epicrisis"></i>
+					</div>
+					<div ng-show="e.tipoEpisodio == 'Internacion'"
+						ng-click="verHCDigital(e)"
+						class="circular ui mini compact icon button">
+						<i class="file text outline icon" title="Historia clinica Digitalizada"></i>
+					</div>
+					<div ng-show="e.tipoEpisodio == 'Estudio'" ng-click="verPedido(e)"
+						class="circular ui mini compact icon button">
+						<i class="book icon" title="Ver estudio"></i>
+					</div>
+					<div ng-show="e.tipoEpisodio == 'Estudio'"
+						ng-click="imprimirPedido(e)"
+						class="circular ui mini compact icon button">
+						<i class="print icon" title="Imprimir pedido"></i>
+					</div>
+				</td>
+			</tr>
+		</tbody>
+
+	</table>
+
+	<!-- Dimmer cargando info -->
+	<div class="ui inverted dimmer" ng-class="{'active':haciendo}"
+		id="haciendo">
+		<div class="ui text loader">Procesando información...</div>
+	</div>
+
+
+	<section ng-include="'views/modalConfirmarAccion.html'"></section>
+
+</div>
+
+
+<div class="ui small modal" id="noHayEpicrisis">
+
+	<div class="content">
+
+		<table width="600" border="1" cellspacing="0" cellpadding="1"
+			style="border-collapse: collapse; font-weight: bold; margin-top: 22px;"
+			bordercolor="#CCC">
+
+			<tr>
+				<td colspan="6" bgcolor="#EBCE9D" class="texto_sub">Epicrisis</td>
+			</tr>
+
+			<tr>
+			<tr>
+
+				<td id="" style="text-transform: capitalize;">Esta Epicrisis no
+					esta cargada en la HCE</td>
+			</tr>
+			<tr>
+				<!-- Boton de cerrar -->
+				<td height="40" colspan="2" class="texto_info manitas"
+					style="text-align: right;" ng-click="ocultarPopUpEipicrisis()">
+					<img src="/he_fe/images/cerrar.png" width="12" height="12"
+					align="absmiddle"> Cerrar o Presione ESC para salir
+				</td>
+			</tr>
+
+		</table>
+
+	</div>
+
+
+</div>
+

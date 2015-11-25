@@ -1,0 +1,35 @@
+<button class="ui button manitas"  
+	ng-click="conectar()" 
+	ng-show="!conectado" 
+	ng-class="{'loading': conectando }"><i class="terminal icon" ></i>Conectar</button>
+
+<div class="ui small piled feed segments" ng-show="conectado" style="height: 500px;">
+	
+	<h4 class="ui azulHE block header" style="position: fixed;right: 30px;">Actividad del sistema</h4>
+	
+	<!-- Informacion detallada de la alerta -->
+	<div class="segment" ng-repeat="alerta in alertas" ng-class="{'fondoVerdoso': alerta.priority=='BAJA', 'fondoAmarillo': alerta.priority=='MEDIA', 'fondoNaranja': alerta.priority=='ALTA'}">
+
+		<div class="label">
+			<i class="info basic icon" ></i>{{alerta.priority}}
+		</div>
+		
+		<div class="content">
+
+      		<div class="date">
+        		{{alerta.str_timestamp}}
+       		</div>
+       		
+       		<div class="summary">
+       			{{alerta.description}}
+       		</div>
+       		
+       		<div class="extra text">
+       			<a>{{alerta.usuario}}</a>
+       		</div>
+       		
+      	</div>
+	
+	</div>
+
+</div>

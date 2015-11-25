@@ -1,0 +1,123 @@
+<h4 class="ui azulHE block header attached message">
+  <span ng-if="!modificando">Agregar un nuevo Rol/Perfil al usuario {{usuario.nombreCompleto}} ({{usuario.usuario}})</span>
+  <span ng-if="modificando">Modificando el Rol / Perfil del usuario</span>
+  <div class="sub header" ng-if="!modificando">Formulario para configurar un nuevo Rol/Perfil</div>
+  <div class="sub header" ng-if="modificando">Formulario para modificar un Rol/Perfil ya asignado</div>
+</h4>
+
+<div style="font-size:1rem;" class="ui message" ng-class="{'red':mensajes.error, 'green':!mensajes.error}" ng-show="hayMensajes">{{mensajes.mensaje}}</div>
+
+
+<section class="sixteen wide column cajaSombreada">
+
+	<!-- Dimmer cargando info -->
+	<div class="ui inverted dimmer" ng-class="{'active':haciendo}" ><div class="ui text loader">Recuperando información...</div></div>
+	
+	
+	<!-- Contenido central - Agregar/Editar los roles, tipo de id, perfiles, servicios y funciones-->
+	<article class="ui form " novalidate name="form" >
+			
+		<!-- 	Role - Tipo de ID - Valor -->
+		<div class="three fields">
+	
+			<!--  Rol del usuario -->
+			<div class="field" >
+				<label>Rol:</label>
+				<div class="ui dropdown selection" id="listaRoles" >
+					<div class="text">Elija Rol</div><i class="dropdown icon"></i>
+					<div class="menu">
+						<div  class="item" ng-class="{'active': rol.tipoId.id==tipoRol.id}" 
+							ng-repeat="tipoRol in tiposDeRol"
+							ng-selected="elemento.tipoId.id==tipoRol.id"
+							ng-click="seleccionoTipoRol(tipoRol)">
+							{{tipoRol.nombre}}</div>
+					</div>
+				</div>
+				
+			</div>
+	
+			<!-- Tipo de ID  -->
+			<div class="field"  >
+				<label>Tipo de ID:</label>
+				<div class="ui dropdown selection" id="listaTipos">
+		
+					<div class="text">Elija tipo</div><i class="dropdown icon"></i>
+		
+					<div class="menu">
+						<div class="item" ng-class="{'active': tipo.checked}" 
+							ng-repeat="tipo in tiposDeID"
+							ng-selected="elemento.tipoId.id==tipo.id"
+							ng-click="seleccionoTipo(tipo)">
+							{{tipo.tipoID}}</div>
+					</div>
+		
+				</div>
+			</div>
+			
+			
+			<!-- Valor del ID -->
+			<div class="field" >
+				<label>Valor del ID:</label>
+				<div class="ui mini input">
+					<input type="text" ng-model="elemento.valorTipoID"  title="Sólo debe contener números" />
+				</div>
+			</div>
+	
+		</div>
+	
+		<!-- Botones  -->
+		<div class="ui small buttons" >
+	 		<div class="ui blue button" ng-class="{'loading': haciendo }" ng-click="guardar()" ng-show="!modificando"><i class="save icon"></i>Guardar Rol</div>
+	 		<div class="ui orange button" ng-class="{'loading': haciendo }" ng-click="guardar()"  ng-show="modificando"><i class="save icon"></i>Modificar Rol</div>
+	 		<div class="or"></div>
+			<div class="ui red button" ng-click="volver()" ><i class="reply icon"></i>Volver</div>
+			<div class="ui red button" ng-click="cancelar()" ng-show="modificando"><i class="close icon"></i>Cancelar</div>
+		</div>	
+	
+	</article>
+	
+	
+	<article ng-show="!modificando">
+		<!-- Lista de roles -->
+		<h4 class="ui header" ng-show="elementos.length == 0" style="color:#004070;">El usuario NO tiene roles asignados.<h4>
+		
+		<!-- Tabla -->
+		<table  class="ui four column small sortable basic table " ng-show="elementos.length > 0">
+		  
+		  <thead>
+		      <th class="four wide" 
+		      		ng-click="paginador.ordenarPor('nombre')" 
+		      		ng-class="paginador.claseOrdenacion('nombre')" >Rol</th>
+		      <th class="two wide" 
+		      		ng-click="paginador.ordenarPor('tipoID')" 
+		      		ng-class="paginador.claseOrdenacion('tipoID')">Tipo de ID</th>
+		      <th class="four wide"  
+		      		ng-click="paginador.ordenarPor('valorTipoID')" 
+		      		ng-class="paginador.claseOrdenacion('valorTipoID')"  >Valor tipo ID</th>
+		      <th class="two wide" >Acciones</th>
+		  </thead>
+		
+		  <tbody>
+		    <tr ng-repeat="e in elementos | filter: nombreBusqueda" >
+		     
+		      <td style="text-align: left">{{e.nombre}}</td>
+		      <td style="text-align: left">{{e.tipoId.tipoID}}</td>
+		      <td style="text-align: left">{{e.valorTipoID}}</td>
+		      
+		      <td>
+		        <a  ng-click="editar(e)" class="circular ui tiny icon button" title="Editar rol"><i class="edit icon"></i></a>
+		        <a  ng-click="confirmarEliminar(e)" class="circular ui tiny icon button" title="Eliminar rol"><i class="delete icon"></i></a>
+		        <a  ng-click="administrarPerfiles(e)" class="circular ui tiny icon button" title="Administrar perfiles de rol"><i class="setting icon"></i></a>
+		      </td>
+		      
+		    </tr>
+		  </tbody>
+		
+		</table> 
+	 	
+	</article>
+
+</section>
+
+<!-- Dimmer de confirmar eliminiacion -->
+<div ng-include="'views/modalEliminar.html'"></div>

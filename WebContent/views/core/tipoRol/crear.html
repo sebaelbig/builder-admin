@@ -1,0 +1,47 @@
+<div class="wrap">
+<form class="ui form">
+  <fieldset>
+
+      <!-- Nombre-->
+      <div class="field">
+        <label for="nombre">Nombre</label>
+        <div><input id="nombre" name="nombre" type="text" placeholder="nombre" class="form-control" required="true" ng-model="tipoRol.nombre"/></div>
+      </div>
+
+      <!-- Funciones -->
+      <div class="row">
+        <ul ng-show="funciones.length > 0" ng-repeat="fx in funciones" class="collapsible col-xs-8" style="list-style-type: none;">
+
+          <li>
+
+            <div class="checkbox">
+              <label  >
+                 {{fx.nombre}}  <input type="checkbox" ng-model="fx.checked"  />
+              </label>
+            </div>
+
+          </li>
+
+        </ul>
+      </div>
+
+      <div>
+        <button class="btn btn-default" id="btn_expand_all" onclick="expandAll();">
+          Expandir todos 
+        </button>
+  
+        <button class="btn btn-default" id="btn_collapse_all" onclick="collapseAll();">
+         Reducir todos 
+        </button>
+      </div>
+          
+      <!-- Button -->
+      <div class="field">
+        <div class="col-lg-10 col-lg-offset-2">
+          <button id="cancelar" name="cancelar" class="ui red button" ng-click="listar()" ><i class="reply icon"></i>Volver</button>
+          <button id="enviar" name="enviar" class="ui green button" type="submit" ng-click="guardar()"><i class="save icon"></i>Guardar</button>
+      </div>
+      
+  </fieldset>
+</form>
+</div>

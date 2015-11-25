@@ -1,0 +1,22 @@
+<div class="noImprimible">
+	
+<!-- 	<div class="ui message" ng-class="{'red':mensajes.error, 'green':!mensajes.error}" ng-show="hayMensajes">{{mensajes.mensaje}}</div> -->
+	
+	<div class="ui small buttons" >
+		<div class="ui orange button" ng-click="cancelar()" ><i class="reply icon"></i>Cerrar</div>
+	</div>
+	
+<!-- 	<div ng-show="generandoPDF" class="ui text loader">Generando PDF...</div> -->
+	
+<!-- 	<!-- Dimmer cargando info -->
+<!-- 	<div class="ui inverted dimmer" ng-class="{'active':haciendo}" id="haciendo"><div class="ui text loader">Preparando informe...</div></div> -->
+
+</div>
+
+
+<div id="wrapper" >
+
+	<embed  type = "application/pdf" ng-show="esIE"  src="{{pdfURL}}" width="100%" height="450px"></embed>
+	<object type = "application/pdf" ng-show="!esIE" data="{{pdfURL}}" width="100%" height="450px"></object>
+			
+</div>

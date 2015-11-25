@@ -1,0 +1,127 @@
+<main class="ui three column grid">
+  
+  <section class="column">
+    <div class="ui form segment">
+       <!-- AVATAR-->
+       <!-- Preview de la imagen -->
+      <div ng-show="!usuario.tieneAvatar" class="field">
+          <img src="images/momos/no_avatar.jpg" class="avatar preview">
+      </div>
+      <div ng-show="usuario.tieneAvatar" class="field">
+        <img src="uploads/avatars/{{usuario._id}}/avatar.jpg" class="avatar preview">
+      </div>
+    </div>
+  </section>
+
+  <section class="column">
+    <div class="ui form segment">
+    <form>
+      <fieldset>
+      <legend>Pre - inscripción 2014</legend>
+
+      <!-- Datos de registro -->
+      <!-- Nombre de usuario-->
+      <div class="field">
+        <label  for="username">Nombre de usuario</label>
+        <div ><span id="username" name="username"  >{{usuario.username}}</span></div>
+      </div>
+
+      <!-- DNI-->
+      <div class="field">
+        <label for="dni">DNI</label>
+        <div ><span id="dni" name="dni"  placeholder="DNI"  >{{usuario.dni}}</span></div>
+      </div>
+
+      <!-- Apellido-->
+      <div class="field">
+        <label class="col-lg-2 col-lg-2 control-label" for="apellido">Apellido</label>
+        <div ><span id="apellido" name="apellido"  placeholder="Apellido"  >{{usuario.apellido}}</span></div>
+      </div>
+
+      <!-- Nombre-->
+      <div class="field">
+        <label for="nombre">Nombre</label>
+        <div ><span id="nombre" name="nombre"  placeholder="Nombre"  >{{usuario.nombre}}</span></div>
+      </div>
+
+      <!-- Fecha de nacimiento-->
+      <div class="field">
+        <label for="fechaNacimiento">Fecha de Nacimiento</label>
+        <div ><span id="fechaNacimiento" name="fechaNacimiento"  placeholder="Fecha de nacimiento"  >{{usuario.fechaNacimiento}}</span></div>
+      </div>
+
+      <!-- Domicilio -->
+      <div class="field">
+        <label for="domicilio">Domicilio</label>
+        <div ><span id="domicilio" name="domicilio"  placeholder="Domicilio"  >{{usuario.domicilio}}</span></div>
+      </div>
+
+      <div class="field">
+        <!-- Telefono -->
+        <label for="telefono">Teléfono</label>
+        <div ><span id="telefono" name="telefono"  placeholder="Teléfono"  >{{usuario.telefono}}</span></div>
+      </div>
+
+      <!-- Localidadd -->
+      <div class="field">
+        <label for="localidad">Localidad</label>
+        <div ><span id="localidad" name="localidad"  placeholder="Localidad"  >{{usuario.localidad}}</span></div>
+      </div>
+
+      <!-- Telefono alternativo -->
+      <div class="field">
+        <label for="telefonoAlternativo">Teléfono alternativo</label>
+        <div ><span id="telefonoAlternativo" name="telefonoAlternativo"  placeholder="Teléfono alternativo"  >{{usuario.telefonoAlternativo}}</span></div>
+      </div>
+
+      <!-- Trabaja -->
+      <div class="field">
+        <label for="trabaja">Trabajo</label>
+        <div >
+            <span name="trabaja" ng-show="usuario.trabaja" value="Si" >Si</span>
+            <span name="trabaja" ng-show="!usuario.trabaja" value="No" >No</span>
+        </div>
+      </div>
+
+      <!-- Domicilio laboral -->
+      <div class="field">
+        <label for="domicilioLaboral">Domicilio laboral</label>
+        <div ><span id="domicilioLaboral" name="domicilioLaboral"  placeholder="Domicilio  laboral"  >{{usuario.domicilioLaboral}}</span></div>
+      </div>
+
+      <!-- Horario laboral -->
+      <div class="field">
+        <label for="horarioLaboral">Horario laboral</label>
+        <div ><span id="horarioLaboral" name="horarioLaboral"  placeholder="Horario laboral"  >{{usuario.horarioLaboral}}</span></div>
+      </div>
+
+      <!-- CUIL -->
+      <div class="field">
+        <label for="cuil">CUIL</label>
+        <div ><span id="cuil" name="cuil"  placeholder="CUIL"  >{{usuario.cuil}}</span></div>
+      </div>
+    
+      <!-- E-Mail-->
+      <div class="field">
+        <label for="email">Correo electrónico</label>
+        <div ><span id="email" name="email"  placeholder="Correo electrónico"  >{{usuario.email}}</span></div>
+      </div>
+
+      <div class="field">
+        <!-- Textarea -->
+        <label for="cursos">Cursos</label>
+        <div ><span  id="cursos" name="cursos">{{usuario.cursos}}</span></div>
+      </div>
+
+      <!-- Button -->
+      <div class="field">
+        <div class="col-lg-10 col-lg-offset-2">
+          <button id="cancelar" name="cancelar" class="ui red button" ng-click="listar()" >Listar</button>
+          <button id="cancelar" name="cancelar" class="ui green button" ng-click="editar(usuario)" >Editar</button>
+      </div>
+      </fieldset>
+      </form>
+      </div>
+    </section>
+    <section class="column"></section>
+</main>

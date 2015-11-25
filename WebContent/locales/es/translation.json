@@ -1,0 +1,834 @@
+{
+	"ENABLED": "Hablitado/a",
+	"DISABLED": "Deshablitado/a",
+	"default": {
+		"yes": "Si",
+		"no": "No",
+		"app": {
+			"name": "Universe"
+		},
+		"welcome": "Bienvenido",
+		"create": {
+			"new": "Crear Nuevo/a"
+		},
+		"edit": "Modificar",
+		"cancel": "Cancelar",
+		"disable": "Deshablitar",
+		"disabled": "Deshablitado",
+		"enabled": "Hablitado",
+		"enable": "Hablitar",
+		"search": "Buscar",
+		"save": "Guardar",
+		"list": {
+			"all": "Listar Todos/as",
+			"view": "Ver Listado"
+		},
+		"clean": "Limpiar",
+		"operations": "Operaciones",
+		"logout": "Salir",
+		"days": {
+			"MONDAY": "Lunes",
+			"TUESDAY": "Martes",
+			"WEDNESDAY": "Miércoles",
+			"THURSDAY": "Jueves",
+			"FRIDAY": "Viernes",
+			"SATURDAY": "Sábado",
+			"SUNDAY": "Domingo"
+		},
+		"expand": {
+			"all": "Expandir Todos"
+		},
+		"collapse": {
+			"all": "Cerrar Todos"
+		},
+		"server": {
+			"error":"Ocurrió un error con la conexión con el servidor."
+		},
+		"loading": "Cargando..."
+	},
+	"menu": {
+		"configuration": {
+			"name": "Configuración",
+			"parameter": {
+				"name": "Parámetros",
+				"createParameter": {
+					"name": "Crear Parámetro"
+				},
+				"modifyParameter": {
+					"name": "Modificar Parámetro"
+				},
+				"deleteParameter": {
+					"name": "Eliminar Parámetro"
+				},
+				"listParameter": {
+					"name": "Listar Parámetros"
+				},
+				"searchParameter": {
+					"name": "Buscar Parámetros"
+				}
+			},
+			"operableDay": {
+				"name": "Días Operables",
+				"createOperableDay": {
+					"name": "Modificar Día Operable"
+				},
+				"modifyOperableDay": {
+					"name": "Modificar Día Operable"
+				},
+				"deleteOperableDay": {
+					"name": "Eliminar Día Operable"
+				},
+				"listOperableDay": {
+					"name": "Listar Días Operable"
+				},
+				"searchOperableDay": {
+					"name": "Buscar Días Operable"
+				}
+			},
+			"operableDayException": {
+				"name": "Excepciones de Día Operable",
+				"createOperableDayException": {
+					"name": "Crear Excepción de Día Operable"
+				},
+				"deleteOperableDayException": {
+					"name": "Eliminar Excepción de Día Operable"
+				},
+				"modifyOperableDayException": {
+					"name": "Modificar Excepción de Día Operable"
+				},
+				"listOperableDayException": {
+					"name": "Listar Excepciones de Día Operable"
+				},
+				"searchOperableDayException": {
+					"name": "Buscar Excepciones de Día Operable"
+				}
+			},
+			"commissionSchema": {
+				"name": "Esquema de Comisiones",
+				"createCommissionSchema": {
+					"name": "Crear Esquema de Comisiones"
+				},
+				"deleteCommissionSchema": {
+					"name": "Eliminar Esquema de Comisiones"
+				},
+				"modifyCommissionSchema": {
+					"name": "Modificar Esquema de Comisiones"
+				},
+				"listCommissionSchema": {
+					"name": "Listar Esquema de Comisiones"
+				},
+				"searchCommissionSchema": {
+					"name": "Buscar Esquema de Comisiones"
+				}
+			},
+			"vehicleBrand": {
+				"name": "Marcas de Vehículos",
+				"createVehicleBrand": {
+					"name": "Crear Marca de Vehículo"
+				},
+				"deleteVehicleBrand": {
+					"name": "Eliminar Marca de Vehículo"
+				},
+				"modifyVehicleBrand": {
+					"name": "Modificar Marca de Vehículo"
+				},
+				"listVehicleBrand": {
+					"name": "Listar Marca de Vehículo"
+				},
+				"searchVehicleBrand": {
+					"name": "Buscar Marca de Vehículo"
+				}
+			},
+			"hourPrice": {
+				"name": "Definir precios de horas",
+				"createHourPrice": {
+					"name": "Crear precio de hora"
+				},
+				"deleteHourPrice": {
+					"name": "Eliminar precio de hora"
+				},
+				"modifyHourPrice": {
+					"name": "Modificar precio de hora"
+				},
+				"listHourPrice": {
+					"name": "Listar precio de hora"
+				},
+				"searchHourPrice": {
+					"name": "Buscar precio de hora"
+				}
+			},
+			"smsTemplate": {
+				"name":"Plantillas SMS",
+				"modifySmsTemplate": {
+					"name": "Modificar Plantilla SMS"
+				},
+				"listSmsTemplate": {
+					"name": "Listar Plantillas SMS"
+				},
+				"searchSmsTemplate": {
+					"name": "Buscar Plantillas SMS"
+				}
+			},
+			"ticket": {
+				"name":"Ticket",
+				"modifyTicket": {
+					"name": "Modificar Ticket"
+				},
+				"listTicket": {
+					"name": "Listar Tickets"
+				},
+				"searchTicket": {
+					"name": "Buscar Tickets"
+				}
+			},
+			"system": {
+				"name":"Sistema On/Off",
+				"enableSystem": {
+					"name": "Habilitar"
+				},
+				"disableSystem": {
+					"name": "Deshabilitar"
+				}
+			}
+		},
+		"user": {
+			"name":"Usuarios",
+			"roleType": {
+				"name":"Tipos de Rol",
+				"createRoleType": {
+					"name": "Crear Tipo de Rol"
+				},
+				"modifyRoleType": {
+					"name": "Modificar Tipo de Rol"
+				},
+				"deleteRoleType": {
+					"name": "Eliminar Tipo de Rol"
+				},
+				"listRoleType": {
+					"name": "Listar Tipos de Rol"
+				},
+				"searchRoleType": {
+					"name": "Buscar Tipos de Rol"
+				}
+			},
+			"user": {
+				"name": "Usuarios",
+				"listUser": {
+					"name": "Listar Usuarios"
+				},
+				"resetAnyUserPassword": {
+					"name": "Resetear Contraseña de Usuario"
+				}
+			}
+		},
+		"account": {
+			"name":"Cuenta",
+			"changePassword": {
+				"name":"Cambiar Contraseña",
+				"changePassword": {
+					"name":"Cambiar Contraseña"
+				}
+			}
+		},
+		"contact": {
+			"name": "Contacto",
+			"seeEmergencyContact": {
+				"name":  "Contacto de emergencias",
+				"seeEmergencyContact": {
+					"name":"Ver teléfonos"
+				}
+			},
+			"seePrinterLinks": {
+				"name":  "Instructivos de impresoras",
+				"seePrinterLinks": {
+					"name":"Ver links"
+				}
+			}
+		},
+		"pointOfSale": {
+			"name": "Puntos De Venta",
+			"pointOfSale": {
+				"name": "Puntos de Venta",
+				"deletePointOfSale": {
+					"name": "Eliminar Punto De Venta"
+				},
+				"modifyPointOfSale": {
+					"name": "Modificar Punto De Venta"
+				},
+				"listPointOfSale": {
+					"name": "Listar Punto De Venta"
+				},
+				"searchPointOfSale": {
+					"name": "Buscar Punto De Venta"
+				},
+				"resetPointOfSaleResponsiblePassword": {
+					"name": "Resetear Contraseña del Responsable"
+				}
+			},
+			"listDetailed": {
+				"name": "Listar detalladamente",
+				"listDetailedPointOfSale": {
+					"name": "Listar detalladamente Puntos de Venta"
+				}
+			},
+			"listCurrentOwing": {
+				"name": "Listar deudores"
+			},
+			"createPointOfSale": {
+				"name": "Crear Punto De Venta",
+				"createPointOfSale": {
+					"name": "Crear Punto De Venta"
+				}
+			},
+			"changePointOfSaleStatus": {
+				"name": "Habilitar/Deshabilitar",
+				"enablePointOfSale": {
+					"name": "Habilitar Punto de Venta"
+				},
+				"disablePointOfSale": {
+					"name": "Suspender Punto de Venta"
+				}
+			},
+			"employeeUserOfPointOfSale": {
+				"name": "Empleados del punto de venta",
+				"createEmployeeUserOfPointOfSale": {
+					"name": "Crear Empleado del Punto de Venta"
+				},
+				"deleteEmployeeUserOfPointOfSale": {
+					"name": "Eliminar Empleado del Punto de Venta"
+				},
+				"modifyEmployeeUserOfPointOfSale": {
+					"name": "Modificar Empleado del Punto de Venta"
+				},
+				"listEmployeeUserOfPointOfSale": {
+					"name": "Listar Empleados del Punto de Venta"
+				},
+				"searchEmployeeUserOfPointOfSale": {
+					"name": "Buscar Empleados del Punto de Venta"
+				},
+				"enableEmployeeUserOfPointOfSale": {
+					"name": "Habilitar Empleado del Punto de Venta"
+				},
+				"disableEmployeeUserOfPointOfSale": {
+					"name": "Suspender Empleado del Punto de Venta"
+				},
+				"resetEmployeeUserOfPointOfSalePassword": {
+					"name": "Resetear Contraseña del Empleado del Punto de Venta"
+				}
+			},
+			"cancellations": {
+				"name": "Anulaciones",
+				"cancelTransaction": {
+					"name": "Anular Transacción",
+					"cancelPunctualParking": {
+						"name": "Anular Estacionamiento Puntual"
+					}
+				},
+				"viewCancellations": {
+					"name": "Ver Anulaciones",
+					"viewCancellations": {
+						"name": "Ver Anulaciones"	
+					},
+					"viewCancellationDetails": {
+						"name": "Ver Detalle de Anulación"
+					}
+				}
+			}
+		},
+		"inspector": {
+			"name": "Inspectores",
+			"inspectorUser": {
+				"name": "Inspectores",
+				"createInspectorUser": {
+					"name": "Crear Inspector"
+				},
+				"deleteInspectorUser": {
+					"name": "Eliminar Inspector"
+				},
+				"modifyInspectorUser": {
+					"name": "Modificar Inspector"
+				},
+				"listInspectorUser": {
+					"name": "Listar Inspector"
+				},
+				"searchInspectorUser": {
+					"name": "Buscar Inspector"
+				},
+				"enableInspectorUser": {
+					"name": "Habilitar Inspector"
+				},
+				"disableInspectorUser": {
+					"name": "Deshabilitar Inspector"
+				},
+				"resetInspectorUserPassword": {
+					"name": "Resetear Contraseña de Inspector"
+				}
+			}
+		},
+		"licensePlate": {
+			"name": "Patente",
+			"exemption": {
+				"name": "Exenciones",
+				"createExemption": {
+					"name": "Crear Exención"
+				},
+				"modifyExemption": {
+					"name": "Modificar Exención"
+				},
+				"deleteExemption": {
+					"name": "Eliminar Exención"
+				},
+				"listExemption": {
+					"name": "Listar Exención"
+				},
+				"searchExemption": {
+					"name": "Buscar Exención"
+				}
+			}
+		},
+		"parking": {
+			"name": "Estacionamiento",
+			"punctualParking": {
+				"name": "Estacionamiento Puntual",
+				"startPunctualParking": {
+					"name": "Iniciar Estacionamiento Puntual"
+				},
+				"reprintPunctualParkingTicket": {
+					"name": "Reimprimir Ticket"
+				}				
+			}
+		}
+	},
+	
+	"login": {
+		"placeholder": {
+			"username": "Usuario",
+			"password": "Contraseña"
+		},
+		"remember": {
+			"me": "Recordarme",
+			"warning": "Precaución: La aplicación guardará la contraseña en texto plano en una cookie del navegador."
+		},
+		"button": "Ingresar",
+		"validation": {
+			"changePassword": "Para poder usar el sistema debe primero cambiar su contraseña actual."
+		}
+	},
+	
+	"parameter": {
+		"column": {
+			"name": "Nombre",
+			"type": "Tipo",
+			"value": "Valor"
+		},
+		"placeholder": {
+			"name": "Ingrese el nombre...",
+			"type": "Ingrese el tipo...",
+			"value": "Ingrese el valor..."
+		},
+		"type": {
+			"string": "Texto",
+			"date": "Fecha",
+			"time": "Hora",
+			"datetime": "Fecha y Hora",
+			"long": "Número Entero",
+			"bigdecimal": "Número con Decimal"
+		}
+	},
+	
+	"changePassword": {
+		"button": "Cambiar Contraseña",
+		"placeholder": {
+			"currentPassword":"Contraseña actual...",
+			"newPassword":"Contraseña nueva...",
+			"confirmNewPassword":"Confirmar contraseña nueva..."
+		},
+		"validation": {
+			"confirm": {
+				"error": "La confirmación de la contraseña nueva fue incorrecta."
+			}
+		}
+	},
+	
+	"function": {
+		"name": {
+			"CreateParameter":"Crear Parámetro",
+			"DeleteParameter":"Eliminar Parámetro",
+			"ModifyParameter":"Modificar Parámetro",
+			"ChangePassword":"Cambiar Contraseña",
+			"CreateRoleType":"Crear Tipo de Rol"
+		}
+	},
+	
+	"roleType": {
+		"column": {
+			"name": "Nombre",
+			"description": "Descripción"
+		},
+		"placeholder": {
+			"name": "Ingrese el nombre...",
+			"description": "Ingrese la descripción..."
+		}
+	},
+	
+	"operableDay": {
+		"column": {
+			"day": "Día",
+			"start": "Inicio (HH:mm)",
+			"finish": "Fin (HH:mm)"
+		},
+		"placeholder": {
+			"day": "Día: ",
+			"start": {
+				"hour": "Hora de inicio",
+				"minutes": "Minutos de inicio"
+			},
+			"finish": {
+				"hour": "Hora de fin",
+				"minutes": "Minutos de fin"
+			},
+			"findAll": "Buscar todos"
+		}
+	},
+	
+    "operableDayException": {     
+		"column": {      
+			"day": "Día",
+			"reason": "Motivo",
+			"message": "Mensaje al usuario"
+		 },     
+	 	"placeholder": {      
+			"day": "Ingrese el día...",
+			"reason": "Ingrese el motivo...",
+			"message": "Ingrese el mensaje al usuario..."
+		}  
+	},
+	
+	"commissionSchema": {
+		"column": {
+			"code": "Código",
+			"description": "Descripción",
+			"punctualParkingCommission": "Estacionamiento Puntual",
+			"creditChargeCommission":  "Carga de Crédito",
+			"parkingViolationVoluntarypaymentCommission": "Pago Voluntario de Multas de Estacionamiento",
+			"trafficViolationoluntarypaymentCommission": "Pago Voluntario de Multas de Tránsito"
+		},
+		"placeholder": {
+			"code": "Ingrese el código...",
+			"description": "Ingrese la descripción...",
+			"punctualParkingCommission": "Ingrese la comisión de Estacionamiento Puntual...",
+			"creditChargeCommission":  "Ingrese la comisión de Carga de Crédito...",
+			"parkingViolationVoluntarypaymentCommission": "Ingrese la comisión de Pago Voluntario de Multas de Estacionamiento...",
+			"trafficViolationoluntarypaymentCommission": "Ingrese la comisión de Pago Voluntario de Multas de Tránsito..."
+		},
+		"validation": {
+			"numberFormat": "El formato de los números debe ser 0,00"
+		}
+	},
+    "contact": {
+    	"emergencyTelephones": "Teléfono de emergencia",     
+    	"systemProblemTelephones": "Teléfono ante un problema en el sistema",     
+    	"driverPrinterLinks": "Links para descargar los drivers de las impresoras",     
+    	"printerInstalationInstructions": "Links para descargar los instructivos de las impresoras"     
+	},
+	
+	"vehicleBrand": {
+		"column": {
+			"brandName": "Nombre"
+		},
+		"placeholder": {
+			"brandName": "Ingrese el nombre..."
+		}
+	},
+	
+	"hourPrice": {     
+    	"column": {    
+    		"operableDay": "Día operable",
+			"start": "Inicio (HH:mm)",
+			"finish": "Fin (HH:mm)" ,
+    		"price": "Precio ($/hr)"
+		},     
+		"placeholder": {      
+    		"operableDay": "Día operable",
+    		"price": "Precio por hora",
+		    "start": {
+				"hour": "Hora de inicio",
+				"minutes": "Minutos de inicio"
+			},
+			"finish": {
+				"hour": "Hora de fin",
+				"minutes": "Minutos de fin"
+			}
+		}    
+	},
+	
+	"pointOfSale": {
+		"panel": {
+			"pointOfSaleData": "Datos del Punto de Venta",
+			"pintOfSaleResponsibleData": "Datos del Responsable",
+			"userData": "Datos del Usuario"
+		},
+		"column": {
+			"corporateName": "Razón Social",
+			"phoneNumber": "Número de teléfono",
+			"email": "Dirección de e-mail",
+			"responsible": "Responsable",
+			"responsibleUsername": "Usuario Responsable",
+			"firstMovement": "Primer movimiento",
+			"creationDate": "Fecha de Alta",
+			"status": "Estado",
+			"permitNumber": "Número de habilitación"
+		},
+		"placeholder": {
+			"corporateName": "Ingrese la Razón Social...",
+			"address": "Ingrese la dirección...",
+			"phoneNumber": "Ingrese el número de teléfono fijo...",
+			"cellPhoneNumber": "Ingrese el número de teléfono celular...",
+			"email": "Ingrese la dirección de correo electrónico...",
+			"permitNumber": "Ingrese el número de habilitación...",
+			"emitsTickets": "Emite tickets",
+			"chargesViolationPayments": "Cobra infracciónes de tránsito",
+			"municipalityPrivileges": "Privilegio de municipio",
+			"username": "Ingrese el nombre de usuario...",
+			"responsibleSurname": "Ingrese el apellido del responsable...",
+			"responsibleName": "Ingrese el mombre del responsable...",
+			"responsibleDocumentType": "Ingrese el tipo de documento...",
+			"responsibleDocumentNumber": "Ingrese el numero de documento del responsable...",
+			"responsiblePhoneNumber": "Ingrese el número de teléfono del responsable...",
+			"responsibleCellphoneNumber": "Ingrese el número de teléfono celular del responsable...",
+			"responsibleEmail": "Ingrese el email del responsable...",
+			"responsibleCuit": "Ingrese el CUIT del responsable...",
+			"responsableUser": "Ingrese el usuario responsable..."
+		}
+	},
+	
+	"changePointOfSaleStatus": {
+		"panel": {
+			"enabledPointOfSales": "Puntos de Venta Habilitados",
+			"disabledPointOfSales": "Puntos de Venta Suspendidos"
+		},
+		"button": {
+			"enablePointOfSale": "Habilitar Punto de Venta",
+			"disablePointOfSale": "Suspender Punto de Venta"
+		},
+		"placeholder": {
+			"disabledCause": "Ingrese la causa de la suspensión..."
+		}
+	},
+	
+	"employeeUserOfPointOfSale": {
+		"column": {
+			"name": "Nombre",
+			"surname": "Apellido",
+			"email": "E-mail",
+			"username": "Nombre de usuario"
+		},
+		"placeholder": {
+			"name": "Nombre del empleado",
+			"surname": "Apellido del empleado",
+			"email": "E-mail del empleado",
+			"disabledCause": "Causa de la deshabilitación",
+			"username": "Nombre de usuario del empleado"
+		}
+	},
+	
+	"user": {
+		"column": {
+			"username": "Nombre de Usuario",
+			"roleType": "Tipo de Rol"
+		}
+	},
+	
+	"smsTemplate": {
+		"column": {
+			"code": "Código",
+			"requiredParameters": "Parámetros Requeridos",
+			"template": "Plantilla"
+		},
+		"label": {
+			"code": "Código",
+			"requiredParameters": "Parámetros Requeridos",
+			"template": "Plantilla"
+		},
+		"placeholder": {
+			"template": "Ingrese la plantilla..."
+		}
+	},
+	
+	"ticket": {
+		"column": {
+			"code": "Código",
+			"description": "Descripción"
+		},
+		"placeholder": {
+			"description": "Ingrese la descripción...",
+			"text": "Ingrese el texto de la línea..."
+		},
+		"panel": {
+			"ticketLines": "Líneas"
+		},
+		"button": {
+			"removeLine": "Eliminar Línea",
+			"addLine": "Agregar Línea"
+		}
+	},
+	
+	"inspectorUser": {
+		"column": {
+			"surname": "Apellido",
+			"name": "Nombre",
+			"username": "Usuario",
+			"enabled": "Habilitado"
+		},
+		"placeholder": {
+			"surname": "Ingrese el apellido...",
+			"name": "Ingrese el nombre...",
+			"documentType": "Ingrese el tipo de documento...",
+			"documentNumber": "Ingrese el número de documento...",
+			"phoneNumber": "Ingrese el teléfono fijo...",
+			"cellphoneNumber": "Ingrese el teléfono celular...",
+			"email": "Ingrese el email...",
+			"username": "Ingrese el nombre de usuario...",
+			"disabledCause": "Ingrese la causa de la suspensión..."
+		},
+		"panel": {
+			"inspectorData": "Datos del Inspector",
+			"userData": "Datos de Usuario"
+		},
+		"modal": {
+			"disable": {
+				"title": "Deshabilitar Usuario Inspector"
+			}
+		}
+	},
+	
+	"template": {
+		"help": {
+			"panel": {
+				"title": "Ayuda"
+			}
+		},
+		"help1": "Los parámetros deben referenciarse de la siguiente manera {{nombre.parametro}}",
+		"help2": "Para referenciar parámetros que se encuentran cargados en la BBDD, deben comenzar con 'template.' o '.ref'",
+		"help3": "Por ejemplo: {{template.test}} referenciará al parámetro con nombre 'template.test' en la BBDD,",
+		"help4": "{{ref.parametro.dos}} referenciará al parámetro 'parametro.dos' en la BBDD",
+		"help5": "y {{test}} referenciará a un parámetro cuyo valor será indicado al momento de armar el template."
+	},
+	
+	"system": {
+		"button":{
+			"label":{
+				"enable": "Habilitar",
+				"disable": "Deshabilitar"
+			}
+		},
+		"enabling": "Habilitado",
+		"disabling": "Dehabilitado",
+		"placeholder": {
+			"name": "Nombre del sistema",
+			"status": "Estado del sistema",
+			"reason": "Razon del estado actual"
+		}
+	},
+	
+	"exemption": {
+		"column": {
+			"creationDate": "Creación",
+			"startDate": "Fecha de Inicio",
+			"endDate": "Fecha de Fin",
+			"vehicleHolder": "Titular del Vehículo",
+			"licensePlate": "Patente",
+			"exemptionRequester": "Solicitante",
+			"type": "Tipo"			
+		},
+		"type": {
+			"Exemption": "Otra",
+			"DisabledExemption": "Discapacidad"
+		},
+		"placeholder": {
+			"startDate": "Desde",
+			"endDate": "Hasta",
+			"vehicleHolder": "Ingrese el titular de la patente...",
+			"licensePlate": "Ingrese la patente a exentar...",
+			"exemptionRequester": "Ingrese el Solicitante de la exención...",
+			"stampNumber": "Ingrese el Número de Oblea...",
+			"expedientNumber": "Ingrese el Número de Expediente..."
+		}
+	},
+	
+	"punctualParking": {
+		"placeholder": {
+			"licensePlate": "Patente...",
+			"minutes": "Ingrese el tiempo de estacionamiento..."
+		},
+		"label": {
+			"licensePlateFormats": "Formatos permitidos de patente: "
+		},
+		"button": {
+			"start": "Iniciar",
+			"reprint": "Re Imprimir"
+		},
+		"panel": {
+			"lastTicket": {
+				"title": "Último ticket emitido",
+				"licensePlate": "Patente",
+				"start": "Inicio",
+				"end": "Fin",
+				"amount": "Monto"
+			}
+		}
+	},
+	
+	"pointOfSaleCancellations": {
+		"placeholder": {
+			"pointOfSale": "Punto de venta",
+			"operation": "Operación",
+			"transactionId": "Número de Transacción",
+			"reason": "Motivo",
+			"date": "Fecha"
+		},
+		"operations": {
+			"cancelPunctualParking": "Anular Estacionamiento Puntual"
+		},
+		"column": {
+			"cancellationDateTime": "Fecha y Hora (Cancelación)",
+			"dateTime": "Fecha y Hora (Transacción)",
+			"userIdentification": "Identificación",
+			"transactionId": "Número de Transacción",
+			"cancelled": "Cancelada",
+			"reason": "Motivo",
+			"amount": "Monto"
+		},
+		"modal": {
+			"cancelTransaction": {
+				"titleStart": "Anular Transacción - Punto de Venta: ",
+				"titelTransaction": "Transacción: "
+			},
+			"showCancellation": {
+				"title": "Detalle Anulación"
+			}
+		},
+		"button": {
+			"cancelTransaction": "Anular Transacción"
+		},
+		"details": {
+			"licensePlateNumber": "Patente",
+			"creation": "Fecha de venta",
+			"startTimestamp": "Fecha de Inicio",
+			"endTimestamp": "Fecha de Fin",
+			"minutes": "Minutos",
+			"movementTransactionId": "Nro. Transacción",
+			"movementAmount": "Monto",
+			"movementCommission": "Comisión",
+			"pointOfSaleCorporateName": "Punto de Venta",
+			"pointOfSaleResponsible": "Responsable",
+			"pointOfSaleResponsibleCuit": "CUIT Responsable",
+			"userUsername": "Usuario que hizo la venta",
+			"cancellationReason": "Motivo de la Cancelación",
+			"cancellationDate": "Fecha de Cancelación",
+			"userRole": "Rol"
+		}
+	}
+	
+	,"ant mark":{"desc":"Ant append text after this, allways remain it at bottom"}
+}

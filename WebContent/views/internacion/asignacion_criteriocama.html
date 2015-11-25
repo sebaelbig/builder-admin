@@ -1,0 +1,147 @@
+
+<div class="ui azulHE block header attached message">
+	<h4>Administracion de Camas</h4>
+	<div class="ui two column grid">
+		<div class="column">
+			<div class="sub header">Listado de camas</div>
+		</div>
+		<div class="column">
+			<div class="sub header">Cambiar Criterio</div>
+		</div>
+	</div>
+</div>
+
+<form
+	class="sixteen wide column ui attached fluid form segment cajaSombreadaSinTop"
+	novalidate name="form" style="padding-left: 5%; padding-right: 5%">
+
+	<div class="ui two column grid">
+		<div class="column">
+
+			<div class="ui form">
+
+				<div class="one fields">
+
+					<!-- Buscador -->
+					<div class="field">
+						<label>Filtro:</label>
+						<div class="ui icon small input">
+							<input type="text" placeholder="Buscar..."
+								ng-model="nombreBusqueda" ng-change="filtrar(this)"> <i
+								class="filter icon"></i>
+						</div>
+					</div>
+
+					<div class="field"></div>
+
+					<!-- Paginador style="text-align: left"  -->
+					<div class="field">
+						<label>Seleccione la página</label>
+						<div ng-include="'views/paginador.html'"></div>
+					</div>
+
+				</div>
+
+			</div>
+
+
+			<!-- Tabla de criterios -->
+			<table class="ui small compact sortable basic table "
+				ng-show="elementos.length > 0">
+				<thead>
+					<tr>
+						<th class="manitas one wide"
+							ng-click="paginador.ordenarPor('pieza')"
+							ng-class="paginador.claseOrdenacion('pieza')">Hab.</th>
+						<th class="manitas one wide">Cama</th>
+						<!-- 						<th class="manitas two wide" -->
+						<!-- 							ng-click="paginador.ordenarPor('pabellon')" -->
+						<!-- 							ng-class="paginador.claseOrdenacion('pabellon')">Pabellon</th> -->
+						<!-- 						<th class="manitas two wide" -->
+						<!-- 							ng-click="paginador.ordenarPor('estadoActual')" -->
+						<!-- 							ng-class="paginador.claseOrdenacion('estadoActual')">Estado</th> -->
+						<!-- 						<th class="manitas one wide" -->
+						<!-- 							ng-click="paginador.ordenarPor('sexo')" -->
+						<!-- 							ng-class="paginador.claseOrdenacion('sexo')">Sexo</th> -->
+						<th class="manitas one wide"
+							ng-click="paginador.ordenarPor('criterioDeAsignacion')"
+							ng-class="paginador.claseOrdenacion('criterioDeAsignacion')">Criterio</th>
+						<th class="manitas one wide">Acciones</th>
+					</tr>
+				</thead>
+
+				<tbody>
+
+					<tr ng-repeat="e in elementos ">
+						<td>{{ e.pieza }}</td>
+						<td>{{ e.cama }}</td>
+						<!-- 						<td>{{ e.pabellon }}</td> -->
+						<!-- 						<td>{{ e.estadoActual }}</td> -->
+						<!-- 						<td>{{ e.sexo }}</td> -->
+						<td>{{ e.criterioDeAsignacion }}</td>
+						<td>
+							<div ng-click="modificarCriterio(e)"
+								class="circular ui mini compact icon button">
+								<i class="write icon" title="Cambiar Criterio"></i>
+							</div>
+
+						</td>
+
+					</tr>
+				</tbody>
+
+			</table>
+		</div>
+		<div class="column">
+			<table class="ui celled table">
+				<thead>
+					<tr>
+						<th>Pieza</th>
+						<th>Cama</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>{{cama.pieza}}</td>
+						<td>{{cama.cama}}</td>
+
+					</tr>
+
+				</tbody>
+			</table>
+
+			<div class="field">
+
+				<label>Criterio</label>
+
+				<div class="ui dropdown selection" id="listarCriterios">
+
+					<div class="text">
+						<span ng-show="">Elija un criterio</span>
+					</div>
+
+					<i class="dropdown icon"></i>
+					<div class="menu">
+						<div class="item" ng-repeat="cri in criterios"
+							ng-click="seleccionoCriterio(cri)">{{ cri.descripcion }}</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="ui small buttons">
+				<div class="ui blue button" title="Guardar"
+					ng-click="guardarModificacion()">
+					<i class="save icon"></i>Modificar
+				</div>
+				<div class="or"></div>
+				<div class="ui red button" title="Volver" ng-click="cancelar()">
+					<i class="remove icon"></i>Cancelar
+				</div>
+			</div>
+			<div class="ui message"
+				ng-class="{'red':mensajes.error, 'green':!mensajes.error}"
+				ng-show="hayMensajes">{{mensajes.mensaje}}</div>
+		</div>
+
+	</div>
+</form>

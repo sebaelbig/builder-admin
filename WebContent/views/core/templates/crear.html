@@ -1,0 +1,88 @@
+<h4 class="ui azulHE block header">
+  <span ng-if="!modificando">Creando un template de un servicio</span>
+  <span ng-if="modificando">Modificando el template del servicio <b>{{elemento.nombreServicio}}</b></span>
+  <div class="sub header" ng-if="!modificando">Formulario de creación</div>
+  <div class="sub header" ng-if="modificando">Formulario de modificación</div>
+</h4>
+
+<section class="ui grid">
+
+<!-- Side Bar -->
+	<article ng-include="'views/core/templates/sidebar.html'" class="six wide column"></article>
+
+<!-- Vista previa actual -->
+	<article ng-include="'views/core/templates/preview.html'" ng-show="!(editandoFooter || editandoHeader || editandoPropiedad)" 
+			class="ten wide column"></article>
+
+<!-- Panel de edicion -->
+	<article id="panelEdicion" ng-show="editandoFooter || editandoHeader || editandoPropiedad" class="ten wide column" >
+		
+<!-- 		Encabezado -->
+		<h2 class="ui header">
+			<i class="minus checkbox icon"></i>
+			<div class="content">
+		   	 	{{_headerPanelEdicion}}
+		    <div class="sub header">Escriba el texto que desea que aparezca en la impresión</div>
+		  </div>
+		</h2>
+	  	
+<!-- 	  	Datos de la propiedad -->
+	  	<div class="ui form segment" novalidate name="form" ng-show="editandoPropiedad">
+	  	<div class="two fields">	
+	  		
+	  		<!-- 	Ancho -->
+			<div class="field">
+				
+				<label>¿Esta propiedad ocupará todo el ancho de la página?</label>
+				
+				<div class="ui toggle checkbox">
+					<input id="choice-{{propiedadTemplate.ancho}}" type="checkbox"
+						ng-checked="propiedadTemplate.ancho == 97"
+						ng-click="toggleAncho()"> 
+						<label for="choice-{{propiedadTemplate.ancho}}">
+							<span ng-if="propiedadTemplate.ancho == 97">Sí</span>
+							<span ng-if="propiedadTemplate.ancho != 97">No</span>
+						</label>
+				</div>
+				
+			</div>
+			
+			<!-- 	Margen -->
+			<div ng-if="propiedadTemplate.ancho != 97" class="field">
+				
+				<label>¿Ocupará la columna izquierda?</label>
+				
+				<div class="ui toggle checkbox">
+					<input id="check-margen-{{propiedadTemplate.margen}}" type="checkbox"
+						ng-checked="propiedadTemplate.margen == 'left'"
+						ng-click="toggleMargen()"> 
+						<label for="check-margen-{{propiedadTemplate.margen}}">
+							<span ng-if="propiedadTemplate.margen == 'left'">Sí</span>
+							<span ng-if="propiedadTemplate.margen != 'left'">No</span>
+						</label>
+				</div>
+				
+			</div>
+		</div>
+		</div>
+
+<!-- 		<article ng-include="'views/textEditor.html'"></article> -->
+		<article>
+			<div class="field" >
+			    <label>Texto</label>
+			    <div class="ui left labeled icon input" style="border: 1px solid #e0e0e0;width: 100%;">
+			    	<textarea horus-editor-model="texto" ng-model="elementoEnTextEditor.texto" id="editor1" name="editor1" ></textarea>
+			    </div>
+			</div>
+		</article>
+		
+		
+		<div class="ui small buttons" >
+		 		<div class="ui blue button" ng-class="{'loading': haciendo }" ng-click="guardarEdicion()"><i class="save icon"></i>Guardar edición</div>
+		 		<div class="or"></div>
+				<div class="ui red button" ng-click="cancelarEdicion()" ><i class="undo icon"></i>Cancelar edición</div>
+		</div>
+		
+	</article>
+
+</section>

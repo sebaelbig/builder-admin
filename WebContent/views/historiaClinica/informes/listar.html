@@ -1,0 +1,62 @@
+<h4 class="ui azulHE block header">
+  Usted está listando los informes desde el servicio {{servicioActual.nombre}} 
+  <div class="sub header">Ingrese un texto para filtrar por paciente</div>
+</h4>
+<!-- Navegacion -->
+<div class="ui two column grid">
+
+	<!-- Buscador -->
+	<div class="column">
+		<div class="ui icon small input">
+		  <input type="text" placeholder="Buscar..." ng-model="nombreBusqueda">
+		  <i class="search icon"></i>
+		</div>
+	</div>
+	
+	<!-- Paginador style="text-align: left"  -->
+	<div class="column" ng-include="'views/paginador.html'"></div>
+
+</div>
+
+
+<table class="ui small basic sortable table ">
+  
+  <thead>
+    <tr>
+      <th class="manitas" 
+      		ng-click="paginador.ordenarPor('numero')" 
+      		ng-class="paginador.claseOrdenacion('numero')">Número</th>
+      <th class="manitas" 
+      		ng-click="paginador.ordenarPor('paciente')" 
+      		ng-class="paginador.claseOrdenacion('paciente')">Paciente</th>
+      <th class="manitas" 
+      		ng-click="paginador.ordenarPor('solicitante')" 
+      		ng-class="paginador.claseOrdenacion('solicitante')">Médico solicita</th>
+      <th class="manitas" 
+      		ng-click="paginador.ordenarPor('fecha')" 
+      		ng-class="paginador.claseOrdenacion('fecha')">Fecha solicitado</th>
+      <th class="manitas" 
+      		ng-click="paginador.ordenarPor('estudios')" 
+      		ng-class="paginador.claseOrdenacion('estudios')">Estudios</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr ng-repeat="e in elementos | filter: nombreBusqueda" ng-class="{'error':e.borrado}" >
+      <td>{{e.numero}}</td>
+      <td>{{e.paciente}}</td>
+      <td>{{e.solicitante}}</td>
+      <td>{{e.fechaPedida}}</td>
+      <td>{{e.estudios}}</td>
+      <td>
+        <div ng-click="informar(e)" class="circular ui tiny icon button" >
+        	<i class="print icon" title="Informar pedido"></i></div>
+      </td>
+    </tr>
+  </tbody>
+
+</table> 
+
+<!-- Dimmer cargando info -->
+<div class="ui inverted dimmer" ng-class="{'active':haciendo}" id="haciendo"><div class="ui text loader">Recuperando información...</div></div>

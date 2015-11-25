@@ -1,0 +1,33 @@
+<h4 class="ui azulHE block header">
+  Lista de roles
+  <div class="sub header">Ingrese un texto para filtrar por nombre</div>
+</h4>
+
+<div class="ui icon small input">
+  <input type="text" placeholder="Buscar..." ng-model="nombreBusqueda">
+  <i class="search icon"></i>
+</div>
+
+<table class="ui small basic table ">
+  
+  <thead>
+    <tr>
+      <th>Rol</th>
+      <th>Prioridad</th>
+      <th>Sitio</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr ng-repeat="r in elementos | filter: nombreBusqueda "  >
+      <td>{{r.nombre}}</td>
+      <td>{{r.tipoRol.prioridad}}</td>
+      <td>{{r.tipoRol.sitio}}</td>
+      <td>
+        <a ng-click="editar(r)"><i class="edit icon"></i>Editar</a>
+      </td>
+    </tr>
+  </tbody>
+
+</table> 

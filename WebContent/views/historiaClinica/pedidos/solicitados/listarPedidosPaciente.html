@@ -1,0 +1,153 @@
+<h4 class="ui azulHE block header">
+	Pedidos del paciente:
+	<div class="sub header">{{paciente}}</div>
+</h4>
+
+<div
+	class="sixteen wide column ui attached fluid form  segment cajaSombreadaSinTop"
+	novalidate name="form">
+
+	<div class="ui form">
+		<div class="five fields">
+
+			<!-- Buscador -->
+			<div class="field">
+				<label>Filtro:</label>
+				<div class="ui icon small input">
+					<input type="text" placeholder="Buscar..."
+						ng-model="nombreBusqueda"> <i class="filter icon"></i>
+				</div>
+			</div>
+
+			<!-- 	Estados del estudio disponibles -->
+			<div class="field" ng-show="rol=='MHE'">
+				<label>Mostrar</label>
+				<div class="ui dropdown selection" id="tiposListados">
+					<div class="text">{{listadoSeleccionado}}</div>
+					<i class="dropdown icon"></i>
+					<div class="menu">
+						<div class="item "
+							ng-class="{'active': listado == listadoSeleccionado}"
+							ng-repeat="listado in tiposListados "
+							ng-click="seleccionoListado(listado)">{{listado}}</div>
+					</div>
+
+				</div>
+			</div>
+			<!-- 	Servicios disponibles -->
+			<div class=" field">
+
+				<label>Servicios:</label>
+
+				<div class="ui dropdown selection" id="listaServicios">
+
+					<div class="text">Todos</div>
+					<i class="dropdown icon"></i>
+
+					<div class="menu">
+						<div class="item"
+							ng-class="{'active': 'Todos' == servicioseleccionado}"
+							ng-click="seleccionoServicioTodos()">Todos</div>
+						<div class="item"
+							ng-class="{'active': servicio.nombre == servicioseleccionado}"
+							ng-repeat="servicio in servicios track by $index | orderBy: nombre "
+							ng-click="seleccionoServicio(servicio)">
+							{{servicio.nombre}}</div>
+					</div>
+
+				</div>
+			</div>
+			<div class="field" style="text-align: left;">
+				<label>Seleccione la página</label>
+				<div ng-include="'views/paginador.html'"></div>
+			</div>
+			
+			<div class="field" >
+				<label></label>
+				<div class="ui small buttons">
+					<div class="ui red button" ng-click="volver()">
+						<i class="reply icon"></i>Volver
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+
+	<!-- Lista de Pedidos del paciente -->
+	<h4 class="ui header" ng-show="elementos.length == 0"
+		style="color: #004070; text-align: center;">No hay pedidos según
+		los criterios de búsqueda ingresados.</h4>
+
+	<table class="ui small compact sortable basic table "
+		ng-show="elementos.length > 0">
+		<thead>
+			<tr>
+				<th class="manitas" ng-click="paginador.ordenarPor('numero')"
+					ng-class="paginador.claseOrdenacion('numero')">ID pedido</th>
+				<th class="manitas" ng-click="paginador.ordenarPor('solicitante')"
+					ng-class="paginador.claseOrdenacion('solicitante')">Médico
+					solicitante</th>
+				<th class="manitas" ng-click="paginador.ordenarPor('estudios')"
+					ng-class="paginador.claseOrdenacion('estudios')">Estudio</th>
+				<th class="manitas" ng-click="paginador.ordenarPor('actuante')"
+					ng-class="paginador.claseOrdenacion('actuante')">Médico
+					efector</th>
+				<th class="manitas" ng-click="paginador.ordenarPor('servicio')"
+					ng-class="paginador.claseOrdenacion('servicio')">Servicio
+					efector</th>
+				<!--  estado pedido -->
+				<th class="manitas" ng-click="paginador.ordenarPor('estado')"
+					ng-class="paginador.claseOrdenacion('estado')">Estado</th>
+				<th class="two wide">Acciones</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<!-- ng-class="{'negative':e.estadoEstudio=='Cancelado', 'positive':e.estadoEstudio=='Informado', 'warning': e.estadoEstudio=='En Atención'}" -->
+			<tr ng-repeat="e in elementos | filter: nombreBusqueda"
+				ng-class="{'negative':e.urgente}">
+				<td>{{e.numero}}</td>
+				<td>{{e.solicitante}}</td>
+				<td style="text-align: left;">{{e.estudios}}</td>
+				<td>{{e.actuante}}</td>
+				<td>{{e.nombreServicio}}</td>
+				<td>{{e.estado}}</td>
+				<td>
+
+
+					<div ng-click="imprimir(e)"
+						class="circular ui mini compact icon button"
+						ng-show="e.estadoEstudio!='Cancelado' && e.estadoEstudio!='En Atención'">
+						<i class="print icon" title="Imprimir pedido"></i>
+					</div>
+
+					<div ng-click="ver(e)" class="circular ui mini compact icon button"
+						ng-show="e.estadoEstudio!='Cancelado' && e.estadoEstudio!='En Atención'">
+						<i class="unhide icon" title="Ver pedido"></i>
+					</div> <!-- Dimmer -->
+					<div class="ui dimmer" ng-class="{'active':haciendo}">
+						<div class="content">
+							<div class="center">
+								<div class="ui active inline loader"></div>
+							</div>
+						</div>
+					</div>
+					
+				</td>
+			</tr>
+		</tbody>
+
+	</table>
+
+	<!-- Dimmer cargando info -->
+	<div class="ui inverted dimmer" ng-class="{'active':haciendo}"
+		id="haciendo">
+		<div class="ui text loader">Procesando información...</div>
+	</div>
+
+
+	<section ng-include="'views/modalConfirmarAccion.html'"></section>
+
+</div>

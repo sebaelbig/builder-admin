@@ -1,0 +1,12 @@
+<h4 class="ui azulHE block header attached message">
+  Administración de tipos de perfil
+  <div class="sub header">Lista de tipos de perfil</div>
+</h4>
+
+<div class="ui message" ng-class="{'red':mensajes.error, 'green':!mensajes.error}" ng-show="hayMensajes">{{mensajes.mensaje}}</div>
+
+<section  class="sixteen wide column">
+	<a class="ui green button" ng-click="crear()">Crear un nuevo Tipo de perfil </a>
+</section>
+
+<section ng-include="'views/core/usuarios/perfiles/tiposDePerfil/listar.html'"  class="sixteen wide column" ng-show="!modificando"></section>

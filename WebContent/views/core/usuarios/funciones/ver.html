@@ -1,0 +1,18 @@
+<div class="wrap">
+<form class="ui form segment">
+  <fieldset>
+
+      <!-- Nombre-->
+      <div class="field">
+        <label for="nombre">Nombre</label>
+        <div><span id="nombre" name="nombre"  placeholder="nombre" class="form-control" >{{funcion.nombre}}</span></div>
+      </div>
+
+      <!-- Button -->
+      <div class="field">
+          <button id="cancelar" name="cancelar" class="ui red button" ng-click="listar()" >Listar</button>
+          <button id="cancelar" name="cancelar" class="ui green button" ng-click="editar(funcion)" >Editar</button>
+      </div>
+  </fieldset>
+</form>
+</div>

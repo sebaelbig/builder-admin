@@ -1,0 +1,216 @@
+<h4 class="ui azulHE block header attached message">
+  <span ng-if="!modificando">Agregar un nuevo Perfil al rol {{rol.nombre}} ({{rol.tipoId.tipoID}}: {{rol.valorTipoID}})</span>
+  <span ng-if="modificando">Modificando el  Perfil del rol</span>
+  <div class="sub header" ng-if="!modificando">Formulario para configurar un nuevo Perfil</div>
+  <div class="sub header" ng-if="modificando">Formulario para modificar un Perfil ya asignado</div>
+</h4>
+
+<div class="ui message" ng-class="{'red':mensajes.error, 'green':!mensajes.error}" ng-show="hayMensajes" style="font-size:1rem;">{{mensajes.mensaje}}</div>
+
+<section class="sixteen wide column cajaSombreada">
+
+	<!-- Dimmer cargando info -->
+	<div class="ui inverted dimmer" ng-class="{'active':haciendo}" >
+		<div class="content">
+	    	<div class="center">
+	        	<div class="ui text loader">Recuperando información...</div>
+	    	</div>
+    	</div>
+	</div>
+	
+	
+	<!-- Contenido central - Agregar/Editar los perfiles, tipo de id, perfiles, servicios y funciones-->
+	<article class="ui form" novalidate name="form" >
+			
+		<!-- Perfil - Servicio -->
+		<div class="two fields" >
+	
+			<!-- 	Perfil  -->
+			<div class="field"  >
+				<label>Perfil:</label>
+				<div class="ui dropdown selection" id="listaPerfiles" >
+					<div class="text">Elija Perfil</div><i class="dropdown icon"></i>
+					<div class="menu">
+						<div  class="item" 
+							ng-repeat="tipoPerfil in tiposDePerfil"
+							ng-selected="elemento.tipoPerfil.id==tipoPerfil.id"
+							ng-click="seleccionoTipoPerfil(tipoPerfil)">
+							{{tipoPerfil.nombre}}</div>
+					</div>
+				</div>
+			</div>
+			
+			<!-- 	Servicio -->
+			<div class="field"  >
+				<label>Servicio del perfil:</label>
+				<div class="ui dropdown selection" id="listaServicios" >
+					<div class="text">Elija Servicio</div><i class="dropdown icon"></i>
+					<div class="menu">
+						<div  class="item" 
+							ng-repeat="srv in servicios"
+							ng-selected="elemento.idServicio==srv.id"
+							ng-click="seleccionoServicio(srv)">
+							{{srv.nombre}}</div>
+					</div>
+				</div>
+			</div>
+	
+		</div>
+			
+		<!-- Botones  -->
+		<div class="ui small buttons" >
+	 		<div class="ui blue button" ng-class="{'loading': haciendo }" ng-click="guardar()" ng-show="!modificando"><i class="save icon"></i>Guardar Perfil</div>
+	 		<div class="ui orange button" ng-class="{'loading': haciendo }" ng-click="guardar()"  ng-show="modificando"><i class="save icon"></i>Modificar Perfil</div>
+	 		<div class="or"></div>
+			<div class="ui red button" ng-click="volver()" ng-show="!modificando"><i class="reply icon"></i>Volver</div>
+			<div class="ui red button" ng-click="cancelar()" ng-show="modificando"><i class="close icon"></i>Cancelar</div>
+		</div>	
+	
+	</article>
+	
+	
+	<article ng-show="!modificando">
+		<!-- Lista de Perfiles -->
+		<h4 class="ui header" ng-show="elementos.length == 0" style="color:#004070;">El rol NO tiene perfiles asignados<h4>
+		
+		<!-- Tabla -->
+		<table  class="ui four column small sortable basic table " ng-show="elementos.length > 0">
+		  
+		  <thead>
+		      <th class="four wide" 
+		      		ng-click="paginador.ordenarPor('nombre')" 
+		      		ng-class="paginador.claseOrdenacion('nombre')" >Perfil</th>
+		      <th class="four wide" 
+		      		ng-click="paginador.ordenarPor('nombreServicio')" 
+		      		ng-class="paginador.claseOrdenacion('nombreServicio')">Servicio</th>
+		      <th class="two wide" >Acciones</th>
+		  </thead>
+		
+		  <tbody>
+		    <tr ng-repeat="e in elementos | filter: nombreBusqueda" >
+		     
+		      <td style="text-align: left">{{e.nombre}}</td>
+		      <td style="text-align: left">{{e.nombreServicio}}</td>
+		      
+		      <td>
+		        <a  ng-click="editar(e)" class="circular ui tiny icon button" title="Editar perfil"><i class="edit icon"></i></a>
+		        <a  ng-click="confirmarEliminar(e)" class="circular ui tiny icon button" title="Eliminar perfil"><i class="delete icon"></i></a>
+		      </td>
+		      
+		    </tr>
+		  </tbody>
+		
+		</table> 
+	 	
+	</article>
+
+</section>
+
+
+<section class="sixteen wide column">
+	
+	<!--   	Funciones  -->
+	<h4 ng-show="elemento.tipoPerfil.id" class="ui azulHE block header">
+		<i class="settings icon"></i>
+	  	<div class="content">
+	  		Administración de las funciones
+	  		<div class="sub header">Seleccione las que desee que estén permitidas para el perfil: {{elemento.tipoPerfil.nombre}} (Las ya agregadas se marcan como <span class="subrayado">subrayadas</span>, las que pertenecen al Tipo de perfil y al perfil se ven  <span class="ui teal label">con el fondo verdoso</span>, las que pertenecen al perfil y NO al tipo de perfil <span class="ui orange label">con el fondo anaranjado</span> y las que pertenecen al tipo de perfil y NO al perfil <span class="ui yellow label">con el fondo amarillo</span>)</div>
+	  	</div>
+	</h4>
+	
+	<article ng-show="elemento.tipoPerfil.id" class="ui three column grid" >
+	
+		<!--  menues  -->
+		<article class="column" style="height: 350px; overflow: auto;">
+			
+			<h4 class="ui dividing tiny header">
+				<i class="settings icon"></i>
+			  	<div class="content">
+			  		Grupos de funciones 
+			  		<div class="sub header">El nombre del grupo figuarará en el menú.</div>
+			  	</div>
+			</h4>
+			
+			<div class="ui divided selection tiny list">
+			
+	<!-- 				id="{{menu.id}}" -->
+				<div class="item"
+					ng-class="{'active':menuSeleccionado == menu.label, 'subrayado': menu.enPerfil}" 
+				 	ng-repeat="menu in menues"
+				 	ng-click="seleccionoMenu(menu)"
+				 	>
+			  		
+			    	<i class="minus checkbox icon"></i>
+				  	<label class="content" >{{menu.label}}</label>
+				</div>
+				
+			</div>
+			
+		</article>
+		
+		<!--  sub - menues  -->
+		<article class="column" style="height: 350px; overflow: auto;">
+		
+			<h4 class="ui dividing tiny header">
+				<i class="settings icon"></i>
+			  	<div class="content">
+			  		Sub-grupo de  <b>{{menuSeleccionado}}</b>
+			  		<div class="sub header">Seleccione el sub-grupo de funciones de <b>{{menuSeleccionado}}</b>, esta selección es la que aparecerá como sub-menú</div>
+			  	</div>
+			</h4>
+		
+			<div class="ui divided selection tiny list">
+			
+	<!-- 				id="{{subMenu.id}}" -->
+				<div class="item" 
+				 	ng-repeat="subMenu in subMenuesVista"
+					ng-class="{'active':subMenuSeleccionado == subMenu.label, 'subrayado': subMenu.enPerfil}"
+				 	ng-click="seleccionoSubMenu(subMenu)"
+				 	>
+			  		
+			    	<i class="minus checkbox icon"></i>
+				  	<label  class="content">{{subMenu.label}}</label>
+				</div>
+				
+			</div>
+			
+		</article>
+		
+		<!--  Funcion  -->
+		<article class="column" style="height: 350px; overflow: auto;">
+			
+			<h4 class="ui dividing tiny header">
+			  	<div class="content">
+			  		Funciones del sub-menú  <b>{{subMenuSeleccionado}}</b>
+			  		<div class="sub header">Seleccione las funciones de <b>{{subMenuSeleccionado}}</b>, estos nombres NO aparecerán en el menú.</div>
+			  	</div>
+			</h4>
+			
+			<div class="ui divided selection tiny list">
+			
+	<!-- 		Accion  -->
+	   			<div class="item" 
+	 				ng-repeat="fx in funcionesVista"
+	   				ng-class="{'subrayado': fx.enPerfil, 'fondoVerdoso': (fx.enPerfil && fx.enTipoPerfil), 'fondoAmarillo':  (!fx.enPerfil && fx.enTipoPerfil), 'fondoNaranja':  (fx.enPerfil && !fx.enTipoPerfil) }"
+	 				ng-click="seleccionoFuncion(fx);">
+							
+		      		<a class="header">
+			    		<div class="ui checkbox" >
+							<input type="checkbox" name="fun"  ng-checked="fx.enPerfil">
+						  	<label>{{fx.nombreAccion}}</label>
+						</div>
+		      		</a>
+		      		
+		      		<div class="description">{{fx.descripcion}}</div>
+	    		</div>
+		
+			</div>
+			
+		</article>
+	    	
+	</article>
+
+</section>
+
+<!-- Dimmer de confirmar eliminiacion -->
+<div ng-include="'views/modalEliminar.html'"></div>

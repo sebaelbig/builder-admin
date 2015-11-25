@@ -1,0 +1,95 @@
+<!-- FILA SEPARADORA  -->
+<section class="sixteen wide column cajaSombreada">
+  
+	<img src="/he_fe/images/calendario.png" align="middle">
+	
+	<span class="texto_info">
+		
+<!-- 			<input data-format="dd/MM/yyyy" class="form-control" type="text"></input> -->
+	
+		<input type="text" ng-datepicker="obtenerReservas" ng-model="fechaActual" 
+				placeholder="Haga click aqu&iacute; para seleccionar el d&iacute;a" 
+				size="28" />
+		<img src="/he_fe/images/info.png" width="12" height="12" align="absmiddle">&nbsp;Para realizar otra consulta, haga click de nuevo.
+	</span>
+	
+	<div class="ui horizontal large list"  style="text-transform: capitalize;" ng-show="hayMensajes" >
+		<span ng-repeat="mensaje in salasSinReservas track by $index" class="item " style="background-color: #D95C5C;color:white;">
+			<span ng-show="mensaje.show" >
+				 <i class="info large icon"></i>
+				(Sala: {{mensaje.sala}}) {{mensaje.mensaje}}
+			</span>
+		</span>
+	</div>
+	
+</section>
+
+  
+<!-- tabla de horarios  -->
+<table  cellspacing="0" cellpadding="2" class="sixteen wide column cajaSombreada " style="display:table;">
+	  
+  	<thead  align="center" class="texto_hora-sala">
+	
+	      <td width="10%" height="30" valign="middle"><img src="/he_fe/images/hora.png" width="20" height="20" align="absmiddle"> Hora</td>
+	
+	      <td width="18%" height="30" valign="middle"><img src="/he_fe/images/sala.png" width="20" height="20" align="absmiddle"> Sala 1</td>
+	
+	      <td width="18%" height="30" valign="middle"><img src="/he_fe/images/sala.png" width="20" height="20" align="absmiddle"> Sala 2</td>
+	
+	      <td width="18%" height="30" valign="middle"><img src="/he_fe/images/sala.png" width="20" height="20" align="absmiddle"> Sala 3</td>
+	
+	      <td width="18%" height="30" valign="middle"><img src="/he_fe/images/sala.png" width="20" height="20" align="absmiddle"> Sala 4</td>
+	
+     	<td width="18%" height="30" valign="middle"><img src="/he_fe/images/sala.png" width="20" height="20" align="absmiddle"> Sala 5</td>
+	
+  	</thead>
+	
+	<tbody>
+	  	
+		<tr ng-repeat="fila in filas" ng-class="fila.clase" >
+			
+			<td ng-repeat="celda in fila.celdas" rowspan="{{celda.rowspan}}" ng-class="celda.clase"
+				ng-mouseover="resaltarHora(celda)" ng-mouseleave="desresaltarHora(celda)" ng-click="mostrarCirugia(celda)"
+				ng-style="{{celda.style}}"  >
+				
+				<span ng-if="celda.tieneCirugia">
+					De <span class="negrita">{{celda.cirugia.horaInicio}}</span> a <span class="negrita">{{celda.cirugia.horaFin}}</span>, opera: <span class="negrita">{{celda.cirugia.profesional}}</span>
+				</span>
+				
+				<span ng-if="!celda.tieneCirugia">{{celda.label}}</span>
+			</td>
+			
+		</tr>
+		
+	</tbody>
+		
+</table>
+
+
+<!-- Tabla del detalle -->
+<section ng-include="'views/cirugias/detalleReservaCirugia.html'" ></section>
+
+<script src="/he_fe/scripts/vendor/horus/variables_globales.js"></script>
+<script src="/he_fe/scripts/vendor/horus/verCirugias.js"></script>
+
+<!-- ************************************************************************************************  -->
+<!-- ******************************    DIMMER DE PROGRESO    *****************************************  -->
+<div class="ui page dimmer" id="cargandoPagina">
+	<div class="content">
+		<div class="center">
+			
+			<div class="ui basic segment">
+			
+			    <h3 class="ui header">Cargando las reservas de cirugías...</h3>
+			    
+				<div class="ui active striped progress">
+		       		<div class="bar" id="barraProgreso_cargando"></div>
+		      	</div>
+
+			</div>
+      	</div>
+	</div>
+</div>
+<!-- ************************************************************************************************  -->
+<!-- ************************************************************************************************  -->
+<!-- ************************************************************************************************  -->

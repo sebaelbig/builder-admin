@@ -1,0 +1,63 @@
+<h4 class="ui azulHE block header">
+  Lista de tipos de ID
+  <div class="sub header">Ingrese un texto para filtrar por nombre</div>
+</h4>
+
+<!-- Navegacion -->
+<div class="ui two column grid">
+
+	<!-- Buscador -->
+	<div class="column">
+		<div class="ui icon small input">
+		  <input type="text" placeholder="Buscar..." ng-model="nombreBusqueda">
+		  <i class="search icon"></i>
+		</div>
+	</div>
+	
+	<!-- Paginador style="text-align: left"  -->
+	<div class="column" ng-include="'views/paginador.html'"></div>
+
+</div>
+
+<!-- Tabla de datos -->
+<table class="ui small basic table ">
+  
+  <thead>
+    <tr>
+      <th class="manitas" 
+      		ng-click="paginador.ordenarPor('id_tipoId')"
+      		ng-class="paginador.claseOrdenacion('id_tipoId')">Codigo Tipo ID</th>
+      <th class="manitas" 
+      		ng-click="paginador.ordenarPor('tipoID')"
+      		ng-class="paginador.claseOrdenacion('tipoID')">Tipo de ID</th>
+      <th class="manitas" 
+      		ng-click="paginador.ordenarPor('estado')"
+      		ng-class="paginador.claseOrdenacion('estado')">Estado</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr ng-repeat="e in elementos | filter: nombreBusqueda" ng-class="{'error':e.estado=='INACTIVO'}" >
+      <td>{{e.id_tipoId}}</td>
+      <td>{{e.tipoID}}</td>
+      <td>{{e.estado}}</td>
+      <td>
+        <div ng-click="editar(e)" class="circular ui tiny icon button" ng-class="{'loading': e.borrado}">
+        	<i class="edit icon" title="Editar"></i>
+       	</div>
+        <div ng-click="confirmarEliminar(e)" class="circular ui tiny icon button" ng-class="{'loading': e.borrado}">
+        	<i class="delete icon" title="Eliminar"></i>
+       	</div>
+      </td>
+    </tr>
+  </tbody>
+
+</table> 
+
+
+<!-- Dimmer cargando info -->
+<div class="ui inverted dimmer" ng-class="{'active':haciendo}" id="haciendo"><div class="ui text loader">Recuperando información...</div></div>
+
+<!-- Dimmer de confirmar eliminiacion -->
+<div ng-include="'views/modalEliminar.html'"><

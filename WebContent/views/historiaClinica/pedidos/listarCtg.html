@@ -1,0 +1,101 @@
+<form
+	class="sixteen wide column ui attached fluid form segment cajaSombreadaSinTop"
+	novalidate name="form" style="padding-left: 5%; padding-right: 5%">
+
+<h4 class="ui azulHE block header attached message">Pedidos Pendientes</h4>
+
+<div class="ui form">
+
+	<div class="five fields">
+	
+		<!-- Buscador -->
+		<div class="field">
+		    <label>Filtro:</label>
+			<div class="ui icon small input">
+			  <input type="text" placeholder="Buscar..." 
+			  		ng-model="nombreBusqueda" id="input_nombreBusqueda" 
+			  		ng-change="filtrar(this,paginador)" >
+			  <i class="filter icon"></i>
+			</div>
+		</div>
+		
+		<div class="field"></div>
+		
+		<!-- Paginador style="text-align: left"  -->
+		<div class="field" style="text-align:center;">
+		 	<label >Seleccione la página</label>
+			<div ng-include="'views/paginador.html'"></div>			
+		</div>
+		
+		<div class="field"></div>
+		
+		<!-- Refrescar -->
+		<div class="field">
+<!-- 		 	<label></label> -->
+<!-- 		    <h5 class="manitas" ng-click="refrescarLaPagina()" type="text" ><i class="refresh icon"></i>Refrescar listado</h5> -->
+		</div>
+		 
+	
+	</div>
+	
+</div>
+
+<div class="ui message"
+	ng-class="{'red':mensajes.error, 'green':!mensajes.error}"
+	ng-show="hayMensajes">{{mensajes.mensaje}}</div>
+	
+	<!-- Lista de Perfiles -->
+	<h4 class="ui header" ng-show="elementos.length == 0"
+		style="color: #004070; text-align: center;">No hay pedidos
+		pendientes.</h4>
+
+
+	<table class="ui small compact sortable basic table "
+		ng-show="elementos.length > 0">
+		<!--  	Columnas: ID pedido, Paciente, Estudio, Medico efector, Servicio efector y Acciones -->
+		<thead>
+			<tr>
+				<th class="manitas one wide"
+					ng-click="paginador.ordenarPor('id')"
+					ng-class="paginador.claseOrdenacion('id')">ID pedido</th>
+				<th class="manitas four wide"
+					ng-click="paginador.ordenarPor('fecha')"
+					ng-class="paginador.claseOrdenacion('fecha')">Fecha</th>
+				<th class="manitas three wide"
+					ng-click="paginador.ordenarPor('paciente')"
+					ng-class="paginador.claseOrdenacion('paciente')">Paciente</th>
+				<th class="manitas four wide"
+					ng-click="paginador.ordenarPor('efector')"
+					ng-class="paginador.claseOrdenacion('efector')">Médico
+					efector</th>
+					
+				<th class="two wide">Acciones</th>
+			</tr>
+		</thead>
+
+		<tbody>
+
+			<tr ng-repeat="e in elementos ">
+				<td>{{e.id}}</td>
+				<td>{{e.fecha}}</td>
+				<td>{{e.paciente}}</td>
+				<td>{{e.efector}}</td>
+				<td>
+					<div ng-click="registrarPedido(e)"
+						class="circular ui mini compact icon button">
+						<i class="expand icon" title="Pasar Pedido"></i>
+					</div>
+				</td>
+
+			</tr>
+
+		</tbody>
+
+	</table>
+
+	<!-- Dimmer cargando info -->
+	<div class="ui inverted dimmer" ng-class="{'active':haciendo}"
+		id="haciendo">
+		<div class="ui text loader">Procesando información...</div>
+	</div>
+</form>

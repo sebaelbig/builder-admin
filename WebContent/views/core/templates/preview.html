@@ -1,0 +1,37 @@
+<h3 class="ui header">Vista previa del template</h3>
+
+<!-- 	Vista previa -->
+	
+<!-- Header   -->
+<div class="ui attached message">
+	<div ng-bind-html="elemento.encabezado | rawHtml"  ></div>
+</div>
+
+<div class="ui attached  divided small list lista bloqueTurnos segment" 
+	style="margin: 0px; overflow: auto; height: 240px;">  
+	
+	
+<!-- 	Propiedades del template -->
+<div ng-repeat="prop in elemento.propiedades" class="item"   
+	ng-show="!prop.borrado"
+	ng-click="seleccionoBloqueTurno(bt)" style="float: {{prop.margen}}; width: {{prop.ancho}}%;">
+	
+	<div ng-bind-html="prop.contenido | rawHtml"  ></div>
+    </div>
+	
+</div>
+		
+<!-- Footer   -->
+<div class="ui attached message">
+	<div ng-bind-html="elemento.pie | rawHtml"  ></div>
+</div>
+
+<div class="ui message" ng-class="{'red':mensajes.error, 'green':!mensajes.error}" ng-show="hayMensajes" style="font-size:1rem;">{{mensajes.mensaje}}</div>
+
+<!-- Botones  -->
+<div class="ui small buttons" >
+	<div class="ui blue button" ng-class="{'loading': haciendo, 'disabled': !elemento.idServicio}" ng-click="guardar()"><i class="save icon"></i>Guardar template</div>
+	<div class="or"></div>
+	<div class="ui red button" ng-click="cancelar()" ><i class="reply icon"></i>Cancelar y volver</div>
+</div>
+

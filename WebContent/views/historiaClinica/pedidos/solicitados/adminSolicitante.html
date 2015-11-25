@@ -1,0 +1,3 @@
+<div class="ui message" ng-class="{'red':mensajes.error, 'green':!mensajes.error}" ng-show="hayMensajes">{{mensajes.mensaje}}</div>
+
+<section ng-include="'views/historiaClinica/pedidos/solicitados/listar.html'" class="sixteen wide column cajaSombreada"  ng-show="!modificando"></section>

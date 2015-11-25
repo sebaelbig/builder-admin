@@ -1,0 +1,441 @@
+
+body {
+	margin-top: 2px;
+	margin-right: 0em;
+	font-family:Arial, Helvetica, sans-serif;
+}
+
+.texto_medicos {
+	font-family:Arial, Helvetica, sans-serif;
+	color: #FFF; 
+	font-size: 20px;
+}
+
+.texto_sub {
+	font-family:Arial, Helvetica, sans-serif;
+	color: #004070; 
+	font-size: 16px;
+	border-bottom: 1px solid #004070;
+}
+
+.texto_submed {
+	font-family:Arial, Helvetica, sans-serif;
+	color: #004070; 
+	font-size: 14px;
+	border-bottom: 1px solid #004070;
+}
+
+.texto_info {
+	font-family:sans-serif;
+	color: #000; 
+	font-size: 10px;
+}
+
+.texto_hora-sala {
+	font-family:Helvetica, sans-serif;
+	color: #000; 
+	line-height: 1.2em;
+	font-size: 12px;
+}
+
+.texto_reserva {
+	font-family:Helvetica, sans-serif;
+	color: #000; 
+	line-height: 1.2em;
+	font-size: 11px;
+}
+
+.oculto{
+	display: none !important; 
+}
+
+/******************************/
+
+table td{
+	text-align: center;
+	border: 1px solid #CCC;
+}
+
+tbody tr:hover{
+	background-color: rgba(0,0,0,.05);
+}
+
+table{
+	border-collapse: collapse;
+	max-width: 100%;
+	width: 100%;
+}
+
+thead{
+	text-align: center;
+	background-color: #F5F5F5;
+	color: #000;
+	font-family: Helvetica, sans-serif;
+	font-size: 12px;
+	line-height: 1.2em;
+} 
+
+
+/******************************************************/
+/***************  		Turnos   	 *****************/
+/******************************************************/
+
+/*str_hora, numero*/
+.turno td:nth-child(1), 
+.turno td:nth-child(2) { 
+	font-size:1.5em; 
+	font-weight: bolder;
+}
+
+/*str_paciente*/
+.turno td:nth-child(3) { 
+	font-weight: bolder;
+	text-align: left; 
+	text-transform: capitalize; 
+}
+
+/*telefono*/
+
+/***************  Tipo de los turnos *****************/
+.libre{
+	background-color: #C6E6F1 !important;
+}
+.ocupado{
+	background-color: #EBE5D3 !important;
+}
+
+/***************  Estado *****************/
+.Reservado{
+	background-color: #E79F8C !important;
+}
+.Presente{
+	background-color: #82B2C5 !important;
+}
+.Tomado{
+	background-color: #EBCE9D !important;
+}
+.Sobreturno{
+	font-style: italic;
+}
+
+/*******************************************************/
+.btSeleccionado {
+	color: black !important;
+	background-color: #82B2C5 !important; 
+}
+
+.negrita{
+	font-weight: bold;
+}
+
+.subrayado{
+	text-decoration: underline;
+}
+
+/* Estilos de dias */
+.item.dia.bloqueTurno{
+	font-size: 12px;
+}
+
+.hoyResaltado {
+	color: black !important;
+	background-color: #82B2C5 !important; 
+}
+
+/*.lunes{
+	background-color: #E7EE9B;
+}
+.martes{
+	background-color: #E7EEAB;
+}
+.miercoles{
+	background-color: #E7EEBB;
+}
+.jueves:hover{
+	background-color: #009A93;
+}
+.jueves{
+	background-color: #E7EECB;
+}
+.viernes{
+	background-color: #E7EEDB;
+}
+.sabado{
+	background-color: #E7EEEB;
+}
+.domingo{
+	background-color: #E7EEFB;
+}
+
+*/
+/******************************/
+
+.celdaHora{
+	-webkit-transition:background-color 0.2s;
+	 transition:background-color 0.2s;
+}
+/******************************/
+.celda.diaNavegacion img{
+	display: inline-block;
+	vertical-align: middle; 
+}
+
+.celda.diaNavegacion span{
+	cursor: pointer;
+	display: inline-block;
+	font-size: 14px;
+	vertical-align: middle; 
+}
+
+.celda.diaNavegacion{
+	cursor: pointer;
+	width: 24%;	
+}
+/******************************/
+/* C6E6F1", "#EBE5D3", "#E79F8C", "#82B2C5", "#EBCE9D */
+
+.reservaCirugia_0{
+	background-color: #C6E6F1;
+	cursor:pointer;
+	text-align: left;
+	text-transform: capitalize;
+}
+.reservaCirugia_1{
+	background-color: #EBE5D3;
+	cursor:pointer;
+	text-align: left;
+	text-transform: capitalize;
+}
+.reservaCirugia_2{
+	background-color: #E79F8C;
+	cursor:pointer;
+	text-align: left;
+	text-transform: capitalize;
+}
+.reservaCirugia_3{
+	background-color: #82B2C5;
+	cursor:pointer;
+	text-align: left;
+	text-transform: capitalize;
+}
+.reservaCirugia_4{
+	background-color: #EBCE9D;
+	cursor:pointer;
+	text-align: left;
+	text-transform: capitalize;
+}
+/******************************/
+#textoDiaHeader{
+	display: inline-block;
+	text-align: right;
+	vertical-align: middle;
+	width: 80%;
+}
+
+header a, .header a{
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.menu{
+	border-bottom: 1px solid #004070;
+}
+
+.menu .pimera_linea{
+	background-color: #004070;
+	color: #FFF; 
+	height: 35px;
+	font-size: 20px;
+}
+
+.menu .segunda_linea{
+	background-color: #EBCE9D;
+	color: #004070;
+	font-size: 16px;
+	height: 30px;
+}
+
+/* .menu .segunda_linea .item{ */
+/* 	display: inline-block; */
+/* 	vertical-align: middle; */
+/* } */
+
+.menu .pimera_linea span,
+.menu .segunda_linea span{
+/* 	display: table-cell; */
+	display: inline-block;
+	padding: 7px;
+	vertical-align: middle;
+}
+
+.espec {
+  margin-top: 6px !important;
+}
+
+main {min-height: 100%;}
+ 
+#view {overflow:auto;
+    padding-bottom: 30px;}  /* must be same height as the footer */
+ 
+footer, .footer{
+	position: relative;
+	clear:both; 
+  	margin-top: -30px; /* negative value of footer height */
+	
+	background-color: #EBCE9D;
+	color: #004070;
+	font-size: 16px;
+	height: 30px;
+	text-align: center;
+}
+
+/*******************************************/
+/*   Colores para la toolbar del textArea 
+colores["rojo"] = "rgb(255, 0, 0)";
+	colores["azul"] = "rgb(0, 0, 255)";
+	colores["gris"] = "rgb(128, 128, 128)";
+	colores["blanco"] = "rgb(255, 255, 255)";
+	colores["negro"] = "rgb(85, 85, 85)";
+	colores["highlight"] = "rgb(255, 255, 0)";
+*/
+
+.azul_back{ background-color: rgb(0, 0, 255);  color: rgb(255, 255, 255);}
+.gris_back{ background-color: rgb(128, 128, 128);  color: rgb(255, 255, 255);}
+.verde_back{ background-color: rgb(10, 152, 10) !important; }
+.rojo_back{ background-color: rgb(152, 10, 10) !important; color: rgb(255, 255, 255);}
+.negro_back{ background-color: rgb(255, 255, 255); color: rgb(85, 85, 85);}
+.blanco_back{ background-color: rgb(85, 85, 85); color: rgb(0, 0, 0);}
+.highlight_back{ background-color: rgb(255, 255, 0); color: rgb(0, 0, 0);}
+
+.azul{ color: rgb(0, 0, 255); }
+.gris{ color: rgb(128, 128, 128); }
+.verde{ color: rgb(10, 152, 10); }
+.rojo{ color: rgb(152, 10, 10); }
+.negro{ color: rgb(85, 85, 85); }
+.blanco{ color: rgb(255, 255, 255); }
+.highlight{ color: rgb(255, 255, 0); }
+/*******************************************/
+
+.manitas{
+	cursor: pointer;
+}
+
+.elementoColeccionSeleccionado {
+  background-color: #82B2C5;
+}
+
+.espec {
+	margin-top: 4px !important;
+}
+
+
+@media screen {
+	
+	.imprimible .hojaA4{
+/* 		width: 21cm; height: 297cm; */
+
+		/*8,27 x 11,7 */ 
+		width: 8,27in;
+		height: 11,7in;
+	}
+	
+	.imprimible{
+/* 		display: none; */
+/* 		border: 2px solid gray; */
+	}
+	
+	.noImprimible{
+		display: block;
+	}
+	
+}
+
+@media print{
+	
+	.imprimible{
+		display: block;
+	}
+	
+	.noImprimible{
+		display: none;
+	}
+	
+}
+/**********************************/
+/*Estados de semantic*/
+.item.negative{
+	color:#cd2929!important;
+}
+.item.positive{
+	color:#3c763d!important;
+}
+.item.warning{
+	color:#7d6c00!important;
+}
+
+.azulHE{
+	color: #004070 !important;
+}
+
+/**********************************/
+/*Mensajes de semantic*/
+.fondoVerdoso{
+	background-color: #ebffed !important;
+}
+.fondoAmarillo	{
+	background-color: #fff8db !important;
+}
+.fondoNaranja	{
+	background-color: #ffedde !important;
+}
+
+/*************************************/
+/* Heading dividers semantic */
+.divisor{
+	margin-top: 5px !important;
+	margin-bottom: 5px !important;
+}
+
+/*************************************/
+/*Fondos degrade*/
+.backDegrade{
+	background: rgba(235,219,195,0.8);
+	background: -moz-linear-gradient(left, rgba(235,219,195,0.8) 0%, rgba(255,255,255,0.8) 3%, rgba(255,255,255,0.8) 97%, rgba(235,219,195,0.8) 100%);
+	background: -webkit-gradient(left top, right top, color-stop(0%, rgba(235,219,195,0.8)), color-stop(3%, rgba(255,255,255,0.8)), color-stop(97%, rgba(255,255,255,0.8)), color-stop(100%, rgba(235,219,195,0.8)));
+	background: -webkit-linear-gradient(left, rgba(235,219,195,0.8) 0%, rgba(255,255,255,0.8) 3%, rgba(255,255,255,0.8) 97%, rgba(235,219,195,0.8) 100%);
+	background: -o-linear-gradient(left, rgba(235,219,195,0.8) 0%, rgba(255,255,255,0.8) 3%, rgba(255,255,255,0.8) 97%, rgba(235,219,195,0.8) 100%);
+	background: -ms-linear-gradient(left, rgba(235,219,195,0.8) 0%, rgba(255,255,255,0.8) 3%, rgba(255,255,255,0.8) 97%, rgba(235,219,195,0.8) 100%);
+	background: linear-gradient(to right, rgba(235,219,195,0.8) 0%, rgba(255,255,255,0.8) 3%, rgba(255,255,255,0.8) 97%, rgba(235,219,195,0.8) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ebdbc3', endColorstr='#ebdbc3', GradientType=1 );
+}
+
+/*************************************/
+/*PDF*/
+*{box-sizing: border-box;}
+.pdf-controls { width: 100%; display: block; background: #eee; padding: 1em;}
+.rotate0 {-webkit-transform: rotate(0deg); transform: rotate(0deg); }
+.rotate90 {-webkit-transform: rotate(90deg); transform: rotate(90deg); }
+.rotate180 {-webkit-transform: rotate(180deg); transform: rotate(180deg); }
+.rotate270 {-webkit-transform: rotate(270deg); transform: rotate(270deg); }
+.fixed { position: fixed; top: 0; left: calc(50% - 480px); z-index: 100; width: 100%; padding: 1em; background: rgba(238, 238, 238,.9); width: 960px; }
+/*si necesitas que sea responsive*/
+#wrapper {
+  width: 100%;
+  height: 450px;
+  margin-bottom: 10px;
+}
+
+
+/*****************************************/
+/* Cajas sombreadas */
+.cajaSombreada{
+	background-color: #FDF9F4 !important;	
+	box-shadow: 0 0 11px #EBCE9D !important;
+	margin-bottom: 10px !important; 
+}
+
+.cajaSombreadaSinTop{
+	background-color: #FDF9F4 !important;	
+	box-shadow: 0 2px 11px #EBCE9D !important; 
+	margin-bottom: 10px !important;
+}

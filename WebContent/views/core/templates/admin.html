@@ -1,0 +1,12 @@
+<h4 class="ui azulHE block header attached message">
+  Administración de templates de servicios
+  <div class="sub header">Templates de los informes de los servicios</div>
+</h4>
+
+<div class="ui message" ng-class="{'red':mensajes.error, 'green':!mensajes.error}" ng-show="hayMensajes">{{mensajes.mensaje}}</div>
+
+<section class="sixteen wide column ui attached fluid segment">
+	<a class="ui green button" ng-click="crear()">Crear un nuevo Template de servicio </a>
+</section>
+
+<section ng-include="'views/core/templates/listar.html'" ng-show="!modificando" class="sixteen wide column"></section>

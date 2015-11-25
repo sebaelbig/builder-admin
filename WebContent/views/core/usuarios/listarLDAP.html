@@ -1,0 +1,65 @@
+<h4 class="ui azulHE block header attached message">
+  Lista de usuarios en el LDAP
+  <div class="sub header">Ingrese un texto para filtrar por nombre</div>
+</h4>
+
+<div class="ui message" ng-class="{'red':mensajes.error, 'green':!mensajes.error}" ng-show="hayMensajes">{{mensajes.mensaje}}</div>
+
+
+<section class="sixteen wide column cajaSombreadaSinTop"> 
+	
+	<!-- Navegacion -->
+	<div class="ui two column grid">
+	
+		<!-- Buscador -->
+		<div class="column">
+			<div class="ui icon small input">
+			  <input type="text" placeholder="Buscar..." ng-model="nombreBusqueda">
+			  <i class="search icon"></i>
+			</div>
+		</div>
+		
+		<!-- Paginador style="text-align: left"  -->
+		<div class="column" ng-include="'views/paginador.html'"></div>
+	
+	</div>
+
+	<!-- Tabla -->
+	<table  class="ui five column small sortable basic table " >
+	  
+	  <thead>
+	      <th class="four wide" 
+	      		ng-click="paginador.ordenarPor('nombreCompleto')" 
+	      		ng-class="paginador.claseOrdenacion('nombreCompleto')" id="th_nombreCompleto" >Nombre y Apellido</th>
+	      <th class="two wide" 
+	      		ng-click="paginador.ordenarPor('usuario')" 
+	      		ng-class="paginador.claseOrdenacion('usuario')" id="th_usuario" >Usuario</th>
+	      <th class="four wide"  
+	      		ng-click="paginador.ordenarPor('email')" 
+	      		ng-class="paginador.claseOrdenacion('email')" id="th_email" >e-mail</th>
+	      <th class="two wide" 
+	      		ng-click="paginador.ordenarPor('memberOf')" 
+	      		ng-class="paginador.claseOrdenacion('memberOf')" id="th_memberOf" >Miembro de:</th>
+	      <th class="two wide" >Acciones</th>
+	  </thead>
+	
+	  <tbody>
+	    <tr ng-repeat="e in elementos | filter: nombreBusqueda"  class="manitas" >
+	      <td style="text-align: left">{{e.nombreCompleto}}</td>
+	      <td style="text-align: left">{{e.usuario}}</td>
+	      <td style="text-align: left">{{e.email}}</td>
+	      <td style="text-align: left">{{e.memberOf}}</td>
+	      <td>
+	        <a  ng-click="verRoles(e)" class="circular ui tiny icon button" title="Ver roles y perfiles"><i class="unhide icon"></i></a>
+	        <a  ng-click="administrarRoles(e)" class="circular ui tiny icon button" title="Administrar roles y perfiles"><i class="setting icon"></i></a>
+<!-- 	        <a  ng-click="configurarFirma(e)" class="circular ui tiny icon button" title="Configurar firma de médico"><i class="file text icon"></i></a> -->
+	      </td>
+	    </tr>
+	  </tbody>
+	
+	</table> 
+	
+</section>
+
+<!-- Dimmer cargando info -->
+<div class="ui inverted dimmer" ng-class="{'active':haciendo}" id="haciendo"><div class="ui text loader">Recuperando usuarios, por favor aguarde un momento...</div></div>

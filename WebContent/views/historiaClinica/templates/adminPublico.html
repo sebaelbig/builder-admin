@@ -1,0 +1,12 @@
+<h4 class="ui azulHE block header">
+  Administración de templates públicos
+  <div class="sub header">Lista de templates públicos</div>
+</h4>
+
+<div class="ui message" ng-class="{'red':mensajes.error, 'green':!mensajes.error}" ng-show="hayMensajes">{{mensajes.mensaje}}</div>
+
+<section>
+	<a class="ui green button" ng-click="crear()">Crear un nuevo template público </a>
+</section>
+
+<section ng-include="'views/historiaClinica/templates/listarPublicos.html'" ng-show="!modificando"></section>

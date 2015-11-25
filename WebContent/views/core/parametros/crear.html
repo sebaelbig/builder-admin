@@ -1,0 +1,85 @@
+<div class="ui form " novalidate name="form">
+	
+	<div class="ui message" ng-class="{'red':mensajes.error, 'green':!mensajes.error}" ng-show="hayMensajes">{{mensajes.mensaje}}</div>
+	
+	<div class="four fields">
+	
+		<!-- 	Grupo -->
+		<div class="required field">
+			
+			<label>Grupo al que pertenece:</label>
+			<div class="ui left  small input">
+			
+			  <input ng-model="elemento.grupo" type="text" placeholder="Ingrese un grupo..."/>
+			  
+			  <div ng-show="form.grupo.$invalid && form.grupo.$dirty" 
+			  			class="ui red pointing above ui label">Ingrese un órden válido</div>
+			
+			</div>
+		</div>
+		
+		<!-- 	Nombre -->
+		<div class="required field"  ng-class="{'error': form.nombre.$invalid && form.nombre.$dirty}">
+		  	
+		  	<label>Nombre</label>
+			<div class="ui left  small input">
+			
+			  <input ng-model="elemento.nombre" type="text" placeholder="Ingrese un nombre para el elemento..."/>
+			  
+			  <div ng-show="form.nombre.$invalid && form.nombre.$dirty" 
+			  			class="ui red pointing above ui label">Ingrese un nombre válido</div>
+			
+			</div>
+				
+		</div>
+		
+		<!-- 	Tipo -->
+		<div class="required field">
+			
+			<label>Tipo:</label>
+			
+			<div class="ui dropdown selection" id="listaTipos">
+	
+				<div class="text">
+					<span ng-show="loadingTipos">Elija un tipo</span>
+					<div class="ui active inline loader" ng-show="loadingTipos"></div>
+				</div>
+				
+				<i class="dropdown icon"></i>
+				
+				<div class="menu">
+					<div class="item" ng-class="{'active': elemento.type == tipoSeleccionado.nombre}" 
+						ng-repeat="tipo in tipos"
+						ng-click="seleccionoTipo(tipo)">
+						{{tipo.nombre}}</div>
+				</div>
+	
+			</div>
+			
+		</div>
+		
+		<!-- 	Valor -->
+		<div class="required field">
+			
+			<label>Valor:</label>
+			<div class="ui left  small input">
+			
+			  <input ng-model="elemento.valor" type="text" placeholder="Ingrese un valor..."/>
+			  
+			  <div ng-show="form.valor.$invalid && form.valor.$dirty" 
+			  			class="ui red pointing above ui label">Ingrese un órden válido</div>
+			
+			</div>
+		</div>
+		
+		
+  	</div>
+  	
+  	<div class="ui small buttons" >
+  		<div class="ui button" ng-class="{'loading': haciendo, 'blue':!modificando, 'green':modificando}" ng-click="guardar()"><i class="save icon"></i>Guardar</div>
+  		<div class="or"></div>
+ 		<div class="ui red button" ng-click="cancelar()" ng-show="modificando"><i class="reply icon"></i>Cancelar edición</div>
+ 		<div class="ui orange button" ng-click="cancelar()" ng-show="!modificando"><i class="list icon"></i>Listar</div>
+	</div>
+  
+</div>

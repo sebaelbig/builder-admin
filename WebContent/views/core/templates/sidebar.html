@@ -1,0 +1,78 @@
+<!-- <h3 class="ui header">Configuración del template del servicio</h3> -->
+
+<!-- 	Configuración de la hoja del template	-->
+
+<!-- Servicio -->
+<!-- 	Servicio por defecto -->
+<h4 class="ui azulHE block header">Elija el servicio:</h4>
+<div class="field">
+
+	<div class="ui dropdown selection" id="listaServicios" tabindex="0">
+	
+		<div class="text">
+			<span ng-show="!loadingServicios">Elija servicio</span>
+			<div class="ui active inline loader" ng-show="loadingServicios"></div>
+		</div>
+					
+		<i class="dropdown icon"></i>
+					
+		<div class="menu">
+			<div class="item" ng-class="{'active': servicio.checked}" 
+				ng-repeat="servicio in servicios track by $index"
+				ng-selected="elemento.servicio.id==servicio.id"
+				ng-click="seleccionoServicio(servicio)">
+				{{servicio.nombre}}</div>
+		</div>
+
+	</div>
+</div>
+
+<!-- orientacion de la paigna --><!-- tamanioLetra --><!-- tipoFuente -->
+	
+<!-- 	Configuración del template -->
+<h4 class="ui azulHE block header">Elija el campo a editar:</h4>
+
+<div class="ui message" ng-class="{'red':mensajes.error, 'green':!mensajes.error}" ng-show="hayMensajes" style="font-size:1rem;">{{mensajes.mensaje}}</div>
+
+<div class="ui vertical menu">
+	
+	<!-- Header   -->
+ 	<a class="item"  ng-click="seleccionoHeader()">
+		<i class="checkbox icon" 
+		ng-class="{'radio':elemento.encabezado == null, 'check circle outline':elemento.encabezado != null}"
+		></i>
+	    Encabezado del template
+	</a>
+  
+	<!--   	Propiedades -->
+	<div class="item">
+	    <b>Propiedades que contendrá el template</b>
+	    
+	    <!-- Dimmer cargando info -->
+		<div class="ui inverted dimmer" ng-class="{'active':haciendo}" id="haciendo"><div class="ui text loader">Recuperando información...</div></div>
+
+		
+	    <div class="menu" >
+	    
+			<a class="item" ng-repeat="prop in propiedades" >
+				<i class="green large icon" ng-click="seleccionoPropiedad(prop)" title="Quitar propiedad de la plantilla" alt="Quitar propiedad de la plantilla"
+					ng-class="{'green plus':!prop.enTemplate, 'arrow right':prop.editando, 'blue edit': prop.enTemplate }"></i>
+				<i class="red remove large icon" ng-show="prop.enTemplate && !prop.editando" ng-click="quitarPropiedad(prop)"></i>
+				{{prop.nombre}}
+
+	      	</a>
+	      
+	    </div>
+	  </div>
+
+	<!-- Footer   -->
+ 	<a class="item"   ng-click="seleccionoFooter()">
+		<i class="checkbox icon" ng-class="{'radio':elemento.pie == null, 'check circle outline':elemento.pie != null}"></i>
+	    Pie del template
+	</a>
+
+</div>
+
+
+
+

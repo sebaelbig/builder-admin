@@ -1,0 +1,184 @@
+<div class="sixteen wide column" >
+	<div class="ui form " novalidate name="form">
+		
+		<div class="four fields ui segment cajaSombreada" >
+		
+			<div class="field">
+				<label>Número:</label>
+			    <h5  >{{elemento.numero}}</h5>
+			</div>
+			
+			<div class="field">
+				<label>Carpeta / Boleta:</label>
+			    <h5  >{{elemento.nroCarpeta}}</h5>
+			</div>
+			
+		  	<div class="field"  >
+			    <label>Fecha Pedida</label>
+				 <h5  >{{elemento.fechaPedida}}</h5>
+		  	</div>
+	
+		  	<div class="field"  >
+			    <label>Fecha Efectuada</label>
+				 <h5  >{{elemento.fecha}}</h5>
+		  	</div>
+		  	
+		</div>
+		
+		<div class="four fields ui segment cajaSombreada">  	
+		
+			<div class="field">
+				<label>Servicio:</label>
+			    <h5  >{{elemento.nombreServicio}}</h5>
+			</div>
+		
+		  	<div class="field"  ">
+			    <label>Apellido y Nombres:</label>
+				 <h5  >{{elemento.paciente}} ({{elemento.nroDniPaciente}})</h5>
+		  	</div>
+			  	
+		  	<div class="field"  >
+			    <label>Indicado por:</label>
+			     <h5  >{{elemento.solicitante}}</h5>
+		  	</div>
+		  	
+		  	<div class="field"  >
+			    <label>Efector:</label>
+			     <h5  >{{elemento.actuante}}</h5>
+		  	</div>
+		  	
+	  	</div>
+	 	
+		<div class="field ui segment cajaSombreada" >
+		    <label>Estudios <span ng-if="elemento.unEstudioPorPedido">(Un informe por estudio)</span>:</label>
+		    
+<!-- 		    Ya tiene un PAC   -->
+	      	<div class="ui list" ng-show="estudio.estado != 'En Atención'">
+	      		<a ng-href="{{estudio.urlVisor}}" target="_blank" class="item">
+			    	<img class="ui top aligned avatar image" src="/images/wireframe/square-image.png">
+				    <div class="content">
+				      <div class="header">{{estudio.nombreEstudio}}</div>
+				      Código: {{estudio.codigoEstudio}} - Estado: {{estudio.estado}}
+				    </div>
+			  	</a>
+	      	</div>
+	      	
+<!-- 		    Todavia no tiene un PAC asociado -->
+	      	<div class="ui horizontal list" ng-show="estudio.estado == 'En Atención'">
+			  
+			  <div class="item" 
+			  		ng-repeat="estudio in elemento.estudiosPaciente">
+			    <div class="content top aligned">
+			      ({{estudio.codigoEstudio}}) {{estudio.nombreEstudio}} [{{estudio.estado}}]
+			    </div>
+			    
+			  </div>
+			  
+			</div>
+		      			
+	  	</div> 	
+			
+		<div class="field ui segment cajaSombreada" >
+		    <label>Informe:</label>
+		    <div ng-bind-html="elemento.texto | rawHtml"  ></div>
+	    </div>
+		    
+		<div class="field ui segment cajaSombreada" style="text-align:right;">
+			<label>Firma del efector:</label>
+		    <div ng-bind-html="elemento.firmaEfector | rawHtml"  ></div>
+		</div>
+	  
+	  	<div class="ui small buttons"  >
+			<div class="ui red button" ng-click="listar()" ng-class="{'loading':haciendo}"><i class="reply icon"></i>Volver</div>
+		</div>
+	</div>
+</div>	
+	
+<!-- Dimmer cargando info -->
+<div class="ui inverted dimmer" ng-class="{'active':haciendo}" id="haciendo"><div class="ui text loader">Procesando información...</div></div>
+
+<!-- <div class="ui form segment" novalidate name="form">
+	
+	<div class="four fields ui segment">
+	
+		<div class="field">
+			<label>Número:</label>
+		    <h5  >{{elemento.numero}}</h5>
+		</div>
+		
+		<div class="field">
+			<label>Carpeta / Boleta:</label>
+		    <h5  >{{elemento.nroCarpeta}}</h5>
+		</div>
+		
+	  	<div class="field"  >
+		    <label>Fecha Pedida</label>
+			 <h5  >{{elemento.fechaPedida}}</h5>
+	  	</div>
+
+	  	<div class="field"  >
+		    <label>Fecha Efectuada</label>
+			 <h5  >{{elemento.fecha}}</h5>
+	  	</div>
+	  	
+	</div>
+	
+	<div class="four fields ui segment">  	
+	
+		<div class="field">
+			<label>Servicio:</label>
+		    <h5  >{{elemento.nombreServicio}}</h5>
+		</div>
+	
+	  	<div class="field"  ">
+		    <label>Apellido y Nombres:</label>
+			 <h5  >{{elemento.paciente}} ({{elemento.nroDniPaciente}})</h5>
+	  	</div>
+		  	
+	  	<div class="field"  >
+		    <label>Indicado por:</label>
+		     <h5  >{{elemento.solicitante}}</h5>
+	  	</div>
+	  	
+	  	<div class="field"  >
+		    <label>Efector:</label>
+		     <h5  >{{elemento.actuante}}</h5>
+	  	</div>
+	  	
+  	</div>
+ 	
+	<div class="field ui segment" >
+	    <label>Estudios <span ng-if="elemento.unEstudioPorPedido">(Un informe por estudio)</span>:</label>
+	      
+      	<div class="ui horizontal list">
+		  
+		  <div class="item" 
+		  		ng-repeat="estudio in elemento.estudiosPaciente">
+		    <div class="content top aligned">
+		      ({{estudio.codigoEstudio}}) {{estudio.nombreEstudio}} [{{estudio.estado}}]
+		    </div>
+		    
+		  </div>
+		  
+		</div>
+	      			
+  	</div> 	
+		
+	<div class="field ui segment" >
+	    <label>Informe:</label>
+	    <div ng-bind-html="elemento.texto | rawHtml"  ></div>
+    </div>
+	    
+	<div class="field ui segment" style="text-align:right;">
+		<label>Firma del efector:</label>
+	    <div ng-bind-html="elemento.firmaEfector | rawHtml"  ></div>
+	</div>
+  
+  	<div class="ui small buttons"  >
+		<div class="ui red button" ng-click="listar()" ng-class="{'loading':haciendo}"><i class="reply icon"></i>Volver</div>
+	</div>
+</div> -->
+
+
+<!-- Dimmer cargando info 
+<div class="ui inverted dimmer" ng-class="{'active':haciendo}" id="haciendo"><div class="ui text loader">Procesando información...</div></div>-->

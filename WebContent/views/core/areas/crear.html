@@ -1,0 +1,70 @@
+<div class="ui form " novalidate name="form">
+	
+	<div class="three fields">
+	
+		<!-- 	Codigo -->
+		<div class="required field "  ng-class="{'error': form.codigo.$invalid && form.codigo.$dirty}">
+		  	
+		  	<label>Código</label>
+			<div class="ui left action small input">
+			
+			  <input ng-model="elemento.codigo" type="text" placeholder="Ingrese un Código para el elemento..." />
+			  
+			  <div ng-show="form.codigo.$invalid && form.codigo.$dirty" 
+			  			class="ui red pointing above ui label">Ingrese un Código válido</div>
+			
+			</div>
+			
+		</div>
+		
+		
+		<!-- 	Nombre -->
+		<div class="required field"  ng-class="{'error': form.nombre.$invalid && form.nombre.$dirty}">
+		  	
+		  	<label>Nombre</label>
+			<div class="ui left small input">
+			
+			  <input ng-model="elemento.nombre" type="text" placeholder="Ingrese un nombre para el elemento..."/>
+			  
+			  <div ng-show="form.nombre.$invalid && form.nombre.$dirty" 
+			  			class="ui red pointing above ui label">Ingrese un nombre válido</div>
+			
+			</div>
+			
+		</div>
+		
+		<!-- 	Sucursal por defecto -->
+		<div class="required field">
+			
+			<label>Sucursal del área:</label>
+		
+			<div class="ui dropdown selection" id="listaSucursal">
+				
+				<div class="text">
+					<span ng-show="loadingSucursales">Elija una sucursal</span>
+					<div class="ui active inline loader" ng-show="loadingSucursales"></div>
+				</div>
+		
+				<i class="dropdown icon"></i>
+
+				<div class="menu">
+					<div class="item" ng-class="{'active': sucursal.checked}" 
+						ng-repeat="sucursal in sucursales "
+						ng-selected="elemento.sucursal.codigo==sucursal.codigo"
+						ng-click="seleccionoSucursal(sucursal)">
+						{{sucursal.nombre}}</div>
+				</div>
+
+			</div>
+		</div>
+		
+  	</div>
+  	
+  	<div class="ui small buttons" >
+  		<div class="ui blue button" ng-class="{'loading': haciendo, 'disabled': !(elemento.codigo && elemento.nombre && elemento.sucursal.codigo)}" ng-click="guardar()"><i class="save icon"></i>Guardar</div>
+  		<div class="or"></div>
+ 		<div class="ui red button" ng-click="cancelar()" ng-show="modificando"><i class="reply icon"></i>Volver</div>
+ 		<div class="ui orange button" ng-click="cancelar()" ng-show="!modificando"><i class="list icon"></i>Listar</div>
+	</div>
+  
+</div>

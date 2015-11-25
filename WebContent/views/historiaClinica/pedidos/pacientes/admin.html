@@ -1,0 +1,10 @@
+<!-- <h4 class="ui azulHE block header"> -->
+<!--   Lista de los pedidos pendientes -->
+<!--   <div class="sub header">Formulario de busqueda</div> -->
+<!-- </h4> -->
+
+<!-- <section ng-include="'views/historiaClinica/pedidos/buscar.html'"></section> -->
+
+<div class="ui message" ng-class="{'red':mensajes.error, 'green':!mensajes.error}" ng-show="hayMensajes">{{mensajes.mensaje}}</div>
+
+<section ng-include="'views/historiaClinica/pedidos/pacientes/listar.html'" class="sixteen wide column cajaSombreada" ng-show="!modificando"></section> 

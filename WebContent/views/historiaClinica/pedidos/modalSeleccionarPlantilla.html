@@ -1,0 +1,50 @@
+<div class="ui page dimmer" ng-class="{'active':agregandoPlantilla}" >
+
+	<div  class="ui page dimmer ng-scope visible active" >
+	
+		<h4 class="ui azulHE block header">
+			  Seleccionar plantilla a insertar en el informe
+			  <div class="sub header">Al seleccionarla, se insertará automáticamente en el informe</div>
+		</h4>
+		
+		
+		<!-- Buscador -->
+		<div class="ui icon small input">
+		  <input type="text" placeholder="Buscar..." ng-model=nombreBusquedaPlantilla>
+		  <i class="search icon"></i>
+		</div>
+		
+		
+		  <div class="content">
+		  
+		    	<table class="ui two column small basic table ">
+					  <thead>
+					    <tr>
+					      <th>Título</th>
+					      <th>Acciones</th>
+					    </tr>
+					  </thead>
+					  
+					  <tbody>
+					    <tr ng-repeat="p in plantillas | filter: nombreBusquedaPlantilla"  >
+					      <td style="text-align: left">{{p.titulo}}</td>
+					      <td>
+					        <div ng-click="insertar(p)" class="circular ui tiny icon button" >
+					        	<i class="paste icon" title="Seleccionar"></i></div>
+					      </td>
+					    </tr>
+					  </tbody>
+					
+					</table> 
+					
+		  </div>
+		  
+		  
+		  <div class="actions">
+		    <div class="ui red button" ng-click="cerrarModalPlantillas()">
+		 		<i class="reply icon"></i>Volver
+			</div>
+		  </div>
+		  
+	</div>
+</div>

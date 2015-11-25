@@ -1,0 +1,65 @@
+<h4 class="ui azulHE block header attached message">
+  Crear plantilla pública
+  <div class="sub header">Ingrese un texto y utilice la barra de herramientas para darle estilo</div>
+</h4>
+
+<div class="sixteen wide column ui attached fluid form  segment cajaSombreadaSinTop" novalidate name="form">
+	
+	<div class="ui message" ng-class="{'red':mensajes.error, 'green':!mensajes.error}" ng-show="hayMensajes">{{mensajes.mensaje}}</div>
+	
+	<div class="two fields">
+	
+	  	<div class="required field"  ng-class="{'error': form.titulo.$invalid && form.titulo.$dirty}">
+		    <label>Título</label>
+		    <div class="ui input">
+		      <input ng-model="elemento.titulo" type="text" placeholder="Ingrese un título a la plantilla..."/>
+	
+		      <div ng-show="form.titulo.$invalid && form.titulo.$dirty" 
+		      			class="ui red pointing above ui label">Ingrese un título válido</div>
+		      			
+		    </div>
+	  	</div>
+  	
+	  	<!-- 	Servicios disponibles -->
+		<div class="required field">
+			
+			<label>Servicio:</label>
+		
+			<div class="ui dropdown selection" id="listaServicios">
+
+				<div class="text">
+					<span ng-show="!loadingServicios">Elija servicio</span>
+					<div class="ui active inline loader" ng-show="loadingServicios"></div>
+				</div>
+				
+				<i class="dropdown icon"></i>
+					
+				<div class="menu">
+					<div class="item" ng-class="{'active': servicio.checked}" 
+						ng-repeat="servicio in servicios track by $index | orderBy: nombre "
+						ng-selected="elemento.servicio.codigo==servicio.codigo"
+						ng-click="seleccionoServicio(servicio)">
+						{{servicio.nombre}}</div>
+				</div>
+
+			</div>
+		</div>
+		
+	</div>
+	
+ 	<div class="field" >
+    	<label>Texto de la plantilla / template</label>
+		<textarea horus-editor-model="texto" texto="elemento.texto" name="editor1" id="editor1" rows="20" cols="80" ></textarea>
+	</div>
+  
+	<div class="ui small buttons" >
+		<div class="ui blue button" ng-class="{'loading': haciendo, 'disabled': !(elemento.titulo && elemento.nombreServicio)}" 
+			ng-click="guardar()"><i class="save icon"></i>Guardar</div>
+		<div class="or"></div>
+		<div class="ui red button" ng-click="cancelar()" ><i class="reply icon"></i>Volver</div>
+	</div>
+		
+</div>
+
+<!-- Modal Confirmar Acción -->
+<section ng-include="'views/modalConfirmarAccion.html'"></section>

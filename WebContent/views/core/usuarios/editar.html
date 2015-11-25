@@ -1,0 +1,161 @@
+<main class="ui three column grid">
+  
+  <section class="column">
+    <div class="ui form segment">
+    
+      <!-- AVATAR-->
+      <div class="field">
+        <label for="avatar">Sube tu avatar!</label>
+        <div ><input type="file" id="avatar" name="avatar" ng-file-select="onFileSelect($files)" ng-model="avatar" /><i class="small upload icon"></i></div>
+      </div>
+
+      <!-- Preview de la imagen -->
+      <div ng-show="selectedFiles == null" class="field">
+          <img src="images/momos/no_avatar.jpg" class="avatar preview">
+      </div>
+      <div ng-show="selectedFiles != null" class="field">
+        <div class="sel-file" ng-repeat="f in selectedFiles">
+          <img ng-show="dataUrls[$index]" ng-src="{{dataUrls[$index]}}" class="avatar preview">
+          <small>{{f.name}} - tamaño: {{f.size}}B - tipo: {{f.type}}</small>
+        </div>
+      </div>
+    
+    </div>
+  </section>
+
+  <section class="column">
+    <div class="ui form segment">
+    <form>
+      <fieldset>
+
+          <legend>Pre - inscripción 2014</legend>
+
+          <!-- Datos de registro -->
+          <div class="two fields">
+            <!-- Nombre de usuario-->
+            <div class="field">
+              <label  for="username">Nombre de usuario</label>
+              <div ><input id="username" name="username" type="text" placeholder="Nombre de usuario"  required="true" ng-model="usuario.username" accept="image/jpg,image/jpeg"/></div>
+            </div>
+
+            <!-- Password-->
+            <div class="field">
+              <label  for="password">Password</label>
+              <div ><input id="password" name="password" type="password" placeholder="Password"  required="true" ng-model="usuario.password" /></div>
+            </div>
+          </div>
+
+          <!-- DNI-->
+          <div class="field">
+            <label  for="dni">DNI</label>
+            <div ><input id="dni" name="dni" type="text" placeholder="DNI"  required="true" ng-model="usuario.dni"/></div>
+          </div>
+
+          <div class="two fields">
+            <!-- Apellido-->
+            <div class="field">
+              <label  for="apellido">Apellido</label>
+              <div ><input id="apellido" name="apellido" type="text" placeholder="Apellido"  required="true" ng-model="usuario.apellido"/></div>
+            </div>
+
+            <!-- Nombre-->
+            <div class="field">
+              <label  for="nombre">Nombre</label>
+              <div ><input id="nombre" name="nombre" type="text" placeholder="Nombre"  required="true" ng-model="usuario.nombre" /></div>
+            </div>
+          </div>  
+
+          <!-- Fecha de nacimiento-->
+          <div class="field">
+            <label  for="fechaNacimiento">Fecha de Nacimiento</label>
+            <div ><input id="fechaNacimiento" name="fechaNacimiento" type="text" placeholder="Fecha de nacimiento"  ng-model="usuario.fechaNacimiento"/></div>
+          </div>
+
+          <div class="two fields">
+            <!-- Domicilio -->
+            <div class="field">
+              <label  for="domicilio">Domicilio</label>
+              <div ><input id="domicilio" name="domicilio" type="text" placeholder="Domicilio"  ng-model="usuario.domicilio"/></div>
+            </div>
+
+            <!-- Domicilio laboral -->
+            <div class="field">
+              <label  for="domicilioLaboral">Domicilio laboral</label>
+              <div ><input id="domicilioLaboral" name="domicilioLaboral" type="text" placeholder="Domicilio  laboral"  ng-model="usuario.domicilioLaboral"/></div>
+            </div>
+          </div>
+
+          <!-- Localidadd -->
+          <div class="field">
+            <label  for="localidad">Localidad</label>
+            <div ><input id="localidad" name="localidad" type="text" placeholder="Localidad"  ng-model="usuario.localidad"/></div>
+          </div>
+
+          <div class="two fields">
+            <div class="field">
+              <!-- Telefono -->
+              <label  for="telefono">Teléfono</label>
+              <div ><input id="telefono" name="telefono" type="text" placeholder="Teléfono"  ng-model="usuario.telefono"/></div>
+            </div>
+
+            <!-- Telefono alternativo -->
+            <div class="field">
+              <label  for="telefonoAlternativo">Teléfono alternativo</label>
+              <div ><input id="telefonoAlternativo" name="telefonoAlternativo" type="text" placeholder="Teléfono alternativo"  ng-model="usuario.telefonoAlternativo"/></div>
+            </div>
+          </div>
+
+          <!-- Trabaja -->
+          <div class="grouped inline fields">
+            <h4 class="red head">Trabaja</h4>
+            <div class="field">
+              <div class="ui radio checkbox">
+                <input name="trabaja" type="radio" ng-model="usuario.trabaja" value="Si" checked="checked" />
+                <label  for="trabaja">Si</label>
+              </div>
+            </div>
+            <div class="field">
+              <div class="ui radio checkbox">
+                <input name="trabaja" type="radio" ng-model="usuario.trabaja" value="No" />
+                <label  for="trabaja">No</label>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- Horario laboral -->
+          <div class="field">
+            <label  for="horarioLaboral">Horario laboral</label>
+            <div ><input id="horarioLaboral" name="horarioLaboral" type="text" placeholder="Horario laboral"  ng-model="usuario.horarioLaboral"/></div>
+          </div>
+
+          <!-- CUIL -->
+          <div class="field">
+            <label  for="cuil">CUIL</label>
+            <div ><input id="cuil" name="cuil" type="text" placeholder="CUIL"   ng-model="usuario.cuil"/></div>
+          </div>
+        
+          <!-- E-Mail-->
+          <div class="field">
+            <label  for="email">Correo electrónico</label>
+            <div ><input id="email" name="email" type="text" placeholder="Correo electrónico"  required="" ng-model="usuario.email" />
+          </div>
+
+          <div class="field">
+            <!-- Textarea -->
+            <label  for="cursos">Cursos</label>
+            <div ><textarea id="cursos" name="cursos" ng-model="usuario.cursos" row="3"></textarea><span class="help-block">Cursos separados por coma.</span></div>
+          </div>
+
+          <!-- Button -->
+          <div class="field">
+            <div >
+              <button id="cancelar" name="cancelar" class="ui red button" ng-click="listar()" >Listar</button>
+              <button id="enviar" name="enviar" class="ui green button" type="submit" ng-click="actualizar()">Guardar</button>
+          </div>
+      </fieldset>
+      </form>
+    </div>
+    </section>
+    <section class="column"></section>
+</main>

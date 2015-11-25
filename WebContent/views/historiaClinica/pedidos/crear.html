@@ -1,0 +1,167 @@
+<section class="sixteen wide column ui form cajaSombreada" novalidate name="form">
+	
+	<div class="four fields">
+	
+	  	<!-- 	Servicios disponibles -->
+		<div class="field">
+			<label>Servicio:</label>
+		    <h5  type="text" >{{elemento.nombreServicio}}</h5>
+		</div>
+	
+	  	<div class="field"  ng-class="{'error': form.fecha.$invalid && form.fecha.$dirty}">
+		    <label>Fecha</label>
+		    <div class="ui input">
+		      <input ng-model="elemento.fecha" type="text" placeholder="Ingrese una fecha válida..."/>
+	
+		      <div ng-show="form.fecha.$invalid && form.fecha.$dirty" 
+		      			class="ui red pointing above ui label">Ingrese una fecha válida</div>
+		      			
+		    </div>
+	  	</div>
+		  	
+	  	<div class="field"  ng-class="{'error': form.paciente.$invalid && form.paciente.$dirty}">
+		    <label>Apellido y Nombres:</label>
+		    <div class="ui  input">
+		      <input ng-model="elemento.paciente" type="text" placeholder="Ingrese el paciente..."/>
+	
+		      <div ng-show="form.paciente.$invalid && form.paciente.$dirty" 
+		      			class="ui red pointing above ui label">Ingrese el paciente</div>
+		      			
+		    </div>
+	  	</div>
+	  	
+	  	<div class="field"  ng-class="{'error': form.solicitante.$invalid && form.solicitante.$dirty}">
+		    <label>Indicado por:</label>
+		    <div class="ui input">
+		      <input ng-model="elemento.solicitanteRaw" type="text" placeholder="Ingrese el médico solicitante..."/>
+	
+		      <div ng-show="form.solicitante.$invalid && form.solicitante.$dirty" 
+		      			class="ui red pointing above ui label">Ingrese el médico solicitante</div>
+		      			
+		    </div>
+	  	</div>
+	  	
+  	</div>
+	  	
+  	<h4 class="ui horizontal header divider">
+	    <i class="file text outline icon"></i>
+	    Informe
+  	</h4>
+  
+  	<div class="three fields">
+	 		
+		<!-- 	Lista de Plantillas -->
+		<div class="four wide field">
+			
+			<label>Plantillas:</label>
+			<div class="ui floating labeled icon button" id="copiarEstudioPrevio" 
+				ng-click="reemplazarTextoPorInformePrevio()" 
+				ng-show="pedidoPrevio != null && pedidoPrevio.texto != undefined && pedidoPrevio.texto != null">
+				
+				<i class="paste icon"></i>
+				
+				<div class="text">
+					<span>Cargar Último informe</span>
+				</div>
+	  		</div>
+	  		
+			<div class="ui floating dropdown labeled icon button" id="listaPLantillas">
+				<i class="paste icon"></i>
+				
+				<div class="text">
+					<span >Agregar plantilla</span>
+				</div>
+				
+				<div class="menu">
+					
+					<div class="header">
+				      Filtrar por titulo
+				    </div>
+				    
+				    <div class="ui icon search input" style="width: 90%;">
+						<i class="search icon"></i>
+				      	<input type="text" placeholder="Ingrese un titulo..." ng-model="nombreBusquedaPlantilla" >
+				    </div>
+				    
+					<div class="item" 
+						ng-repeat="p in plantillas"
+						ng-keypress="$event.keyCode == 13 ? insertar(p) : null"
+						ng-click="insertar(p)"
+						>
+						{{p.titulo}}</div>
+			  	</div>
+				  
+			</div>
+		      			
+  		</div> 	
+			 		
+			 			
+	 	<div class="twelve wide field"  ng-class="{'error': form.estudios.$invalid && form.estudios.$dirty}">
+		    <label>Estudios <span ng-if="elemento.unEstudioPorPedido">(Un informe por estudio)</span>:</label>
+	      	<div class="ui horizontal list">
+			  
+			  <div class="item" 
+			  		ng-repeat="estudio in elemento.estudiosPaciente">
+			    <div class="content top aligned">
+			      ({{estudio.codigoEstudio}}) {{estudio.nombreEstudio}}
+			    </div>
+			  </div>
+			  
+			</div>
+		      			
+	  	</div> 	
+	  	
+  	</div> 	
+	  	
+<!-- 	  	Lo pongo del tamanio de la hoja A4, asi ven exactamente como queda -->
+	<div class="field" style="width: 8.27in;">
+	    <label>Informe</label>
+		<textarea horus-editor-model-pedidos="texto" texto="elemento.texto" name="editor1" id="editor1" rows="20" cols="80" ></textarea> 
+		<!-- <textarea horus-editor-model="texto" name="editor1" id="editor1" texto="elemento.texto" texto="elemento.texto"></textarea> -->
+  	</div>
+	
+	<div class="field" style="text-align: right;">
+		<label>Firma del efector:</label>
+	    <div style="text-align: center;float: right;" ng-bind-html="elemento.firmaEfector | rawHtml"  ></div>
+	</div>
+		
+	<div class="ui message" style="width: 67%;" ng-class="{'red':mensajes.error, 'green':!mensajes.error}" ng-show="hayMensajes">{{mensajes.mensaje}}</div>
+ 		
+  	<div class="ui small buttons" ng-show="!haciendo">
+ 		<div class="ui blue button" title="Guardar pedido"
+ 			ng-click="informar()"><i class="save icon"></i>Guardar</div>
+ 		<div class="or" ></div>
+ 		<div class="ui orange button" title="Imprimir pedido" 
+			ng-click="imprimir()" ><i class="print icon"></i>Imprimir</div>
+ 		<div class="or" ></div>
+		<div class="ui teal button" title="Confirmar pedido"
+			ng-click="confirmar()" ><i class="checkmark icon"></i>Confirmar</div>
+ 		<div class="or" ></div>
+		<div class="ui red button" title="Volver"
+			ng-click="cancelar()" ><i class="reply icon"></i>Volver</div>
+	</div>
+
+  	<div class="ui small buttons" ng-show="haciendo" >
+  		<div class="ui blue loading button" ><i class="save icon"></i>Guardar</div>
+ 		<div class="or"></div>
+ 		<div class="ui orange loading button" ><i class="print icon"></i>Imprimir</div>
+ 		<div class="or"></div>
+  		<div class="ui teal loading button" ><i class="checkmark icon"></i>Confirmar</div>
+ 		<div class="or"></div>
+		<div class="ui red loading button" ><i class="reply icon"></i>Volver</div>
+	</div>
+
+	<!-- 	Dimmer -->
+	 <div class="ui dimmer" ng-class="{'active':haciendo}">
+	    <div class="content">
+	      <div class="center">
+	          <div class="ui active inline loader" ></div>
+	      </div>
+	    </div>
+	  </div>
+  	
+</section >
+
+<section ng-include="'views/modalConfirmarAccion.html'"></section>
+
+<section ng-include="'views/modalErrorConcurrente.html'"></section>

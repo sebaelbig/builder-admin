@@ -1,0 +1,96 @@
+<h4 class="ui azulHE block header attached message">
+  <span ng-if="!modificando">Creando un tipo de perfil</span>
+  <span ng-if="modificando">Modificando el tipo de perfil <b>{{elemento.nombreServicio}}</b></span>
+  <div class="sub header" ng-if="!modificando">Formulario de creación</div>
+  <div class="sub header" ng-if="modificando">Formulario de modificación</div>
+</h4>
+
+<div class="ui message" ng-class="{'red':mensajes.error, 'green':!mensajes.error}" ng-show="hayMensajes">{{mensajes.mensaje}}</div>
+
+<article class="ui form sixteen wide column cajaSombreada" novalidate name="form">
+	
+	
+	<div class="four fields">
+	
+		<!-- 	Nombre -->
+		<div class="field"  ng-class="{'error': form.nombre.$invalid && form.nombre.$dirty}">
+		  	
+		  	<label>Nombre</label>
+			<div class="ui icon small input">
+			
+			  <input ng-model="elemento.nombre" type="text" placeholder="Ingrese un nombre para el elemento..."/>
+			  
+			  <div ng-show="form.nombre.$invalid && form.nombre.$dirty" 
+			  			class="ui red pointing above ui label">Ingrese un nombre válido</div>
+			
+			</div>
+			
+		</div>
+		
+		
+		<!-- 	Codigo -->
+		<div class="field "  ng-class="{'error': form.codigo.$invalid && form.codigo.$dirty}">
+		  	
+		  	<label>Código</label>
+			<div class="ui icon  small input">
+			
+			  <input ng-model="elemento.codigo" type="text" placeholder="Ingrese un Código para el elemento..." />
+			  
+			  <div ng-show="form.codigo.$invalid && form.codigo.$dirty" 
+			  			class="ui red pointing above ui label">Ingrese un Código válido</div>
+			
+			</div>
+			
+		</div>
+		
+		<!-- 	Rol por defecto -->
+		<div class="field">
+			
+			<label>Rol del que depende:</label>
+		
+			<div class="ui dropdown selection" id="listaRoles">
+				<div class="text">Elija rol</div><i class="dropdown icon"></i>
+
+				<div class="menu">
+					<div class="item" ng-class="{'active': rol.checked}" 
+						ng-repeat="rol in roles"
+						ng-selected="elemento.tipoRol.id==rol.id"
+						ng-click="seleccionoRol(rol)">
+						{{rol.nombre}}</div>
+				</div>
+
+			</div>
+		</div>
+		
+		<!--  Aplicar cambios a todos los u por defecto -->
+		<div class="field">
+			
+			<label>Aplicar cambio a TODOS los perfiles de este tipo:</label>
+		
+			<div class="ui toggle checkbox" style="margin-left: 15px;">
+			
+				<input id="choice" type="checkbox"
+					ng-checked="aplicarActuales"
+					ng-click="toggleAplicar()"> <label
+					for="choice">{{(aplicarActuales)?'Aplicar':'NO aplicar'}}</label>
+					
+			</div>
+			
+			<span style="display: block;margin-bottom: 3px;" ng-show="aplicarActuales">Se actualizarán todos los perfiles de este tipo con las funciones seleccionadas. Si la función NO estaba asignada al perfil, ésta es agregada.</span>
+	
+		</div>
+		
+  	</div>
+  	
+	<!--   	Funciones  -->
+	<article id="panelFunciones"  ng-include="'views/core/usuarios/perfiles/tiposDePerfil/adminFunciones.html'"></article>
+  	
+  	
+  	<div class="ui small buttons" >
+  		<div class="ui blue button" ng-class="{'loading': haciendo, 'disabled': !elemento.nombre && !elemento.tipoRol.id}" ng-click="guardar()" ><i class="save icon"></i>Guardar</div>
+  		<div class="or"></div>
+ 		<div class="ui red button" ng-click="cancelar()" ng-show="modificando"><i class="reply icon"></i>Volver</div>
+ 		<div class="ui orange button" ng-click="cancelar()" ng-show="!modificando"><i class="list icon"></i>Listar</div>
+	</div>
+  
+</article>

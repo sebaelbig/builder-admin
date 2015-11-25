@@ -1,0 +1,44 @@
+<div class="ui attached message negrita">
+	Horarios de atención
+</div>
+<!-- Lista de bloque turnos -->
+<div class="ui attached selection animated divided small list lista bloqueTurnos segment" 
+	ng-show="show_bloquesDeTurnos" style="margin: 0px; overflow: auto; height: 6em; margin-bottom: 18px;">
+			
+	<!-- Item de bloque turno -->
+	<div ng-repeat="bt in bloqueTurnos" class="item dia bloqueTurno"  ng-class="bt.clase" 
+		ng-click="seleccionoBloqueTurno(bt)">
+	
+		<i class="browser icon"></i>
+		<span class="negrita" style="text-transform: capitalize;">{{bt.nombreDia}}</span> de <span class="negrita" >{{bt.str_horaInicio}}</span> a  <span class="negrita" >{{bt.str_horaFin}}</span>
+		
+		<span ng-show="bt.str_diaPrimerTurnoLibre">
+			( Primer turno libre: <span class="negrita" >{{bt.str_diaPrimerTurnoLibre}}</span> Nro: <span class="negrita" >{{bt.numeroTurno}}</span> ) 			
+		</span>
+		<span ng-show="!bt.str_diaPrimerTurnoLibre">
+			(No posee turnos libres para este dia/hora) 			
+		</span>
+		(Desde el: <span class="negrita">{{bt.str_fechaInicio}}</span> )( Srv.: <span class="negrita" style="text-transform: capitalize;" >{{bt.servicio}}</span> )
+	</div>	
+</div>
+
+<!-- Bloque turno actual 
+<div  ng-show="show_bloquesDeTurnos" style="color: black !important;/*margin: 0px; overflow: visible; height: 1em; margin-top: 12px;*/" class="ui bottom attached message">
+	<i class="browser icon"></i>
+	<span class="negrita" style="text-transform: capitalize;">{{bloqueTurnoActual.nombreDia}}</span> de <span class="negrita" >{{bloqueTurnoActual.str_horaInicio}}</span> a  <span class="negrita" >{{bloqueTurnoActual.str_horaFin}}</span>
+	
+	<span ng-show="bloqueTurnoActual.str_diaPrimerTurnoLibre">
+		( Primer turno libre: <span class="negrita" >{{bloqueTurnoActual.str_diaPrimerTurnoLibre}}</span> Nro: <span class="negrita" >{{bloqueTurnoActual.numeroTurno}}</span> ) 			
+	</span>
+	<span ng-show="!bloqueTurnoActual.str_diaPrimerTurnoLibre">
+		(No posee turnos libres para este dia/hora) 			
+	</span>
+	(Desde el: <span class="negrita">{{bloqueTurnoActual.str_fechaInicio}}</span> )( Srv.: <span class="negrita" style="text-transform: capitalize;" >{{bloqueTurnoActual.servicio}}</span> )
+</div> -->
+
+
+<!-- Cartel de que esta actualizando los bloque turnos -->
+<div ng-show="show_actualizando" >
+	<span>{{txt_actualizando}}</span>
+	<img src="/he_fe/images/turnos/actualizando_barra.gif" />
+</div>	

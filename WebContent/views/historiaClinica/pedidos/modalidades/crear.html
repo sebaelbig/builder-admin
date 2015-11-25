@@ -1,0 +1,43 @@
+<div class="ui form " novalidate name="form">
+	
+	<div class="ui message" ng-class="{'red':mensajes.error, 'green':!mensajes.error}" ng-show="hayMensajes">{{mensajes.mensaje}}</div>
+	
+	<div class="two fields">
+	
+		<!-- 	Código -->
+		<div class="required field">
+			
+			<label>Código:</label>
+			<div class="ui left input">
+			
+			  <input name="codigo" ng-model="elemento.codigo" type="text" placeholder="Ingrese el código..."/>
+			  
+			  <div ng-show="form.codigo.$invalid && form.codigo.$dirty" 
+			  			class="ui red pointing above ui label">Ingrese un código válido</div>
+			
+			</div>
+		</div>
+		
+		<!-- Descripcion -->
+		<div class="required field"  ng-class="{'error': form.descripcion.$invalid && form.descripcion.$dirty}">
+		  	
+		  	<label>Descripcion</label>
+			<div class="ui left input">
+			
+			  <input ng-model="elemento.descripcion" type="text" placeholder="Ingrese una descripcion para la modalidad..."/>
+			  
+			  <div ng-show="form.descripcion.$invalid && form.descripcion.$dirty" 
+			  			class="ui red pointing above ui label">Ingrese una nombre descripción</div>
+			
+			</div>
+		</div>
+  	</div>
+  	
+  	<div class="ui small buttons" >
+  		<div class="ui button" ng-class="{'loading': haciendo, 'blue':!modificando, 'green':modificando}" ng-click="guardar()"><i class="save icon"></i>Guardar</div>
+  		<div class="or"></div>
+ 		<div class="ui red button" ng-click="cancelar()" ng-show="modificando"><i class="reply icon"></i>Cancelar edición</div>
+ 		<div class="ui orange button" ng-click="cancelar()" ng-show="!modificando"><i class="list icon"></i>Listar</div>
+	</div>
+  
+</div>

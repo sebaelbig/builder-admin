@@ -1,0 +1,77 @@
+<h4 class="ui azulHE block header attached message">
+  Lista de plantillas públicas
+  <div class="sub header">Ingrese un texto para filtrar por nombre</div>
+</h4>
+
+<div class="ui message" ng-class="{'red':mensajes.error, 'green':!mensajes.error}" ng-show="hayMensajes">{{mensajes.mensaje}}</div>
+
+<section class="sixteen wide column ui attached fluid segment">
+	<a class="ui green button" ng-click="crear()">Crear una nueva plantilla pública</a>
+</section>
+
+<!-- Lista -->
+<section class="sixteen wide column">
+
+	<h4 class="ui azulHE block header">
+	  Lista de plantillas públicas
+	  <div class="sub header">Ingrese un texto para filtrar por título</div>
+	</h4>
+	
+	<div class="ui two column grid">
+	
+		<!-- Buscador -->
+		<div class="column">
+			<div class="ui icon small input">
+			  <input type="text" placeholder="Buscar..." ng-model="nombreBusqueda" ng-change="filtrar(this,paginador)">
+			  <i class="search icon"></i>
+			</div>
+		</div>
+		
+		<!-- Paginador style="text-align: left"  -->
+		<div class="column" ng-include="'views/paginador.html'"></div>
+	
+	</div>
+	
+	<!-- Tabla -->
+	<table class="ui small basic sortable table ">
+	  <thead>
+	    <tr>
+	      <th class="manitas twelve wide" 
+	      		ng-click="paginador.ordenarPor('titulo')"
+	      		ng-class="paginador.claseOrdenacion('titulo')" style="cursor: pointer;" >Título</th>
+	      <th class="manitas twelve wide" 
+	      		ng-click="paginador.ordenarPor('nombreServicio')"
+	      		ng-class="paginador.claseOrdenacion('nombreServicio')" style="cursor: pointer;" >Servicio</th>
+	      <th class="four wide">Acciones</th>
+	    </tr>
+	  </thead>
+	  
+	  <tbody>
+	    <tr ng-repeat="e in elementos"  >
+	      <td style="text-align: left">{{e.titulo}}</td>
+	      <td style="text-align: left">{{e.nombreServicio}}</td>
+	      <td>
+	        <div ng-click="editar(e)" class="circular ui tiny icon button" ng-class="{'loading': e.borrado}">
+	        	<i class="edit icon" title="Editar"></i></div>
+	        <!-- <a ng-click="editar(e)" class="manitas"><i class="edit icon"></i>Editar</a> -->
+	        <div ng-click="confirmarEliminar(e)" class="circular ui tiny icon button" ng-class="{'loading': e.borrado}">
+	        	<i class="delete icon" title="Eliminar"></i></div>        
+	      </td>
+	    </tr>
+	  </tbody>
+	
+	</table> 
+
+</section>
+
+<!-- Dimmer -->
+<div class="ui inverted dimmer" id="haciendo" ng-class="{'active':haciendo}"> 
+   <div class="ui text loader">Recuperando elementos ...</div>
+</div>
+
+<div class="ui dimmer" id="verTemplate">
+	<div ng-include="'views/historiaClinica/templates/ver.html'"></div>
+</div>
+	
+	<!-- Dimmer de confirmar eliminiacion -->
+<div ng-include="'views/modalEliminar.html'"></div>

@@ -1,0 +1,119 @@
+/***************** Cartel de ayuda ********************************/
+.divMensajeAyuda{
+	background: none repeat scroll 0 0 #FDF9F4;
+	/*Mozilla*//*Opera*//*Safari*/
+	box-shadow: 0 0 5px #0099DA;
+	-moz-box-shadow: 0 0 5px #0099DA;
+	-webkit-box-shadow: 0 0 5px #0099DA;
+	-o-box-shadow: 0 0 5px #0099DA;
+	
+	color: #BE0410;
+	float:right;
+	margin-top: 4px;
+	text-align: left;
+	width: 55%;
+	border-style: solid;
+	border-width: 2px;
+	height: 36px;
+	position:relative;
+	
+}
+
+.iconoAyuda{
+	position: absolute;
+	left:-12px;
+	top:-12px;
+	height: 24px;
+}
+
+.nroAyuda{
+	position: absolute;
+	left:3px;
+	top: 1px;
+	text-shadow:0 0 5px orange;
+	font-size: 2.5em;
+	font-weight: bold;
+}
+
+.contenidoAyuda{
+	position: absolute;
+	width: 94%;
+	left: 23px;
+	top: 10px;
+}
+
+.cerrarAyuda{
+	cursor:pointer;
+	color:black;
+	text-decoration: underline;
+
+	position: absolute;
+	left:97.7%;
+	width: 2%;
+	top: 1px;
+}
+
+/***************** Cartel de mensajes ********************************/
+
+.divMensaje{
+	background: #F9FBFD none repeat scroll 0 0;
+	border: 2px ridge #EBCE9D  ;
+	left: 280px;
+	margin: 0;
+	opacity: 1;
+	position: fixed;
+	top: 120px;
+	/*z-index: 999;*/
+	/*Mozilla*//*Opera*//*Safari*/
+	box-shadow: 0 0 25px #FFFFFF;
+	-moz-box-shadow: 0 0 25px #FFFFFF;
+	-webkit-box-shadow: 0 0 25px #FFFFFF;
+	-o-box-shadow: 0 0 25px #FFFFFF;
+}
+
+.divCartel img {
+	float:left;
+}
+
+.divCartel p {
+	float: left;
+}
+
+.divCartel{
+	clear: both;
+	padding: 15px;
+}
+
+.divExterno{
+	background: #FFFFFF none repeat scroll 0 0;
+	height: 100%;
+	left: 0;
+	opacity: 0.5;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 999;
+}
+
+.divTitulo {
+	background: -moz-linear-gradient(center top , #EBCE9D 0%, #D0B382 95%) repeat scroll 0 0 transparent;
+	background: linear-gradient(center top , #EBCE9D 0%, #D0B382 95%) repeat scroll 0 0 transparent;
+	background-image: -o-linear-gradient(bottom , #D0B382 53%, #EBCE9D 95%);
+	background: -ms-linear-gradient(center top , #EBCE9D 0%, #D0B382 95%) repeat scroll 0 0 transparent;
+	background: -webkit-linear-gradient(bottom, #D0B382 53%, #EBCE9D 95%);
+	
+	color: #FFFFFF;
+	cursor: move;
+	font-weight: bold;
+	height: 20px;
+	padding-left: 5px;
+	position: absolute;
+	text-align: left;
+	width: 99%;
+}
+
+.btnMensaje{
+	background-color: #EBCE9D;
+	float: right;
+	clear: left;
+}

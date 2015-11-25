@@ -1,0 +1,191 @@
+<table width="600" border="1" cellspacing="0" cellpadding="1" 
+	style="border-collapse: collapse; font-weight: bold; margin-top:22px; display: table;" 
+	bordercolor="#CCC"
+	class="sixteen wide column cajaSombreada">
+		
+		<tr>
+			<td bgcolor="#EBCE9D" width="169" class="texto_sub"></td>
+	    	<td colspan="6" bgcolor="#EBCE9D" class="texto_sub">Datos Internaci&#243;n</td>
+     	 </tr>
+      
+      	<tr>
+	        <!-- Numero de cirugia -->
+	        <td  align="center" width="169" valign="middle" bgcolor="#F4EAE0" style="text-align: right">
+	          <span>Carpeta: &nbsp;</span>
+	        </td>
+	        
+	        <td align="center"  valign="middle" id="numero">{{elem.carpeta}}</td>
+	      </tr>
+
+	      <tr>
+	        <td align="center" valign="middle" bgcolor="#F4EAE0" style="text-align: right">
+	          <span >Fecha Ingreso: &nbsp;</span>
+	        </td>
+	        <td align="center" valign="middle" id="sala">{{elem.fechaIngreso}}</td>
+	      </tr>
+
+	      <tr>
+	        <td align="center" valign="middle" bgcolor="#F4EAE0" style="text-align: right">
+	          <span >Paciente: &nbsp;</span>
+	        </td>
+	        <td align="center" valign="middle">{{elem.paciente}}</td>
+	      </tr>
+
+	      <tr>
+	        <td align="center" valign="middle" bgcolor="#F4EAE0" style="text-align: right">
+	          <span >Diagnostico: &nbsp;</span>
+	        </td>
+	        <td align="center" valign="middle"  style="text-transform: capitalize;">{{elem.diagnostico}}</td>
+	      </tr> 
+	
+	      <tr>
+	      
+			 <td align="center" valign="middle" bgcolor="#F4EAE0" style="text-align: right">
+	          <span >Habitaci&#243;n:&nbsp;</span> 
+	        </td>
+	  	    <td align="center" valign="middle" >{{elem.pieza}}</td>
+	      </tr>
+	       <td align="center" valign="middle" bgcolor="#F4EAE0" style="text-align: right">
+	          <span >Cama:&nbsp;</span> 
+	        </td>
+	  	    <td align="center" valign="middle" >{{elem.cama}}</td>
+	      </tr>
+	      <td align="center" valign="middle" bgcolor="#F4EAE0" style="text-align: right">
+	          <span >Medico Interna :&nbsp;</span>
+	        </td>
+	        <td align="center" valign="middle" style="text-transform: capitalize;">{{elem.profResponsable}}</td>
+	      </tr>
+	        <td align="center" valign="middle" bgcolor="#F4EAE0" style="text-align: right">
+	          <span >Cant. D&#237;as de Internaci&#243;n:&nbsp;</span>
+	        </td>
+	        <td align="center" valign="middle" id="fechaReservaSala">{{elem.cantDias}}</td>
+	      </tr>
+	      <tr>
+	        
+
+	      <tr>
+	        <td align="center" valign="middle" bgcolor="#F4EAE0" style="text-align: right">
+	          <span >Edad:&nbsp;</span>
+	        </td>
+	        <td align="center" valign="middle" >{{elem.edad}} a&#241os</td>
+	      </tr>
+      
+	  	  <tr>
+	  	    <td align="center" valign="middle" bgcolor="#F4EAE0" style="text-align: right">
+	          <span >Mutuales:&nbsp;</span> 
+	        </td>
+	  	    <td align="center" valign="middle" >{{elem.mutuales}}</td>
+	      </tr>
+	      <td align="center" valign="middle" bgcolor="#F4EAE0" style="text-align: right">
+	          <span >Medico Cabecera :&nbsp;</span>
+	        </td>
+	        <td align="center" valign="middle" style="text-transform: capitalize;">{{elem.profCabecera}}</td>
+	      </tr>
+	
+</table>
+
+<!-- <div class="ui form">
+	<div class="fields">
+		
+		<div class="two wide field">
+			<label>Carpeta:</label>
+		</div>
+		<div class="ten wide field">
+			<span>{{elem.carpeta}}</span>
+		</div>
+	</div>
+
+	<div class="fields">
+		
+		<div class="two wide field">
+			<label>Fecha de Ingreso:</label>
+		</div>
+		<div class="ten wide field">
+			<span>{{elem.fechaIngreso}}</span>
+		</div>
+	</div>
+	<div class="fields">
+		<div class="two wide field">
+			<label>Paciente</label>
+		</div>
+		<div class="ten wide field">
+			<span>{{elem.paciente}}</span>
+		</div>
+	</div>
+	<div class="fields">
+		<div class="two wide field">
+			<label>Diagnostico:</label>
+		</div>
+		<div class="ten wide field">
+			<span>{{elem.diagnostico}}</span>
+		</div>
+	</div>
+	<div class="fields">
+		<div class="two wide field">
+			<label>Cant. dias Internacion:</label>
+		</div>
+		<div class="ten wide field">
+			<span>{{elem.cantDias}}</span>
+		</div>
+	</div>
+	<div class="fields">
+		<div class="two wide field">
+			<label>Profesional:</label>
+		</div>
+		<div class="ten wide field">
+			<span>{{elem.profesional}}</span>
+		</div>
+	</div>
+	<div class="fields">
+		<div class="two wide field">
+			<label>Edad:</label>
+		</div>
+		<div class="twn wide field">
+			<span>{{elem.edad}} a&#241os</span>
+		</div>
+	</div>
+	<div class="fields">
+		<div class="two wide field">
+			<label>Mutuales:</label>
+		</div>
+		<div class="ten wide field">
+			<span>{{elem.mutuales}}</span>
+		</div>
+	</div>
+	<div class="fields">
+		<div class="two wide field">
+			<label>Medico Cabecera:</label>
+		</div>
+		<div class="ten wide field">
+			<span>{{elem.medicoCabecera}}</span>
+		</div>
+
+	</div>
+
+</div>
+<br> -->
+<!-- <div class="ui list">
+	<div class="item">
+		<h5>Carpeta : {{elem.carpeta}}</h5>
+		<h5>Fecha Ingreso: {{elem.fechaIngreso}}</h5>
+		<h5>Paciente: {{elem.paciente}}</h5>
+		<h5>Diagnostico: {{elem.diagnostico}}</h5>
+		<h5>Cant. Dias de Internacion: {{elem.cantDias}}</h5>
+		<h5>Profesional: {{elem.profesional}}</h5>
+		<h5>Edad: {{elem.edad}}</h5>
+		<h5>Mutuales: {{elem.mutuales}}</h5>
+		<h5>Medico de Cabecera: {{elem.medicoCabecera}}</h5>
+
+	</div> -->
+<div class="ui small buttons">
+	<div class="ui red button" ng-click="volver()"
+		ng-class="{'loading':haciendo}">
+		<i class="reply icon"></i>Volver
+	</div>
+</div>
+
+<!-- Dimmer cargando info -->
+<div class="ui inverted dimmer" ng-class="{'active':haciendo}"
+	id="haciendo">
+	<div class="ui text loader">Procesando información...</div>
+</div>

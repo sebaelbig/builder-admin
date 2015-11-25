@@ -1,0 +1,59 @@
+<div class="ui form segment" novalidate name="form">
+	
+	<div class="three fields">
+	
+		<!-- 	ID -->
+		<div class="required field"  ng-class="{'error': form.id_tipoId.$invalid && form.id_tipoId.$dirty}">
+		  	
+		  	<label>Id</label>
+			<div class="ui input">
+			
+			  <input ng-model="elemento.id_tipoId" type="text" placeholder="Ingrese un id para el elemento..."/>
+			  
+			  <div ng-show="form.id_tipoId.$invalid && form.id_tipoId.$dirty" 
+			  			class="ui red pointing above ui label">Ingrese un ID válido</div>
+			
+			</div>
+			
+		</div>
+		
+		
+		<!-- 	Nombre -->
+		<div class="required field "  ng-class="{'error': form.tipoID.$invalid && form.tipoID.$dirty}">
+		  	
+		  	<label>Nombre</label>
+			<div class="ui  input">
+			
+			  <input ng-model="elemento.tipoID" type="text" placeholder="Ingrese un nombre para el elemento..." title="Ingrese un nombre para filtrar.."/>
+			  
+			  <div ng-show="form.tipoID.$invalid && form.tipoID.$dirty" 
+		  			class="ui red pointing above ui label">Ingrese un nombre válido</div>
+			
+			</div>
+			
+		</div>	
+		
+		<!-- 	Estado -->
+		<div class="field">
+		
+			<label>Estado</label>
+			
+			<div class="ui toggle checkbox">
+				<input id="choice-{{elemento.id_tipoId}}" type="checkbox"
+					ng-checked="elemento.estado == 'ACTIVO'"
+					ng-click="toggleEstado(elemento)"> <label
+					for="choice-{{elemento.id_tipoId}}">{{elemento.estado}}</label>
+			</div>
+					
+		</div>
+		
+  	</div>
+  	
+  	<div class="ui small buttons" >
+  		<div class="ui blue button" ng-class="{'loading': haciendo, 'disabled': !elemento.id_tipoId}" ng-click="guardar()"><i class="save icon"></i>Guardar</div>
+  		<div class="or"></div>
+ 		<div class="ui red button" ng-click="cancelar()" ng-show="modificando"><i class="reply icon"></i>Volver</div>
+ 		<div class="ui orange button" ng-click="cancelar()" ng-show="!modificando"><i class="list icon"></i>Listar</div>
+	</div>
+  
+</div>

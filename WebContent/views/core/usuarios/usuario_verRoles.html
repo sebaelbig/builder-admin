@@ -1,0 +1,42 @@
+<h4 class="ui azulHE block header attached message">
+  <span >Usuario: {{usuario.nombreCompleto}}</span>
+  <div class="sub header" >Vista de los roles y perfiles del usuario</div>
+</h4>
+
+<!-- <h2 style="text-align:center;"><i class="huge user icon"></i></h2> -->
+
+<!-- Lista de roles -->
+<h4 class="ui header" ng-show="usuario.roles.length == 0" style="color:#004070;">El usuario NO tiene roles asignados<h4>
+
+<section class="sixteen wide column">
+	<div class="ui selection tiny list" ng-show="usuario.roles.length > 0">
+			
+		<!-- 	Item Rol
+		ng-mouseover="resaltarPerfiles(r)" -->
+		<div class="item " 
+		 	ng-repeat="r in usuario.roles"
+		 	>
+	  		
+	    	<i class="minus checkbox icon"></i>
+	    	<b>{{r.nombre}} ( {{r.tipoId.tipoID}}: {{r.valorTipoID}} )</b>
+	    	
+			<!--     	Perfiles -->
+	    	<div class="ui selection tiny list">
+	    		
+	    		<!-- 	Item Perfil -->
+				<div class="item " 
+				 	ng-repeat="per in r.perfiles">
+			  		
+			    	<i class="empty checkbox icon"></i>
+			    	<b>{{per.nombre}} ( Srv: {{per.nombreServicio}} )</b>
+	    		</div>
+	    	</div>
+	    	
+	  	</div>
+	
+	</div>
+	
+	<div class="ui small buttons" >
+		<div class="ui red button" ng-click="volver()" ><i class="reply icon"></i>Volver</div>
+	</div>
+</section>

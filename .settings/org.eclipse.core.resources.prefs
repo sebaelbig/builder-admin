@@ -1,0 +1,17 @@
+eclipse.preferences.version=1
+encoding//WebContent/index.html=UTF-8
+encoding//WebContent/views=UTF-8
+encoding//WebContent/views/404.html=UTF-8
+encoding//WebContent/views/core/areas/crear.html=UTF-8
+encoding//WebContent/views/core/areas/servicios=UTF-8
+encoding//WebContent/views/core/areas/servicios/admin.html=UTF-8
+encoding//WebContent/views/core/areas/servicios/crear.html=UTF-8
+encoding//WebContent/views/core/usuarios/roles/adminRoles.html=UTF-8
+encoding//WebContent/views/core/usuarios/roles/crear.html=UTF-8
+encoding//WebContent/views/core/usuarios/roles/listar.html=UTF-8
+encoding//WebContent/views/core/usuarios/usuario_administrarRoles.html=UTF-8
+encoding//WebContent/views/home.html=UTF-8
+encoding//WebContent/views/layout/footer.html=UTF-8
+encoding//WebContent/views/login.html=UTF-8
+encoding/<project>=UTF-8
+encoding/WebContent=UTF-8

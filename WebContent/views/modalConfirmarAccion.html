@@ -1,0 +1,29 @@
+<div class="ui page dimmer" id="modalConfirmarAccion" >
+	
+	<div class="ui page dimmer ng-scope visible active" >
+	
+		<div class="ui compact icon warning modal message" style="width: 50%;">
+	  		
+	  		<i class="delete icon"></i>
+	  		
+	  		<div class="header" style="background-color: rgb(255, 251, 230);">
+	    		<span class="ng-binding">{{confirmarAccion._preCartel}}</span>
+	    		¿Está seguro que desea <b class="ng-binding">{{confirmarAccion._cartel}}</b>?
+	    		<b class="ng-binding">{{confirmarAccion._postCartel}}</b>
+	  		</div>
+		    
+	    	<div class="actions" style="background-color: rgb(255, 251, 230);">
+			      <div class="two fluid ui buttons">
+				        <div class="ui negative labeled icon button" ng-click="cancelarAccion()" ng-show="!confirmarAccion.soloConfirmar">
+				          	<i class="remove icon"></i>No
+				        </div>
+				        <div class="ui positive right labeled icon button" ng-click="ejecutarAccion()" ng-class="{'loading': confirmarAccion.btnLoading}">
+			          		<span ng-show="!confirmarAccion.soloConfirmar">Si</span><i class="checkmark icon"></i>
+			          		<span ng-show="confirmarAccion.soloConfirmar">Aceptar</span><i class="checkmark icon"></i>
+				        </div>
+			      </div>
+		    </div>
+		</div>
+	</div>
+	
+</div>

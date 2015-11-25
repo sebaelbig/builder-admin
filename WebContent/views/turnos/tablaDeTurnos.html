@@ -1,0 +1,46 @@
+<div class="ui floating small icon message" ng-class="{'red':mensajes.error, 'green':!mensajes.error}" 
+	ng-show="show_mensajeTurnos">
+
+ 	<i class="attention icon"></i>
+  	<div class="content" style="text-align: center;">
+    	<div class="header">	
+			{{mensajes.mensaje}}
+		</div>
+		<p>Por favor, seleccione otro día de atención.</p>
+	</div>
+	
+</div>
+
+<div  style="text-align:center;" ng-show="show_turnos">
+
+	<table class="ui celled table segment" >
+	
+		<thead>
+			<tr >
+				<th width="10%" style="text-align: center;">Hora</th>
+				<th width="10%" style="text-align: center;">Orden</th>
+				<th width="49%" style="text-align: center;">Paciente</th>
+				<th width="29%" style="text-align: center;">Acciones</th>
+			</tr>
+		</thead>
+		
+		<tbody >
+		
+			<tr ng-repeat="turno in turnos" class="turno" ng-class="{'libre':turno.libre,'ocupado':!turno.libre}">
+				<td >{{turno.str_hora}}</td>
+				<td >{{turno.numero}}</td>
+				<td ng-if="turno.libre">--</td><td ng-if="!turno.libre" >{{turno.str_paciente}}</td>
+				<td ng-if="turno.libre">--</td><td ng-if="!turno.libre">
+					<!-- <div ng-click="ver()" class="circular ui compact icon button" >
+        			<i class="announcement icon" title=""></i></div> -->
+					<div ng-click="verDatosPacienteTurno(turno)" class="circular ui compact icon button" >
+        			<i class="user icon" title=""></i></div>
+        			<div ng-click="verHistorialDelPaciente(turno)" class="circular ui compact icon button" >
+        			<i class="treatment icon" title=""></i></div>
+				</td>
+			</tr>
+		
+		</tbody>
+	
+	</table>
+</div>

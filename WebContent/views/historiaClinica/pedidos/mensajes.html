@@ -1,0 +1,59 @@
+<section class="sixteen wide column cajaSombreada">
+
+	<div class="ui  minimal comments"  style="margin-left: 10%; width: 80%;">
+	
+	  	<h4 class="ui azulHE block dividing header" ng-show="mensajes.length > 0"><i class="comments outline icon"></i> Mensajes del pedido {{elemento.numero}}</h4>
+	  	<h4 class="ui azulHE block dividing header" ng-show="mensajes.length == 0"><i class="comments outline icon"></i> El pedido {{elemento.numero}} no tiene mensajes asociados.</h4>
+	  
+	  	<div class="comment" ng-repeat="msj in mensajes" ng-show="mensajes.length > 0">
+	  
+		    <a class="avatar">
+		     	<i class="icon user"></i>
+		    </a>
+		    
+		    <div class="content">
+				<a class="author">{{msj.usuario}}</a>
+				<div class="metadata">
+			  		<span class="date">{{msj.fecha}}</span>
+				</div>
+				<div class="text">
+				  {{msj.texto}}
+				</div>
+		    </div>
+	    
+	  	</div>
+	  
+	  	<h4 class="ui azulHE dividing header" ng-show="!cancelando"><i class="comment icon"></i>Nuevo mensaje</h4>
+	  
+		<div class="ui azulHE icon warning  message" ng-show="cancelando">
+			<i class="comment icon"></i>
+		  	<div class="content">
+			    <div class="header">
+			      Está cancelando el pedido
+			    </div>
+			    <p>Por favor, ingrese el motivo</p>
+		  	</div>
+		</div>
+	  
+	  
+		<form class="ui reply form">
+			<div class="field">
+		    		<textarea ng-model="mensaje.texto"></textarea>
+		  	</div>
+		  	
+		   	<div class="ui small buttons" >
+		 		<div class="ui button" ng-class="{'loading': haciendo, 'red':cancelando, 'blue':!cancelando, 'disabled':!mensaje.texto}" ng-click="guardar()"><i class="save icon"></i>Guardar</div>
+		 		<div class="or"></div>
+				<div class="ui orange button" ng-click="cancelar()"  ><i class="reply icon"></i>Volver</div>
+			</div>
+		
+		</form>
+	  
+	</div>
+</section>
+
+<!-- Dimmer cargando info -->
+<div class="ui inverted dimmer" ng-class="{'active':haciendo}" id="haciendo"><div class="ui text loader">Procesando información...</div></div>
+
+<!-- Modal Confirmar Acción -->
+<section ng-include="'views/modalConfirmarAccion.html'"></section>

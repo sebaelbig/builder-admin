@@ -1,0 +1,23 @@
+<button name="borrar" class="ui button" ng-click="eliminarTodo()" >Eliminar todo</button>
+<button name="listar" class="ui teal button" ng-click="listar()" >Listar</button>
+<button name="crear" class="ui green button" ng-click="crear()" >Crear</button>
+
+<table class="ui basic table ">
+  
+  <thead>
+    <tr>
+      <th>Nombre</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr ng-repeat="att in tipoRols">
+      <td>{{att.nombre}}</td>
+      <td>
+        <a ng-click="editar(att)">Editar</a>
+        <a ng-click="ver(att)">Ver</a>
+      </td>
+    </tr>
+  </tbody>
+
+</table> 

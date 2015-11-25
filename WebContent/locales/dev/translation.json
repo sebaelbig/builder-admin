@@ -1,0 +1,372 @@
+{
+	"default": {
+		"app": {
+			"name": "Universe"
+		},
+		"welcome": "Bienvenido",
+		"create": {
+			"new": "Crear Nuevo/a"
+		},
+		"edit": "Modificar",
+		"cancel": "Cancelar",
+		"search": "Buscar",
+		"list": {
+			"all": "Listar Todos/as"
+		},
+		"clean": "Limpiar",
+		"operations": "Operaciones",
+		"logout": "Salir",
+		"days": {
+			"MONDAY": "Lunes",
+			"TUESDAY": "Martes",
+			"WEDNESDAY": "Miércoles",
+			"THURSDAY": "Jueves",
+			"FRIDAY": "Viernes",
+			"SATURDAY": "Sábado",
+			"SUNDAY": "Domingo"
+		},
+		"expand": {
+			"all": "Expandir Todos"
+		},
+		"collapse": {
+			"all": "Cerrar Todos"
+		},
+		"server": {
+			"error":"Ocurrió un error con la conexión con el servidor."
+		}
+	},
+	"menu": {
+		"configuration": {
+			"name": "Configuración",
+			"parameter": {
+				"name": "Parámetros",
+				"createParameter": {
+					"name": "Crear Parámetro"
+				},
+				"modifyParameter": {
+					"name": "Modificar Parámetro"
+				},
+				"deleteParameter": {
+					"name": "Eliminar Parámetro"
+				},
+				"listParameter": {
+					"name": "Listar Parámetros"
+				},
+				"searchParameter": {
+					"name": "Buscar Parámetros"
+				}
+			},
+			"operableDay": {
+				"name": "Días Operable",
+				"createOperableDay": {
+					"name": "Modificar Día Operable"
+				},
+				"modifyOperableDay": {
+					"name": "Modificar Día Operable"
+				},
+				"deleteOperableDay": {
+					"name": "Eliminar Día Operable"
+				},
+				"listOperableDay": {
+					"name": "Listar Días Operable"
+				},
+				"searchOperableDay": {
+					"name": "Buscar Días Operable"
+				}
+			},
+			"operableDayException": {
+				"name": "Excepciones de Día Operable",
+				"createOperableDayException": {
+					"name": "Crear Excepción de Día Operable"
+				},
+				"deleteOperableDayException": {
+					"name": "Eliminar Excepción de Día Operable"
+				},
+				"modifyOperableDayException": {
+					"name": "Modificar Excepción de Día Operable"
+				},
+				"listOperableDayException": {
+					"name": "Listar Excepciones de Día Operable"
+				},
+				"searchOperableDayException": {
+					"name": "Buscar Excepciones de Día Operable"
+				}
+			},
+			"commissionSchema": {
+				"name": "Esquema de Comisiones",
+				"createCommissionSchema": {
+					"name": "Crear Esquema de Comisiones"
+				},
+				"deleteCommissionSchema": {
+					"name": "Eliminar Esquema de Comisiones"
+				},
+				"modifyCommissionSchema": {
+					"name": "Modificar Esquema de Comisiones"
+				},
+				"listCommissionSchema": {
+					"name": "Listar Esquema de Comisiones"
+				},
+				"searchCommissionSchema": {
+					"name": "Buscar Esquema de Comisiones"
+				}
+			},
+			"vehicleBrand": {
+				"name": "Marcas de Vehículo",
+				"createVehicleBrand": {
+					"name": "Crear Marca de Vehículo"
+				},
+				"deleteVehicleBrand": {
+					"name": "Eliminar Marca de Vehículos"
+				},
+				"modifyVehicleBrand": {
+					"name": "Modificar Marca de Vehículo"
+				},
+				"listVehicleBrand": {
+					"name": "Listar Marca de Vehículo"
+				},
+				"searchVehicleBrand": {
+					"name": "Buscar Marca de Vehículo"
+				}
+			}
+		},
+		"user": {
+			"name":"Usuarios",
+			"roleType": {
+				"name":"Tipos de Rol",
+				"createRoleType": {
+					"name": "Crear Tipo de Rol"
+				},
+				"modifyRoleType": {
+					"name": "Modificar Tipo de Rol"
+				},
+				"deleteRoleType": {
+					"name": "Eliminar Tipo de Rol"
+				},
+				"listRoleType": {
+					"name": "Listar Tipos de Rol"
+				},
+				"searchRoleType": {
+					"name": "Buscar Tipos de Rol"
+				}
+			}
+		},
+		"account": {
+			"name":"Cuenta",
+			"changePassword": {
+				"name":"Cambiar Contraseña",
+				"changePassword": {
+					"name":"Cambiar Contraseña"
+				}
+			}
+		},
+		"contact": {
+			"name": "Contacto",
+			"seeEmergencyContact": {
+				"name":  "Contacto de emergencias",
+				"seeEmergencyContact": {
+					"name":"Ver teléfonos"
+				}
+			},
+			"seePrinterLinks": {
+				"name":  "Instructivos de impresoras",
+				"seePrinterLinks": {
+					"name":"Ver links"
+				}
+			}
+		}
+	},
+	
+	"login": {
+		"placeholder": {
+			"username": "Usuario",
+			"password": "Contraseña"
+		},
+		"remember": {
+			"me": "Recordarme",
+			"warning": "Precaución: La aplicación guardará la contraseña en texto plano en una cookie del navegador."
+		},
+		"button": "Ingresar"
+	},
+	
+	"parameter": {
+		"column": {
+			"name": "Nombre",
+			"type": "Tipo",
+			"value": "Valor"
+		},
+		"placeholder": {
+			"name": "Ingrese el nombre...",
+			"type": "Ingrese el tipo...",
+			"value": "Ingrese el valor..."
+		},
+		"type": {
+			"string": "Texto",
+			"date": "Fecha",
+			"time": "Hora",
+			"datetime": "Fecha y Hora",
+			"long": "Número Entero",
+			"bigdecimal": "Número con Decimal"
+		}
+	},
+	
+	"changePassword": {
+		"button": "Cambiar Contraseña",
+		"placeholder": {
+			"currentPassword":"Contraseña actual...",
+			"newPassword":"Contraseña nueva...",
+			"confirmNewPassword":"Confirmar contraseña nueva..."
+		},
+		"validation": {
+			"confirm": {
+				"error": "La confirmación de la contraseña nueva fue incorrecta."
+			}
+		}
+	},
+	
+	"function": {
+		"name": {
+			"CreateParameter":"Crear Parámetro",
+			"DeleteParameter":"Eliminar Parámetro",
+			"ModifyParameter":"Modificar Parámetro",
+			"ChangePassword":"Cambiar Contraseña",
+			"CreateRoleType":"Crear Tipo de Rol"
+		}
+	},
+	
+	"roleType": {
+		"column": {
+			"name": "Nombre",
+			"description": "Descripción"
+		},
+		"placeholder": {
+			"name": "Ingrese el nombre...",
+			"description": "Ingrese la descripción..."
+		}
+	},
+	
+	"operableDay": {
+		"column": {
+			"day": "Día",
+			"start": "Inicio (HH:mm)",
+			"finish": "Fin (HH:mm)"
+		},
+		"placeholder": {
+			"day": "Día: ",
+			"start": {
+				"hour": "Hora de inicio",
+				"minutes": "Minutos de inicio"
+			},
+			"finish": {
+				"hour": "Hora de fin",
+				"minutes": "Minutos de fin"
+			}
+		}
+	},
+	
+    "operableDayException": {     
+		"column": {      
+			"day": "Día",
+			"reason": "Motivo",
+			"message": "Mensaje al usuario"
+		 },     
+	 	"placeholder": {      
+			"day": "dd/mm/yyyy",
+			"reason": "Ingrese el motivo",
+			"message": "Mensaje al usuario"
+		}    
+	},
+	
+	"commissionSchema": {
+		"column": {
+			"code": "Código",
+			"description": "Descripción",
+			"punctualParkingCommission": "Estacionamiento Puntual",
+			"creditChargeCommission":  "Carga de Crédito",
+			"parkingViolationVoluntarypaymentCommission": "Pago Voluntario de Multas de Estacionamiento",
+			"trafficViolationoluntarypaymentCommission": "Pago Voluntario de Multas de Tránsito"
+		},
+		"placeholder": {
+			"code": "Ingrese el código...",
+			"description": "Ingrese la descripción...",
+			"punctualParkingCommission": "Ingrese la comisión de Estacionamiento Puntual...",
+			"creditChargeCommission":  "Ingrese la comisión de Carga de Crédito...",
+			"parkingViolationVoluntarypaymentCommission": "Ingrese la comisión de Pago Voluntario de Multas de Estacionamiento...",
+			"trafficViolationoluntarypaymentCommission": "Ingrese la comisión de Pago Voluntario de Multas de Tránsito..."
+		},
+		"validation": {
+			"numberFormat": "El formato de los números debe ser 0,00"
+		}
+	},
+	
+    "contact": {
+    	"emergencyTelephones": "Teléfono de emergencia",     
+    	"systemProblemTelephones": "Teléfono ante un problema en el sistema",
+    	"driverPrinterLinks": "Links para descargar los drivers de las impresoras",     
+    	"printerInstalationInstructions": "Links para descargar los instructivos de las impresoras"  
+	},
+	
+	"vehicleBrand": {
+		"column": {
+			"brandName": "Nombre"
+		},
+		"placeholder": {
+			"brandName": "Ingrese el nombre..."
+		}
+	},
+	
+	"pointOfSale": {
+		"column": {
+			"property": "TODO: Property en DEV"
+		},
+		"placeholder": {
+			"property": "TODO: property..."
+		}
+	},
+	
+	"hourPrice": {
+		"column": {
+			"property": "TODO: Property en DEV"
+		},
+		"placeholder": {
+			"property": "TODO: property..."
+		}
+	},
+	
+	"employeeUserOfPointOfSale": {     
+		"column": {      
+			"name": "TODO: Property en DEV"     
+		},     
+		"placeholder": {      
+			"property": "TODO: property..."     
+		}    
+	},
+	
+	"ticket": {
+		"column": {
+			"property": "TODO: Propiedad en ES"
+		},
+		"placeholder": {
+			"property": "TODO: Ingrese la propiedad..."
+		}
+	},
+	
+	"inspectorUser": {
+		"column": {
+			"property": "TODO: Propiedad en ES"
+		},
+		"placeholder": {
+			"property": "TODO: Ingrese la propiedad..."
+		}
+	},
+	
+	"exemption": {
+		"column": {
+			"property": "TODO: Propiedad en ES"
+		},
+		"placeholder": {
+			"property": "TODO: Ingrese la propiedad..."
+		}
+	}
+	
+	,"ant mark":{"desc":"Ant append text after this, allways remain it at bottom"}
+}

@@ -1,0 +1,199 @@
+<div class="ui message" ng-class="{'red':mensajes.error, 'green':!mensajes.error}" ng-show="hayMensajes">{{mensajes.mensaje}}</div>
+
+<section class="sixteen wide column cajaSombreada" >
+
+	<!-- Navegacion -->
+	<div class="ui form">
+		
+		<div class="four fields">
+	
+			<!-- 	Servicios disponibles
+			<div class=" field">
+				
+				<label>Servicios:</label>
+			
+				<div class="ui dropdown selection" id="listaServicios">
+		
+					<div class="text">
+						<span ng-show="!loadingServicios">Todos</span>
+						<div class="ui active inline loader" ng-show="loadingServicios"></div>
+					</div>
+					
+					<i class="dropdown icon"></i>
+					<div class="menu">
+						<div class="item" ng-class="{'active': 'Todos' == servicioseleccionado}" 
+							ng-click="seleccionoServicio({nombre:'Todos'})">Todos</div>
+							
+						<div class="item" ng-class="{'active': servicio.nombre == servicioseleccionado}" 
+							ng-repeat="servicio in servicios track by $index | orderBy: nombre "
+							ng-click="seleccionoServicio(servicio)">
+							{{servicio.nombre}}</div>
+					</div>
+		
+				</div>
+			</div>
+			 -->
+			 
+			<!-- 	Estados del estudio disponibles -->
+			<div class="field">
+				
+				<label>Nro pedido:</label>
+				
+				<div class="ui icon small input">
+				  <input type="text" placeholder="Nro de pedido..." ng-model="nroPedido" ng-change="filtrar(this)">
+				  <i class="filter icon"></i>
+				</div>
+				
+			</div>
+		
+			<div class=" field">
+			  	<label>Fecha desde:</label>
+				<div class="ui left icon manitas input">
+				   <input type="text" id="fechaDesde"  ng-model="fechaDesde" ng-datepicker="obtenerPedidosPorFecha"
+							placeholder="Haga click aqu&iacute; para seleccionar el d&iacute;a" 
+							size="28" />
+					<i class="calendar icon"></i>
+				</div>
+			</div>	
+		
+			<div class=" field">
+			   <label>Fecha hasta:</label>
+			   
+				<div class="ui left icon manitas input">
+				   <input type="text" id="fechaHasta"  ng-model="fechaHasta" ng-datepicker="obtenerPedidosPorFecha"
+							placeholder="Haga click aqu&iacute; para seleccionar el d&iacute;a" 
+							size="28" />
+					<i class="calendar icon"></i>
+				</div>
+		
+			</div>	
+		
+			<div class="field">
+				<label>Buscar utilizando los campos:</label>
+				<div class="ui right labeled icon button" ng-click="buscarPorFiltrosDeVista()">
+			 		 <i class="search icon"></i>
+			 		 Buscar
+				</div>
+			</div>
+		</div>
+		
+	</div>
+	
+	<h6 class="ui dividing header divisor"></h6>
+	<!-- <div class="ui horizontal divider">&nbsp;</div> -->
+	
+	<div class="ui form">
+	
+		<div class="five fields">
+	
+			<!-- Buscador -->
+			<div class="field">
+			    <label>Filtro:</label>
+				<div class="ui icon small input">
+				  <input type="text" placeholder="Buscar..." ng-model="nombreBusqueda" ng-change="filtrar(this)">
+				  <i class="filter icon"></i>
+				</div>
+			</div>
+			
+			<div class="field"></div>
+			
+			<!-- Paginador style="text-align: left"  -->
+			<div class="field" style="text-align:center;">
+			 	<label >Seleccione la página</label>
+				<div ng-include="'views/paginador.html'"></div>			
+			</div>
+			
+			<div class="field"></div>
+			
+			<!-- Refrescar
+			 -->
+		
+		</div>
+		
+	</div>
+		
+	<!-- Lista de Perfiles -->
+	<h4 class="ui header" ng-show="elementos.length == 0" style="color:#004070; text-align:center;">No hay estudios de pedido pasados a Angra Worklist según los criterios de búsqueda ingresados.</h4>
+			
+			
+	<table class="ui small compact sortable basic table " ng-show="elementos.length > 0">
+	<!--  	Columnas: ID pedido, Paciente, Estudio, Medico efector, Servicio efector y Acciones -->
+	  <thead> 
+	    <tr>
+	      <th class="manitas one wide" style="text-align:center;"
+	      		ng-click="paginador.ordenarPor('numeroPedido')" 
+	      		ng-class="paginador.claseOrdenacion('numeroPedido')">Nro pedido</th>
+	      <th class="manitas three wide" style="text-align:center;"
+	      		ng-click="paginador.ordenarPor('accesionNumber')" 
+	      		ng-class="paginador.claseOrdenacion('accesionNumber')">Accesion Number</th>
+	      <th class="manitas three wide" style="text-align:center;"
+	      		ng-click="paginador.ordenarPor('str_fecha')" 
+	      		ng-class="paginador.claseOrdenacion('str_fecha')"><i class="clock icon"></i>Fecha y hora de envío</th>
+	      <!--  estado pedido -->		
+	      <th class="manitas two wide" style="text-align:center;"
+	      		ng-click="paginador.ordenarPor('status')" 
+	      		ng-class="paginador.claseOrdenacion('status')">Estado</th>
+	      <th class="manitas three wide" style="text-align:center;"
+	      		ng-click="paginador.ordenarPor('str_fechaRespuesta')"
+	      		ng-class="paginador.claseOrdenacion('str_fechaRespuesta')"><i class="clock icon"></i>Fecha y hora de respuesta</th>
+	      <th class="manitas one wide" style="text-align:center;"
+	      		ng-click="paginador.ordenarPor('correcto')" 
+	      		ng-class="paginador.claseOrdenacion('correcto')">Correcto</th>
+	      <th class="manitas two wide" style="text-align:center;"
+	      		ng-click="paginador.ordenarPor('detalle')" 
+	      		ng-class="paginador.claseOrdenacion('detalle')">Detalle</th>
+	      <th class="one wide">Acciones</th>
+	    </tr>
+	  </thead>
+	
+	  <tbody>
+	
+		<tr ng-repeat="e in elementos " ng-class="{'negative':e.respuestaWorklist && e.codigo>0, 'warning': !e.respuestaWorklist }" id="{{e.id}}">
+	    	<td>{{e.numeroPedido}}</td>
+	      	<td>{{e.accesionNumber}}</td>
+	      	<td>{{e.str_fecha}}</td>
+	      	
+<!-- 	      	Respuesta -->
+	     	<td ng-show="!e.respuestaWorklist">Esperando respuesta</td>
+	     	<td ng-show="e.respuestaWorklist">Enviado</td>
+	     	
+<!-- 	     	Fecha de respuesta -->
+	      	<td ng-show="!e.respuestaWorklist">--/--/---- --:--:--</td>
+	      	<td ng-show="e.respuestaWorklist">{{e.str_fechaRespuesta}}</td>
+	      	
+<!-- 	      	Codigo -->
+	      	<td ng-show="!e.respuestaWorklist"></td>
+	      	<td class="verde" ng-show="e.respuestaWorklist && e.codigo==0" style="text-align:center;"><i class="check icon"></i></td>
+	      	<td class="rojo" ng-show="e.respuestaWorklist && e.codigo>0" style="text-align:center;"><i class="cancel icon"></i></td>
+	     	
+<!-- 	     	Detalle -->
+	      	<td ng-show="!e.respuestaWorklist"></td>	
+	      	<td ng-show="e.respuestaWorklist">{{e.detalle}}</td>
+	      	
+		  	<!-- 		Se bloquea ante concurrencia -->
+			<td style="text-align:center;">
+	      	
+		        <div ng-click="ver(e)" class="circular ui mini compact icon button" >
+		        	<i class="unhide icon" title="Ver detalle"></i></div>
+		        	
+				<!-- Dimmer -->
+		       	 <div class="ui dimmer" ng-class="{'active':haciendo}">
+			    	<div class="content">
+				      <div class="center">
+				          <div class="ui active inline loader" ></div>
+				      </div>
+			    	</div>
+			  	</div>
+		  	
+	      	</td>
+	      
+		</tr>
+	    
+	  </tbody>
+	
+	</table> 
+	
+	<!-- Dimmer cargando info -->
+	<div class="ui inverted dimmer" ng-class="{'active':haciendo}" id="haciendo"><div class="ui text loader">Procesando información...</div></div>
+	
+</section>

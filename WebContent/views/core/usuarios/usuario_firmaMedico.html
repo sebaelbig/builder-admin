@@ -1,0 +1,43 @@
+<h4 class="ui azulHE block header attached message">
+  <span >Usuario: {{firma.usuario}}</span>
+  <div class="sub header" >Configurar la firma del profesional</div>
+</h4>
+
+<div class="ui message" ng-class="{'red':mensajes.error, 'green':!mensajes.error}" ng-show="hayMensajes">{{mensajes.mensaje}}</div>
+
+<div class="sixteen wide column">
+	
+
+</div>
+<div class="ui form segment" novalidate name="form" ng-show="!invalido" >
+	
+	<div class="field" >
+		<label>Nro de matrícula del usuario:</label>
+	    <h5  type="text" >{{firma.nroMatricula}}</h5>
+  	</div>
+	
+	<div class="field" >
+	    <label>Texto de la firma</label>
+	    <div class="ui input">
+	    
+	      <div text-angular 
+	      		ta-toolbar="[['h1','h2','h3','h4'],['bold','italics','underline'],['ul','ol'],['undo','redo'],['justifyLeft','justifyCenter','justifyRight'], ['indent','outdent']]"
+	      		ta-toolbar-class="ui tiny buttons" 
+	      		ta-toolbar-group-class="ui tiny buttons" 
+	      		ta-toolbar-button-class="ui button" 
+	      		ta-toolbar-button-active-class="active" 
+	      		ng-model="firma.texto"></div>
+	      
+	    </div>
+	</div>
+	
+					    
+    <div class="ui small buttons" >
+ 		<div class="ui blue button" ng-click="guardar()" ng-class="{'loading': haciendo}" ><i class="save icon"></i>Guardar Firma</div>
+ 		<div class="or" ></div>
+		<div class="ui red button" ng-click="volver()" ><i class="reply icon"></i>Volver</div>
+	</div>
+	
+</div>
+
+<div class="ui red button" ng-click="volver()" ng-show="invalido"><i class="reply icon"></i>Volver</div>

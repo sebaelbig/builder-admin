@@ -1,0 +1,43 @@
+<div class="ui form " novalidate name="form">
+	
+	<div class="two fields">
+	
+		<!-- 	Nombre -->
+		<div class="required field"  ng-class="{'error': form.nombre.$invalid && form.nombre.$dirty}">
+		  	
+		  	<label>Nombre:</label>
+			<div class="ui left small input">
+			
+			  <input ng-model="elemento.nombre" type="text" placeholder="Ingrese un nombre para el elemento..."/>
+			  
+			  <div ng-show="form.nombre.$invalid && form.nombre.$dirty" 
+			  			class="ui red pointing above ui label">Ingrese un nombre válido</div>
+			
+			</div>
+			
+		</div>
+		<!-- 	Atributo -->
+		<div class="required field"  ng-class="{'error': form.atributo.$invalid && form.atributo.$dirty}">
+		  	
+		  	<label>Nombre del atributo:</label>
+			<div class="ui left small input">
+			
+			  <input ng-model="elemento.atributo" type="text" placeholder="Ingrese un atributo para el elemento..."/>
+			  
+			  <div ng-show="form.atributo.$invalid && form.atributo.$dirty" 
+			  			class="ui red pointing above ui label">Ingrese un atributo válido</div>
+			
+			</div>
+			
+		</div>
+		
+  	</div>
+  	
+  	<div class="ui small buttons" >
+  		<div class="ui blue button" ng-class="{'loading': haciendo, 'disabled': !(elemento.atributo && elemento.nombre)}" ng-click="guardar()"><i class="save icon"></i>Guardar</div>
+  		<div class="or"></div>
+ 		<div class="ui red button" ng-click="cancelar()" ng-show="modificando"><i class="reply icon"></i>Volver</div>
+ 		<div class="ui orange button" ng-click="cancelar()" ng-show="!modificando"><i class="list icon"></i>Listar</div>
+	</div>
+  
+</div>

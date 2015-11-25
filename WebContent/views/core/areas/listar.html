@@ -1,0 +1,58 @@
+<h4 class="ui azulHE block header">
+  Lista de áreas
+  <div class="sub header">Ingrese un texto para filtrar por nombre</div>
+</h4>
+
+<!-- Navegacion -->
+<div class="ui two column grid">
+
+	<!-- Buscador -->
+	<div class="column">
+		<div class="ui icon small input">
+		  <input type="text" placeholder="Buscar..." ng-model="nombreBusqueda">
+		  <i class="search icon"></i>
+		</div>
+	</div>
+	
+	<!-- Paginador style="text-align: left"  -->
+	<div class="column" ng-include="'views/paginador.html'"></div>
+
+</div>
+
+<!-- Tabla de datos -->
+<table class="ui small basic sortable table ">
+  
+  <thead>
+    <tr>
+      <th class="manitas" 
+      		ng-click="paginador.ordenarPor('codigo')"
+      		ng-class="paginador.claseOrdenacion('codigo')">Código</th>
+      <th class="manitas" ng-click="paginador.ordenarPor('nombre')" ng-class="paginador.claseOrdenacion('nombre')">Nombre</th>
+      <th class="manitas" ng-click="paginador.ordenarPor('sucursal.nombre')" ng-class="paginador.claseOrdenacion('sucursal.nombre')">Sucursal</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr ng-repeat="e in elementos " ng-class="{'error':e.borrado}" >
+      <td>{{e.codigo}}</td>
+      <td>{{e.nombre}}</td>
+      <td>{{e.sucursal.nombre}}</td>
+      <td>
+        <div ng-click="editar(e)" class="circular ui tiny icon button" ng-class="{'loading': e.borrado}">
+        	<i class="edit icon" title="Editar"></i></div>
+        <div ng-click="confirmarEliminar(e)" class="circular ui tiny icon button" ng-class="{'loading': e.borrado}">
+        	<i class="delete icon" title="Eliminar"></i></div>
+      </td>
+    </tr>
+  </tbody>
+
+</table> 
+
+<!-- Dimmer cargando info -->
+<div class="ui inverted dimmer" ng-class="{'active':haciendo}" id="haciendo"><div class="ui text loader">Recuperando información...</div></div>
+
+
+
+<!-- Dimmer de confirmar eliminiacion -->
+<div ng-include="'views/modalEliminar.html'"></div>

@@ -1,0 +1,112 @@
+<div class="ui small modal" id="datosPacienteTurno" >
+	
+  	<div class="content">
+  	
+    <!--   <h4 class="modal-title" id="myModalLabel">Detalle de la cirugía seleccionada</h4> -->
+  
+	  <table width="600" border="1" cellspacing="0" cellpadding="1" style="border-collapse: collapse; font-weight: bold; margin-top:22px;" bordercolor="#CCC">
+		
+		<tr>
+	    	<td colspan="6" bgcolor="#EBCE9D" class="texto_sub">Datos de Paciente</td>
+     	 </tr>
+      
+      	<tr>
+	        
+	        <td width="112" align="center" valign="middle" bgcolor="#F4EAE0" style="text-align: right">
+	      		 <span class="texto_reserva">DNI </span>
+	        </td>
+	        
+	        <td width="169" align="center" valign="middle" id="numero">&nbsp;{{paciente.nroDocumento}} </td>
+	
+	        <!-- Separador -->
+	        <td width="1" rowspan="8" align="center" valign="middle" ></td>
+	
+	        <td width="300" colspan="3" rowspan="8" align="center" valign="top">
+	
+	            <!-- Equipo medico -->
+	            <table width="300" height="174" border="1" align="center" cellpadding="1" cellspacing="0" bordercolor="#CCC" style="border-collapse: collapse; font-weight: bold;" >
+	              
+	               <tr>
+	                <td bgcolor="#C6E6F1" style="text-align: right"><span class="texto_reserva">Telefono</span></td>
+	                <td id="" style="text-transform: capitalize;">{{paciente.telefono}}</td>
+	        
+	              </tr>
+	              
+	              <tr>
+	                <td bgcolor="#C6E6F1" style="text-align: right"><span class="texto_reserva">Direccion</span></td>
+	                <td id="instrumentista" style="text-transform: capitalize;">{{paciente.domicilio}}</td>
+	              </tr>
+	              
+	              <tr>
+	                <td bgcolor="#C6E6F1" style="text-align: right"><span class="texto_reserva">Localidad</span></td>
+	                <td id="instrumentista" style="text-transform: capitalize;">{{paciente.localidad}}</td>
+	              </tr>
+	              
+	              <tr>
+	                <td width="54" bgcolor="#C6E6F1" style="text-align: right">
+	                  <span class="texto_reserva">Mutual</span>
+	                </td>
+	                <td width="255" id="profesional" style="text-transform: capitalize;">{{paciente.mutual}}</td>
+	              </tr>
+	
+	              <tr>
+	                <td bgcolor="#C6E6F1" style="text-align: right"><span class="texto_reserva">Nro. Carnet</span></td>
+	                <td id="instrumentista" style="text-transform: capitalize;">{{paciente.nroCarnet}}</td>
+	              </tr>
+	             	              
+	
+	              <!-- Boton de cerrar -->
+	      	      <tr>
+	      	        <td height="40" colspan="2" class="texto_info manitas" style="text-align: right;"  ng-click="ocultarDatosPacienteTurno()"> 
+	                <img src="/he_fe/images/cerrar.png" width="12" height="12" align="absmiddle"> Cerrar o Presione ESC para salir</td> 
+	                
+	              </tr>
+	            </table>
+	
+	        </td>
+	
+	      </tr>
+	
+	     <tr>
+	        <td align="center" valign="middle" bgcolor="#F4EAE0" style="text-align: right">
+	          <span class="texto_reserva">Nombre</span>
+	        </td>
+	        <td align="center" valign="middle" id="sala">{{paciente.nombre}}</td>
+	      </tr>
+	
+	      <tr>
+	        <td align="center" valign="middle" bgcolor="#F4EAE0" style="text-align: right">
+	          <span class="texto_reserva">Apellido</span>
+	        </td>
+	        <td align="center" valign="middle" id="habitacion">{{paciente.apellido}}</td>
+	      </tr>
+	
+	      <tr>
+	        <td align="center" valign="middle" bgcolor="#F4EAE0" style="text-align: right">
+	          <span class="texto_reserva">Sexo</span>
+	        </td>
+	        <td align="center" valign="middle" id="fechaReservaSala">{{paciente.sexo}}</td>
+	      </tr>
+	
+	      <tr>
+	        <td align="center" valign="middle" bgcolor="#F4EAE0" style="text-align: right">
+	          <span class="texto_reserva">Fecha de Nacimiento</span>
+	        </td>
+	        <td align="center" valign="middle" id="cirugiaProgramada" style="text-transform: capitalize;">{{paciente.fechaNacimiento}}</td>
+	      </tr>
+	
+	      <tr>
+	        <td align="center" valign="middle" bgcolor="#F4EAE0" style="text-align: right">
+	          <span class="texto_reserva">Edad</span>
+	        </td>
+	        <td align="center" valign="middle" id="horaInicio">{{ paciente.edad }}</td>
+	      </tr>
+	
+	  </table>
+
+	</div>
+
+</div>
+
+	      
+	      

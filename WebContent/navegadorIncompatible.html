@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="es">
+	<head>
+	
+		<!-- Basic MetaFields -->
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+		
+		<title>HC Electronica</title>
+		
+		<link href="styles/estilos.css" rel="stylesheet" type="text/css" />
+	  	<link href="images/favicon.ico" rel="shortcut icon" />
+		<link href="styles/semantic.min.css" rel="stylesheet" type="text/css" />
+		
+	</head>
+	
+	<body >
+	
+	
+		<div class="header">
+		
+			<a href="/share">
+		        <img src="/he_fe/images/logo.png">
+		     </a>
+		     
+		     <a ng-click="goTo('/')">
+		      	<img src="/he_fe/images/home_back.png" title="Volver al sitio de médicos" class="manitas">
+		     </a>
+		      
+		</div>
+		
+		<div class="menu" ng-controller="MenuCtrl"  >
+     
+		     <div class="pimera_linea">
+		     	<span class="item manitas" > Navegador incompatible </span>
+		     </div>
+		     	
+		     <div class="segunda_linea" >
+		     	<span class="item manitas" >  </span>
+		   	</div>
+		   	
+		</div>
+	
+	
+		<div id="compatibility" class="ui warning message">
+			
+			<div class="header">
+				Navegador incompatible
+			</div>
+		
+			<div class="content">
+		      	<p>El navegador que está utilizando no es compatible y la aplicación puede no funcionar correctamente.</p>
+				
+		      	<p>Se recomienda utilizar <a href="https://www.google.com/intl/es/chrome/browser/index.html?system=true&standalone=1#eula" target="blank">Google Chrome&reg;</a> o <a href="http://www.microsoft.com/es-es/download/details.aspx?id=40902" target="blank">Internet Explorer&reg; 11</a></p>
+			
+			</div>
+			
+		</div>
+		
+		<div class="footer" >
+				Horus - &copy;2014
+		</div>
+		
+	</body>
+</html>

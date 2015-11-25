@@ -1,0 +1,99 @@
+<h4 class="ui azulHE block header">
+	<i class="settings icon"></i>
+  	<div class="content">
+  		Administración de las funciones
+  		<div class="sub header">Seleccione las que desee que estén permitidas para el perfil: {{perfil.tipoPerfil.nombre}} (Las ya agregadas se marcan como <span class="subrayado">subrayadas</span>)</div>
+  	</div>
+</h4>
+
+<section class="ui three column page relaxed grid" >
+
+	<!--  menues  -->
+	<article class="column" style="height: 350px; overflow: auto;">
+		
+		<h4 class="ui dividing tiny header">
+			<i class="settings icon"></i>
+		  	<div class="content">
+		  		Grupos de funciones 
+		  		<div class="sub header">El nombre del grupo figuarará en el menú.</div>
+		  	</div>
+		</h4>
+		
+		<div class="ui divided selection tiny list">
+		
+<!-- 				id="{{menu.id}}" -->
+			<div class="item"
+				ng-class="{'active':menuSeleccionado == menu.label, 'subrayado': menu.enPerfil}" 
+			 	ng-repeat="menu in menues"
+			 	ng-click="seleccionoMenu(menu)"
+			 	>
+		  		
+		    	<i class="minus checkbox icon"></i>
+			  	<label>{{menu.label}}</label>
+			</div>
+			
+		</div>
+		
+	</article>
+	
+	<!--  sub - menues  -->
+	<article class="column" style="height: 350px; overflow: auto;">
+	
+		<h4 class="ui dividing tiny header">
+			<i class="settings icon"></i>
+		  	<div class="content">
+		  		Sub-grupo de  <b>{{menuSeleccionado}}</b>
+		  		<div class="sub header">Seleccione el sub-grupo de funciones de <b>{{menuSeleccionado}}</b>, esta selección es la que aparecerá como sub-menú</div>
+		  	</div>
+		</h4>
+	
+		<div class="ui divided selection tiny list">
+		
+<!-- 				id="{{subMenu.id}}" -->
+			<div class="item" 
+			 	ng-repeat="subMenu in subMenuesVista"
+				ng-class="{'active':subMenuSeleccionado == subMenu.label, 'subrayado': subMenu.enPerfil}"
+			 	ng-click="seleccionoSubMenu(subMenu)"
+			 	>
+		  		
+		    	<i class="minus checkbox icon"></i>
+			  	<label>{{subMenu.label}}</label>
+			</div>
+			
+		</div>
+		
+	</article>
+	
+	<!--  Funcion  -->
+	<article class="column" style="height: 350px; overflow: auto;">
+		
+		<h4 class="ui dividing tiny header">
+		  	<div class="content">
+		  		Funciones del sub-menú  <b>{{subMenuSeleccionado}}</b>
+		  		<div class="sub header">Seleccione las funciones de <b>{{subMenuSeleccionado}}</b>, estos nombres NO aparecerán en el menú.</div>
+		  	</div>
+		</h4>
+		
+		<div class="ui divided selection tiny list">
+		
+<!-- 		Accion  -->
+   			<div class="item" 
+ 				ng-repeat="fx in funcionesVista"
+   				ng-class="{'subrayado': fx.enPerfil}"
+ 				ng-click="seleccionoFuncion(fx);">
+						
+	      		<a class="header">
+		    		<div class="ui checkbox" >
+						<input type="checkbox" name="fun"  ng-checked="fx.enTipoDePerfil">
+					  	<label>{{fx.nombreAccion}}</label>
+					</div>
+	      		</a>
+	      		
+	      		<div class="description">{{fx.descripcion}}</div>
+    		</div>
+	
+		</div>
+		
+	</article>
+    	
+</section>

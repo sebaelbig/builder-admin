@@ -1,0 +1,5 @@
+<div class="ui message" ng-class="{'red':mensajes.error, 'green':!mensajes.error}" ng-show="hayMensajes">{{mensajes.mensaje}}</div>
+
+<section ng-include="'views/internacion/controlDias.html'" 
+		ng-show="!modificando" 
+		class="sixteen wide column cajaSombreada"></section> 

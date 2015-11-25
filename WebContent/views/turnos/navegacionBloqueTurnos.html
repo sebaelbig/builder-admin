@@ -1,0 +1,20 @@
+<!-- NAVEGACION -->
+<div class="ui very relaxed horizontal divided small list grid">
+
+<!-- ng-class="{'clase': condicion }" -->
+	<div ng-repeat="diaNavegacion in diasNav" ng-click="navegar(diaNavegacion);" 
+		class="item five wide column" ng-class="{'elementoColeccionSeleccionado': diaNavegacion.actual }"
+		style="cursor:pointer; padding-left: 1em;" >
+		
+		<img class="ui mini image"  ng-src="{{diaNavegacion.imagen}}" />
+		
+		<div class="content">
+			<div class="header">
+			 	<span style="text-transform: capitalize;" class="negrita">{{diaNavegacion.bloqueTurno.nombreDia}} - {{diaNavegacion.fecha}}</span>
+		 	</div> 
+			<i class="small time icon"></i>de <span class="negrita">{{diaNavegacion.bloqueTurno.str_horaInicio}}</span> a <span class="negrita">{{diaNavegacion.bloqueTurno.str_horaFin}}</span> hs.
+		</div>
+		
+	</div>
+	
+</div>	

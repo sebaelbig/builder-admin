@@ -1,0 +1,108 @@
+<div class="ui form" novalidate name="form">
+	
+	<div class="six fields">
+	
+		<!-- 	ID -->
+		<div class="required field"  ng-class="{'error': form.id.$invalid && form.id.$dirty}">
+		  	
+		  	<label>Id</label>
+			<div class="ui small input">
+			
+			  <input ng-model="elemento.id_rol" type="text" placeholder="Ingrese un id para el elemento..."/>
+			  
+			  <div ng-show="form.id.$invalid && form.id.$dirty" 
+			  			class="ui red pointing above ui label">Ingrese un ID válido</div>
+			
+			</div>
+			
+		</div>
+		
+		<!-- 	Nombre -->
+		<div class="required field"  ng-class="{'error': form.nombre.$invalid && form.nombre.$dirty}">
+		  	
+		  	<label>Nombre</label>
+			<div class="ui small input">
+			
+			  <input ng-model="elemento.nombre" type="text" placeholder="Ingrese un nombre para el elemento..."/>
+			  
+			  <div ng-show="form.nombre.$invalid && form.nombre.$dirty" 
+			  			class="ui red pointing above ui label">Ingrese un nombre válido</div>
+			
+			</div>
+			
+		</div>
+		
+		
+		<!-- 	Prioridad -->
+		<div class="required field "  ng-class="{'error': form.prioridad.$invalid && form.prioridad.$dirty}">
+		  	
+		  	<label>Prioridad</label>
+			<div class="ui small input">
+			
+			  <input ng-model="elemento.prioridad" type="text" placeholder="Ingrese una prioridad para el elemento..." title="Ingrese una prioridad para filtrar.."/>
+			  
+			  <div ng-show="form.prioridad.$invalid && form.prioridad.$dirty" 
+			  			class="ui red pointing above ui label">Ingrese una prioridad válido</div>
+			
+			</div>
+			
+		</div>	
+		
+		<!-- 	Sitio -->
+		<div class="required field "  ng-class="{'error': form.sitio.$invalid && form.sitio.$dirty}">
+		  	
+		  	<label>Sitio por defecto</label>
+			<div class="ui small input">
+			
+			  <input ng-model="elemento.sitio" type="text" placeholder="Ingrese un sitio para el elemento..." title="Ingrese un sitio para filtrar.."/>
+			  
+			  <div ng-show="form.sitio.$invalid && form.sitio.$dirty" 
+			  			class="ui red pointing above ui label">Ingrese un sitio válido</div>
+			
+			</div>
+			
+		</div>
+		
+		<!-- 	Tipo de ID por defecto -->
+		<div class="field">
+			
+			<label>Tipo ID por defecto:</label>
+		
+			<div class="ui dropdown selection" id="listaTipos">
+				<div class="text">Elija tipo ID</div><i class="dropdown icon"></i>
+
+				<div class="menu">
+					<div class="item" ng-class="{'active': tipo.checked}" 
+						ng-repeat="tipo in tipos"
+						ng-selected="elemento.codigoID_x_default==tipo.id_tipoId"
+						ng-click="seleccionoTipo(tipo)">
+						{{tipo.tipoID}}</div>
+				</div>
+
+			</div>
+		</div>
+		
+		<!-- 	Estado -->
+		<div class="field">
+		
+			<label style="margin-left: 15px;">Estado</label>
+			
+			<div class="ui toggle checkbox" style="margin-left: 15px;">
+				<input id="choice-{{elemento.id_rol}}" type="checkbox"
+					ng-checked="elemento.estado == 'ACTIVO'"
+					ng-click="toggleEstado(elemento)"> <label
+					for="choice-{{elemento.id_rol}}">{{elemento.estado}}</label>
+			</div>
+			
+		</div>
+		
+  	</div>
+  	
+  	<div class="ui small buttons" >
+  		<div class="ui blue button" ng-class="{'loading': haciendo, 'disabled': !elemento.nombre || !elemento.id_rol}" ng-click="guardar()" ><i class="save icon"></i>Guardar</div>
+  		<div class="or"></div>
+ 		<div class="ui red button" ng-click="cancelar()" ng-show="modificando"><i class="reply icon"></i>Volver</div>
+ 		<div class="ui orange button" ng-click="cancelar()" ng-show="!modificando"><i class="list icon"></i>Listar</div>
+	</div>
+  
+</div>

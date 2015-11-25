@@ -1,0 +1,30 @@
+
+
+<section class="sixteen wide column cajaSombreada">
+
+	<div class="ui grid">
+		<div class="four wide column">
+			<h3 class="ui azulHE header">Agenda de Turnos</h3>
+		</div>
+	</div>
+	<div class="ui grid">
+
+		<div class="four wide column">
+			<!-- DATOS PROFESIONAL -->
+			<article ng-include="'views/turnos/datosProfesional.html'">
+				<!-- class="cajaSombreada" -->
+			</article>
+		</div>
+		<div class="nine wide column">
+			<!-- NAVEGACION -->
+			<article ng-include="'views/turnos/navegacionBloqueTurnos.html'"></article>
+		</div>
+	</div>
+	<!-- TABLA DE TURNOS -->
+	<article ng-include="'views/turnos/tablaDeTurnos.html'"></article>
+
+
+	<!-- Tabla del detalle de paciente -->
+	<section ng-include="'views/turnos/datosPacienteTurno.html'"></section>
+
+</section>
