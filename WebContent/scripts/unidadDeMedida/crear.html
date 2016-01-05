@@ -1,0 +1,47 @@
+<div class="ui form" novalidate name="form">
+	
+	<div class="four fields">
+	
+		<!-- 	Codigo -->
+		<div class="required field "  ng-class="{'error': form.codigo.$invalid && form.codigo.$dirty}">
+		  	
+		  	<label>Nombre</label>
+			<div class="ui left action small input">
+			
+			  <input ng-model="elemento.nombre" type="text" placeholder="Ingrese un nombre para la unidad" />
+			</div>
+			
+		</div>
+		
+		<!-- 	Nombre -->
+		<div class="required field">
+			
+			<label>Descripcion</label>
+		
+			<input ng-model="elemento.descripcion" type="text" placeholder="Ingrese una descripcion para la unidad" />
+		</div>
+				
+		<!-- 	 -->
+		<div class="field">
+		
+			<label>Granel</label>
+			
+			<div class="ui toggle checkbox">
+				<input id="choice-{{elemento.id}}" type="checkbox"
+					ng-checked="elemento.unEstudioPorPedido"
+					ng-click="toggleMultiplicidad(elemento)"> <label
+					for="choice-{{elemento.id}}">{{(elemento.granel)?'Sí':'No'}}</label>
+			</div>
+			
+		</div>
+		
+  	</div>
+  	
+  	<div class="ui small buttons" >
+  		<div class="ui blue button" ng-class="{'loading': haciendo, 'disabled': !(elemento.codigo && elemento.nombre && elemento.area.codigo)}" ng-click="guardar()"><i class="save icon"></i>Guardar</div>
+  		<div class="or"></div>
+ 		<div class="ui red button" ng-click="cancelar()" ng-show="modificando"><i class="reply icon"></i>Volver</div>
+ 		<div class="ui orange button" ng-click="cancelar()" ng-show="!modificando"><i class="list icon"></i>Listar</div>
+	</div>
+  
+</div>

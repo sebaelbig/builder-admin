@@ -3,6 +3,7 @@
 	<name>he_fe</name>
 	<comment></comment>
 	<projects>
+		<project>builder-admin-backend</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

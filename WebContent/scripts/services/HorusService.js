@@ -6,8 +6,8 @@ var server = angular.module('services', []);
 server.factory('HorusService', function($http, $rootScope, $location, $route, $window){
 
 //    var host = "127.0.0.1";
-	var host = document.URL.substr(document.URL.indexOf("//") + 2, document.URL.indexOf(":8090") - 7);
-	var horusServiceUrl = "http://" + host + ":8090/horus_restfull/api";
+	var host = document.URL.substr(document.URL.indexOf("//") + 2, document.URL.indexOf(":8080") - 7);
+	var horusServiceUrl = "http://" + host + ":8080/builder-admin-backend/api";
 	
     //Si el usuario esta en las cookies, entonces lo recupero
     var loggedUser = $window.sessionStorage.getItem("loggedUser");

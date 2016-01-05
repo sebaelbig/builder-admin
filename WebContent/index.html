@@ -34,32 +34,33 @@
 			}
 		</script>
 		<!-- ESTILO CUSTOM -->
-		<link href="styles/estilos.css" rel="stylesheet" type="text/css" />
-		<link href="styles/animate.css" rel="stylesheet" type="text/css" />
+		<link href="./styles/estilos.css" rel="stylesheet" type="text/css" />
+		<link href="./styles/animate.css" rel="stylesheet" type="text/css" />
 		
-		<link href="styles/medicos.css" rel="stylesheet" />
-	  	<link href="images/favicon.ico" rel="shortcut icon" />
+		<link href="./styles/medicos.css" rel="stylesheet" />
+	  	<link href="./images/favicon.ico" rel="shortcut icon" />
 	 	
 		<!-- Library -->
 
 	 	<!-- BootStrap CSS -->
 	 	<!-- JQuery ui 1.10 -->
-		<link rel="stylesheet" type="text/css" href="styles/jquery-ui-1.10.1.css" />
+		<link rel="stylesheet" type="text/css" href="./styles/jquery-ui-1.10.1.css" />
 	 	
 		<!-- Semantic UI -->
-		<link href="styles/semantic-1.6.1/semantic.min.css" rel="stylesheet" type="text/css" />
+		<link href="./scripts/vendor/semantic-2.1/semantic.min.css" rel="stylesheet" type="text/css" />
 		
 	 	<!-- Modal  -->
-<!-- 	  	<link href="styles/estilo_dialogo.css" rel="stylesheet" media="screen">  -->
+<!-- 	  	<link href="./styles/estilo_dialogo.css" rel="stylesheet" media="screen">  -->
 
 		<!-- Libs -->
 		<script src="scripts/lib/jquery-2.1.1.min.js"></script>
 		<script src="scripts/lib/jquery-2.1.1.min.map"></script>
 		<script src="scripts/vendor/jquery-ui-1.10.1.min.js"></script>
-		<script src="scripts/vendor/semantic-1.6.1/semantic.min.js"></script>
+		<script src="scripts/vendor/semantic-2.1/semantic.min.js"></script>
 		
 <!-- 		Angular 1.3.8 -->
 		<script src="scripts/vendor/angular-1.3.8/angular.js"></script>
+<!-- 		<script src="scripts/vendor/angular-1.4.8/angular.min.js"></script> -->
 		
 		<!-- Manejo de arreglos -->
 		<script src="scripts/vendor/lodash.js"></script>
@@ -106,27 +107,17 @@
 			<!-- Usuarios -->
 			<script src="scripts/services/usuarios/UsuarioService.js"></script>
 			<script src="scripts/controllers/usuarios/UsuarioCtrl.js"></script>
-			<script src="scripts/services/usuarios/UsuarioLDAPService.js"></script>
+			<script src="scripts/services/usuarios/UsuarioService.js"></script>
 
-			<script src="scripts/controllers/usuarios/UsuarioLDAP_ListCtrl.js"></script>
-			<script src="scripts/controllers/usuarios/UsuarioLDAP_FirmaCtrl.js"></script>
-			<script src="scripts/controllers/usuarios/UsuarioLDAP_VerRolesCtrl.js"></script>
-			<script src="scripts/controllers/usuarios/UsuarioLDAP_AdministrarRolesCtrl.js"></script>
-			<script src="scripts/controllers/usuarios/UsuarioLDAP_AdministrarPerfilesCtrl.js"></script>
+			<script src="scripts/controllers/usuarios/Usuario_ListCtrl.js"></script>
+			<script src="scripts/controllers/usuarios/Usuario_FirmaCtrl.js"></script>
+			<script src="scripts/controllers/usuarios/Usuario_VerRolesCtrl.js"></script>
+			<script src="scripts/controllers/usuarios/Usuario_AdministrarRolesCtrl.js"></script>
+			<script src="scripts/controllers/usuarios/Usuario_AdministrarPerfilesCtrl.js"></script>
 			
-			<!-- Areas  -->
-			<script src="scripts/services/core/areas/AreaService.js"></script>
-			<script src="scripts/controllers/core/areas/AreaCtrl.js"></script>
-				<!-- Areas - Servicio -->
-				<script src="scripts/services/core/areas/servicios/ServicioService.js"></script>
-				<script src="scripts/controllers/core/areas/servicios/ServicioCtrl.js"></script>				
-					<!-- Areas - Sucursal-->
-					<script src="scripts/services/core/areas/sucursales/SucursalService.js"></script>
-					<script src="scripts/controllers/core/areas/sucursales/SucursalCtrl.js"></script>
-			
+			<script src="scripts/controllers/core/SabeExcel.js"></script>
 			<!-- Rol -->
 			<script src="scripts/services/core/usuarios/roles/RolService.js"></script>
-			<script src="scripts/controllers/core/usuarios/roles/RolCtrl.js"></script>
 			<!-- Perfil -->
 			<script src="scripts/services/core/usuarios/perfiles/PerfilService.js"></script>
 <!-- 			<script src="scripts/controllers/core/usuarios/roles/PerfilCtrl.js"></script> -->
@@ -149,103 +140,13 @@
 		    <script src='scripts/services/usuarios/funciones/FuncionService.js'></script>    
 		    <script src='scripts/controllers/usuarios/funciones/FuncionCtrl.js'></script>
 			  
-		    <!-- Templates -->    
-		    <script src='scripts/services/core/templates/TemplateService.js'></script>    
-		    <script src='scripts/controllers/core/templates/TemplateCreateCtrl.js'></script>
-		    <script src='scripts/controllers/core/templates/TemplateListCtrl.js'></script>
-			    <!-- Propiedades -->    
-			    <script src='scripts/services/core/templates/propiedades/PropiedadService.js'></script>    
-			    <script src='scripts/controllers/core/templates/propiedades/PropiedadCtrl.js'></script>
-	    
-	    <!-- Profesional -->    
-	    <script src='scripts/services/usuarios/ProfesionalService.js'></script>
-	         
-	    <!-- Cirugias -->    
-	    <script src='scripts/services/cirugias/CirugiaService.js'></script>     
-	    <script src='scripts/controllers/cirugias/CirugiaCtrl.js'></script>   
-	    
-	     <!-- Historia Clinica -->
-			<!-- Firma -->
-			<script src='scripts/controllers/historiaClinica/FirmaCtrl.js'></script>
-			
-	     	<!-- Templates -->    
-	     	<!-- Templates Privado-->    
-	    	<script src='scripts/services/historiaClinica/templates/TemplatePrivadoService.js'></script>     
-		    <script src='scripts/controllers/historiaClinica/templates/TemplatePrivadoListCtrl.js'></script>
-		    <script src='scripts/controllers/historiaClinica/templates/TemplatePrivadoCreateCtrl.js'></script> 
-		    <script src='scripts/controllers/historiaClinica/templates/TemplatePrivadoListCtrl.js'></script> 
-		       
-	     	<!-- Templates Publico-->    
-	    	<script src='scripts/services/historiaClinica/templates/TemplatePublicoService.js'></script>     
-		    <script src='scripts/controllers/historiaClinica/templates/TemplatePublicoCreateCtrl.js'></script>    
-		    <script src='scripts/controllers/historiaClinica/templates/TemplatePublicoListCtrl.js'></script>
-		    
-		     <!-- Estudio de pedido -->   
-			<script src="scripts/services/historiaClinica/pedidos/estudios/EstudioDePedidoService.js"></script> 
-		     <!-- Pedidos -->   
-			<script src="scripts/services/historiaClinica/pedidos/PedidoService.js"></script> 
-		    <script src="scripts/controllers/historiaClinica/pedidos/PedidoCtrl.js"></script>
-		    <script src="scripts/controllers/historiaClinica/pedidos/solicitados/PedidoSolicitanteCtrl.js"></script>
-		    <script src="scripts/controllers/historiaClinica/pedidos/solicitados/PedidoPacienteCtrl.js"></script>
-		    <script src="scripts/controllers/historiaClinica/pedidos/solicitados/VerPedidoPacienteCtrl.js"></script>
-		    <script src="scripts/controllers/historiaClinica/pedidos/pacientes/PedidoDePacienteCtrl.js"></script>
-		    <script src="scripts/controllers/historiaClinica/pedidos/pacientes/PedidoDePacienteImprimirCtrl.js"></script>
-		    <script src="scripts/controllers/historiaClinica/pedidos/PedidosCtgCtrl.js"></script>
-		    
-		    <script src="scripts/controllers/historiaClinica/pedidos/BuscarPedidosPacienteCtrl.js"></script>
-		    
-		    <!-- Modalidades -->
-		    <script src="scripts/services/historiaClinica/pedidos/ModalidadService.js"></script>
-			<script src="scripts/controllers/historiaClinica/pedidos/ModalidadCtrl.js"></script>
-		   
-		     <!-- Informes -->   
-		    <script src="scripts/controllers/historiaClinica/pedidos/PedidoCreateCtrl.js"></script>    
-		    <script src="scripts/controllers/historiaClinica/pedidos/PedidoImprimirCtrl.js"></script>    
-		    <script src="scripts/controllers/historiaClinica/pedidos/PedidoMensajesCtrl.js"></script>    
-		    <script src="scripts/controllers/historiaClinica/pedidos/solicitados/PedidoPacienteImprimirCtrl.js"></script>  
-		    <script src="scripts/controllers/historiaClinica/pedidos/solicitados/PedidoSolicitanteImprimirCtrl.js"></script>   
 
-	    
-	    <!-- Turnos --> 
-	    <script src='scripts/services/turnos/TurnoProfesionalService.js'></script>     
-	    <script src='scripts/controllers/turnos/TurnoProfesionalCtrl.js'></script>     
-	    <script src='scripts/controllers/turnos/HistorialPacienteTurnoCtrl.js'></script>     
-		
-		 <!-- Pacientes --> 
-	    <script src='scripts/services/PacienteService.js'></script>   
-	    <script src='scripts/controllers/pacientes/HistorialPacienteCtrl.js'></script>
-	    <script src='scripts/controllers/historiaClinica/HCDigitalizadaImprimirCtrl.js'></script>
-
-		<!-- Internacion -->
-		<script src="scripts/controllers/internacion/ControlDiasCtrl.js"></script>
-		<script src="scripts/controllers/internacion/InternadosProfesionalCtrl.js"></script>
-		<script src='scripts/services/internacion/InternacionService.js'></script>
-		
-		<!-- Criterio de Asignacion de Camas -->
-		<script src='scripts/controllers/internacion/AsignacionCriterioCamaCtrl.js'></script> 
- 		<script src='scripts/controllers/internacion/CriterioDeAsignacionCamaCtrl.js'></script> 
-		<script src='scripts/services/internacion/CriterioDeAsignacionService.js'></script>
-		
-		<!-- Epicrisis -->
-		<script src="scripts/controllers/internacion/epicrisis/EpicrisisCtrl.js"></script> 
-		<script src="scripts/controllers/internacion/epicrisis/EpicrisisCrearCtrl.js"></script> 
-		<script src="scripts/controllers/internacion/epicrisis/EpicrisisImprimirCtrl.js"></script> 
-		
 		<!-- WebSocket 
 		<script src='scripts/services/WebSocketService.js'></script>    
 		-->    
 		<script src='scripts/services/core/panelDeControl/WSService.js'></script>    
 		<script src="scripts/controllers/core/panelDeControl/AlertasWSCtrl.js"></script>
 		
-<!-- 		Panel de control -->
-		<script src="scripts/controllers/core/panelDeControl/pedidos/EstudioDePedidoAngraCtrl.js"></script>
-		<script src="scripts/services/core/panelDeControl/pedidos/EstudioDePedidoAngraService.js"></script>
-		
-		<!-- JSON --> 
-	    <script src='scripts/json/turnos/json_bloque_turno.js'></script>   
-	    <script src='scripts/json/turnos/json_profesional_bloque_turno_primer_turno.js'></script>   
-	    <script src='scripts/json/turnos/json_turno.js'></script>   
-	    
 	    <!-- Alma -->
 		<script src='scripts/controllers/AbrirAlmaCtrl.js'></script>   
 		

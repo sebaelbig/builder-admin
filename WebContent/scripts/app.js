@@ -406,9 +406,9 @@ angular.module('horusApp', ['filters', 'directives', 'routes', 'services', 'sabe
 				//Indexo los roles segun su codigo
 				$.each($rootScope.loggedUser.roles, function(ix,elem){
 					// Obtengo la matricula si es medico
-					if ((elem.codigo == "MHE")  || (elem.codigo == "MEX") && ($rootScope.matricula ==null)) {
-						$rootScope.matricula=elem.valorTipoID;
-					}
+//					if ((elem.codigo == "MHE")  || (elem.codigo == "MEX") && ($rootScope.matricula ==null)) {
+//						$rootScope.matricula=elem.valorTipoID;
+//					}
 					$rootScope.loggedUser.roles[elem.codigo] = elem;
 				});
 				

@@ -45,20 +45,20 @@
 		    </div>
 
 		    <!-- Contrasena-->
-		    <div class="required  field" ng-class="{'error': userCredentials.password.$invalid && userCredentials.password.$dirty}">
+		    <div class="required  field" ng-class="{'error': userCredentials.contrasena.$invalid && userCredentials.contrasena.$dirty}">
 
-		      	<label for="Password">Contraseña</label>
+		      	<label for="contrasena">Contraseña</label>
 		      	
 	      		<div class="ui left icon input">
-		      		<input name="uPass" type="password" 
-		      			ng-model="userCredentials.password" required >
+		      		<input name="uPass" type="contrasena" 
+		      			ng-model="userCredentials.contrasena" required >
 	      			<i class="lock icon"></i>
 	        	</div>
 	        	
 	      		<div ng-show="form.uPass.$dirty && form.uPass.$invalid" 
-	      			class="ui red pointing above ui label">Ingrese su password</div>		
+	      			class="ui red pointing above ui label">Ingrese su contrasena</div>		
 		    
-		    </password>
+		    </div>
 		    
 		    <!-- Remember me 
 			<div class="field">
