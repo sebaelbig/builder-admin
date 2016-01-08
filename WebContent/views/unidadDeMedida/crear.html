@@ -28,7 +28,7 @@
 			
 			<div class="ui toggle checkbox">
 				<input id="choice-{{elemento.id}}" type="checkbox"
-					ng-checked="elemento.unEstudioPorPedido"
+					ng-checked="elemento.granel"
 					ng-click="toggleMultiplicidad(elemento)"> <label
 					for="choice-{{elemento.id}}">{{(elemento.granel)?'Sí':'No'}}</label>
 			</div>
@@ -38,7 +38,8 @@
   	</div>
   	
   	<div class="ui small buttons" >
-  		<div class="ui blue button" ng-class="{'loading': haciendo, 'disabled': !(elemento.codigo && elemento.nombre && elemento.area.codigo)}" ng-click="guardar()"><i class="save icon"></i>Guardar</div>
+<!-- ng-class="{'loading': haciendo, 'disabled': !(elemento.nombre && elemento.descripcion)}" -->
+  		<div class="ui blue button"  ng-click="crear()"><i class="save icon"></i>Guardar</div>
   		<div class="or"></div>
  		<div class="ui red button" ng-click="cancelar()" ng-show="modificando"><i class="reply icon"></i>Volver</div>
  		<div class="ui orange button" ng-click="cancelar()" ng-show="!modificando"><i class="list icon"></i>Listar</div>

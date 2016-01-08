@@ -10,7 +10,8 @@ var UnidadDeMedidaCtrl = function($scope, $rootScope, $routeParams, $filter,
 
 	$scope.haciendo = false;
 	$scope.modificando = false;
-
+	$scope.elemento={};
+	$scope.elemento.nombre="Prueba";
 	/** *********************************************************** */
 	$scope.editar = function(e) {
 		$('html, body').animate({
@@ -20,15 +21,7 @@ var UnidadDeMedidaCtrl = function($scope, $rootScope, $routeParams, $filter,
 		$scope.modificando = true;
 
 		$scope.elemento = e;
-		$scope.seleccionoServicioHE({
-			'nombre' : $scope.elemento.nombre
-		});
-
-		var ar = $scope.areas[$scope.elemento.area.nombre.toLowerCase()];
-
-		// Selecciono el tipo por default y lo seteo en la vista si tiene alguno
-		// establecido x default
-		$scope.seleccionoArea(ar);
+	
 	};
 
 	$scope.cancelar = function() {
@@ -38,8 +31,7 @@ var UnidadDeMedidaCtrl = function($scope, $rootScope, $routeParams, $filter,
 
 	$scope.guardar = function() {
 
-		if ($scope.elemento.codigo && $scope.elemento.nombre
-				&& $scope.elemento.area.codigo) {
+		if ($scope.elemento.descripcion && $scope.elemento.nombre) {
 
 			$scope.hayMensajes = false;
 			$scope.haciendo = true;
@@ -54,7 +46,11 @@ var UnidadDeMedidaCtrl = function($scope, $rootScope, $routeParams, $filter,
 
 	$scope.crear = function() {
 
-		ServicioService.crear($scope.elemento, function(resp) {
+		UnidadDeMedidaService.crear($scope.elemento, function(resp) {
+			$scope.mensajes = {
+					mensaje : resp.mensaje,
+					error : !resp.ok
+				};
 			$rootScope.manageSaveCallback($scope, resp);
 		}, $rootScope.manageError);
 	};
@@ -62,20 +58,47 @@ var UnidadDeMedidaCtrl = function($scope, $rootScope, $routeParams, $filter,
 	$scope.modificar = function() {
 
 		$scope.currentFunction = $scope.actualizar;
-		ServicioService.modificar($scope.elemento, function(resp) {
+		UnidadDeMedidaService.modificar($scope.elemento, function(resp) {
 			$rootScope.manageSaveCallback($scope, resp);
 			$scope.modificando = !resp.ok;// Si paso algo, ok es
 			// falso, asi que seguimos
 			// modificando
 		}, $rootScope.manageError);
 	};
+	
+	/************************************************************/
+	/*						Eliminar							*/
+	/************************************************************/
+	// 1 Pide confirmacion
+	$scope.confirmarEliminar = function(e){
+		$scope.borrando = e;
+		$scope.borrando._cartel = " el servicio "+e.nombre;
+		
+		e.borrado = true;
+		$('#modalEliminar').dimmer({closable:false}).dimmer('show');
+	};
+	
+	// 1.1 Cancela
+	$scope.cancelarEliminar = function(){
+		$('#modalEliminar').dimmer('hide');
+		$scope.borrando.borrado = false;
+		$scope.borrando = null;
+		
+	};
 
 	// 1.2 Confirma
 	$scope.eliminar = function() {
-		ServicioService.eliminar($scope.borrando, function(resp) {
+		UnidadDeMedidaService.eliminar($scope.borrando, function(resp) {
 			$rootScope.manageDeleteCallback($scope, resp);
 			$('#modalEliminar').dimmer('hide');
 		}, $rootScope.manageError);
+	};
+	
+	$scope.resetElemento = function(){
+		$scope.elemento = {};
+		$scope.haciendo = false;
+		$scope.modificando = false;
+	
 	};
 	/** ********************************************************* */
 
@@ -99,11 +122,18 @@ var UnidadDeMedidaCtrl = function($scope, $rootScope, $routeParams, $filter,
 			$scope._ordenesOrdenacion, $scope._criterioDeOrdenActual);
 	/** ********************************************************* */
 
-	UnidadDeMedidaService.listar(function(response) {
-		if (response.ok) {
-			$scope.elementos = response.paginador.elementos;
-		}
+	UnidadDeMedidaService.listar("", function(response) {
+		$rootScope.manageListCallback($scope, response);
+		$scope.elementos = response.paginador.elementos;
 	}, $rootScope.manageError);
+	
+	$scope.list=function(){
+		UnidadDeMedidaService.listar("", function(response) {
+			$rootScope.manageListCallback($scope, response);
+			$scope.elementos = response.paginador.elementos;
+		}, $rootScope.manageError);
+
+	};
 
 	/** *********************************************************** */
 };

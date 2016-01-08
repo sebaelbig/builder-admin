@@ -54,7 +54,18 @@ angular.module('routes', ['ngRoute'])
 //			    , {path: '/usuarios/funciones', template: 'views/usuarios/funciones/listar.html', controllper: FuncionCtrl}
 //			    , {path: '/usuarios/funciones/crear', template: 'views/usuarios/funciones/crear.html', controller: FuncionCtrl}
 //			    , {path: '/usuarios/funciones/editar/:idFuncion', template: 'views/usuarios/funciones/editar.html', controller: FuncionCtrl}
-//			    , {path: '/usuarios/funciones/ver/:idFuncion', template: 'views/usuarios/funciones/ver.html', controller: FuncionCtrl} 
+//			    , {path: '/usuarios/funciones/ver/:idFuncion', template: 'views/usuarios/funciones/ver.html', controller: FuncionCtrl}
+			    
+			    /**
+			     * Aca empiezo con los paths de Builder Admin
+			     */
+			    , {path: '/listar_unidad_de_medida', template: 'views/unidadDeMedida/admin.html', controller: UnidadDeMedidaCtrl}
+			    
+			    //Designacion , 
+//			    , {path: '/buscar_designacion', template: 'views/designacion/admin.html', controller: DesignacionCtrl}
+//			    , {path: '/crear_designacion', template: 'views/designacion/admin.html', controller: DesignacionCtrl}
+//			    , {path: '/eliminar_designacion', template: 'views/designacion/admin.html', controller: DesignacionCtrl}
+//			    , {path: '/modificar_designacion', template: 'views/designacion/admin.html', controller: DesignacionCtrl}
  				
 			    //Ant_routes
 		    ];
