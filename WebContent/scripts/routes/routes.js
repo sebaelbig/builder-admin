@@ -60,6 +60,7 @@ angular.module('routes', ['ngRoute'])
 			     * Aca empiezo con los paths de Builder Admin
 			     */
 			    , {path: '/listar_unidad_de_medida', template: 'views/unidadDeMedida/admin.html', controller: UnidadDeMedidaCtrl}
+			    , {path: '/listar_designaciones', template: 'views/designacion/admin.html', controller: DesignacionCtrl}
 			    
 			    //Designacion , 
 //			    , {path: '/buscar_designacion', template: 'views/designacion/admin.html', controller: DesignacionCtrl}

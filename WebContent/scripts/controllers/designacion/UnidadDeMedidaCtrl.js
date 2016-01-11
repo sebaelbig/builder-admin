@@ -2,8 +2,7 @@
 /**
  * Unidad de medida Controller
  */
-var UnidadDeMedidaCtrl = function($scope, $rootScope, $routeParams, $filter,
-		UnidadDeMedidaService) {
+var UnidadDeMedidaCtrl = function($scope, $rootScope, $routeParams, $filter, UnidadDeMedidaService) {
 
 	$scope.hayMensajes = false;
 	$scope.mensajes;
