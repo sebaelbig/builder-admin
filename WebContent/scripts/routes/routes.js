@@ -63,6 +63,7 @@ angular.module('routes', ['ngRoute'])
 			    , {path: '/listar_designaciones', template: 'views/designacion/admin.html', controller: DesignacionCtrl}
 			    , {path: '/listar_tipo_uni_funcionales', template: 'views/tipoUnidadFuncional/admin.html', controller: TipoUnidadFuncionalCtrl}
 			    , {path: '/listar_unidades_funcionales', template: 'views/unidadFuncional/admin.html', controller: UnidadFuncionalCtrl}
+			    , {path: '/listar_planificaciones', template: 'views/planificacion/admin.html', controller: PlanificacionCtrl}
 			    
 			    //Designacion , 
 //			    , {path: '/buscar_designacion', template: 'views/designacion/admin.html', controller: DesignacionCtrl}
