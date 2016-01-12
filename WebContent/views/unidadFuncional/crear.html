@@ -1,0 +1,66 @@
+<div class="ui form" novalidate name="form">
+
+	<div class="four fields">
+
+		<!-- 	Codigo -->
+		<div class="required field "
+			ng-class="{'error': form.codigo.$invalid && form.codigo.$dirty}">
+
+			<label>Nombre</label>
+			<div class="ui left action small input">
+
+				<input ng-model="elemento.nombre" type="text"
+					placeholder="Ingrese un nombre para la unidad" />
+			</div>
+
+		</div>
+
+		<!-- 	Nombre -->
+		<div class="required field">
+
+			<label>Descripcion</label> <input ng-model="elemento.descripcion"
+				type="text" placeholder="Ingrese una descripcion para la unidad" />
+		</div>
+
+		<!-- 	 -->
+		<div class="field">
+			<label>Unidad de Medida por defecto </label>
+			<div class="ui dropdown selection" id="listaUnidades">
+				
+				<div class="text">
+					<span >Elija una unidad</span>
+					
+				</div>
+					
+				<i class="dropdown icon"></i>
+
+				<div class="menu">
+					<div class="item"  
+						ng-repeat="und in unidades "
+
+						ng-click="seleccionUnidadPorDefault(und)">
+						{{und.nombre}}</div>
+				</div>
+
+			</div>
+
+		</div>
+<!-- 						ng-selected="elemento.nombre==srv.nombre" -->
+	</div>
+
+	<div class="ui small buttons">
+		<!-- ng-class="{'loading': haciendo, 'disabled': !(elemento.nombre && elemento.descripcion)}" -->
+		<div class="ui blue button" ng-click="crear()">
+			<i class="save icon"></i>Guardar
+		</div>
+		<div class="or"></div>
+		<div class="ui red button" ng-click="cancelar()" ng-show="modificando">
+			<i class="reply icon"></i>Volver
+		</div>
+		<div class="ui orange button" ng-click="cancelar()"
+			ng-show="!modificando">
+			<i class="list icon"></i>Listar
+		</div>
+	</div>
+
+</div>
