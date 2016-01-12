@@ -32,7 +32,7 @@
       <th class="manitas six wide" 
       		ng-click="paginador.ordenarPor('descripcion')" 
       		ng-class="paginador.claseOrdenacion('descripcion')">Descripcion</th>
-      <th class="manitas two wide" >Granel</th>
+      <th class="manitas two wide" >Unidad de Medida por default</th>
       <th>Acciones</th>
     </tr>
   </thead>
@@ -42,7 +42,7 @@
       <td>{{e.id}}</td>
       <td>{{e.nombre}}</td>
       <td>{{e.descripcion}}</td>
-      <td>{{e.granel}}</td>
+      <td>{{e.unidadPorDefault.nombre}}</td>
       <td>
         <div ng-click="editar(e)" class="circular ui tiny icon button" ng-class="{'loading': e.borrado}">
         	<i class="edit icon" title="Editar"></i>

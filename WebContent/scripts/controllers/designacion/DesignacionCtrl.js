@@ -125,11 +125,11 @@ var DesignacionCtrl = function($scope, $rootScope, $routeParams, $filter,
 		$scope.elemento.unidadPorDefault=uni;
 	};
 	
-//	DesignacionService.listarUnidadesDeMedida("", function(response) {
-//		//$rootScope.manageListCallback($scope, response);
-//		$scope.unidades = response.paginador.elementos;
-//		$("#listaUnidades").dropdown("set text", $scope.unidades);
-//	}, $rootScope.manageError);
+	UnidadDeMedidaService.listar("", function(response) {
+		//$rootScope.manageListCallback($scope, response);
+		$scope.unidades = response.paginador.elementos;
+		$("#listaUnidades").dropdown("set text", $scope.unidades);
+	}, $rootScope.manageError);
 	
 	DesignacionService.listar("", function(response) {
 		$rootScope.manageListCallback($scope, response);
@@ -141,11 +141,11 @@ var DesignacionCtrl = function($scope, $rootScope, $routeParams, $filter,
 		DesignacionService.listar("", function(response) {
 			$rootScope.manageListCallback($scope, response);
 			$scope.elementos = response.paginador.elementos;
-			UnidadDeMedidaService.listarUnidadesDeMedida("", function(response) {
-				$rootScope.manageListCallback($scope, response);
-				$scope.unidades = response.paginador.elementos;
-				$("#listaUnidades").dropdown("set text", $scope.unidades);
-			}, $rootScope.manageError);
+//			UnidadDeMedidaService.listar("", function(response) {
+//				$rootScope.manageListCallback($scope, response);
+//				$scope.unidades = response.paginador.elementos;
+//				$("#listaUnidades").dropdown("set text", $scope.unidades);
+//			}, $rootScope.manageError);
 		}, $rootScope.manageError);
 
 	};

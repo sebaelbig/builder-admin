@@ -61,6 +61,8 @@ angular.module('routes', ['ngRoute'])
 			     */
 			    , {path: '/listar_unidad_de_medida', template: 'views/unidadDeMedida/admin.html', controller: UnidadDeMedidaCtrl}
 			    , {path: '/listar_designaciones', template: 'views/designacion/admin.html', controller: DesignacionCtrl}
+			    , {path: '/listar_tipo_uni_funcionales', template: 'views/tipoUnidadFuncional/admin.html', controller: TipoUnidadFuncionalCtrl}
+			    , {path: '/listar_unidades_funcionales', template: 'views/unidadFuncional/admin.html', controller: UnidadFuncionalCtrl}
 			    
 			    //Designacion , 
 //			    , {path: '/buscar_designacion', template: 'views/designacion/admin.html', controller: DesignacionCtrl}
